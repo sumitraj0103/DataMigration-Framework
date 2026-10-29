@@ -1,0 +1,23 @@
+{
+    "name": "DS_SourceTableMig_Dev",
+    "properties": {
+        "type": "AzureSqlTable",
+        "linkedServiceName": {
+            "referenceName": "LS_SourceSqlMig_Dev",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "SchemaName": {
+                "type": "String",
+                "defaultValue": "dbo"
+            },
+            "TableName": {
+                "type": "String"
+            }
+        },
+        "typeProperties": {
+            "schema": "@dataset().SchemaName",
+            "table": "@dataset().TableName"
+        }
+    }
+}

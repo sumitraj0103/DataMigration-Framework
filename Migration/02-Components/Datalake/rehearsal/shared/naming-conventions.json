@@ -1,0 +1,22 @@
+{
+	"CompanyCodePrefix": "MSC",
+	"SandboxTestSuffix": "TRACC",
+	"ResourceTypes": {
+		"StorageAccount": "STA",
+		"ResourceGroup": "RSG",
+		"Subscription": "SUB",
+		"KeyVault": "KV",
+		"DataFactory": "DAF"
+	},
+	"Teams": {
+		"Infrastructure": "INFRASTRUCTURE",
+		"DataManagementPlatform": "DMAP"
+	},
+	"Environments": {
+		"Development": "DEV",
+		"Sandbox": "SB",
+		"Test": "TST",
+		"Acceptance": "ACC",
+		"Production": "PRD"
+	}
+}

@@ -1,0 +1,79 @@
+# Azure DevOps pipeline to run Move-ADF.ps1 via an agent instead of a local machine.
+# Produces the adf-move-audit-<timestamp> folder as a downloadable pipeline artifact.
+
+trigger: none # manual/on-demand only
+
+parameters:
+  - name: sourceResourceGroupName
+    displayName: Source Resource Group Name
+    type: string
+  - name: targetResourceGroupName
+    displayName: Target Resource Group Name
+    type: string
+  - name: dataFactoryName
+    displayName: Data Factory Name
+    type: string
+  - name: dryRun
+    displayName: Dry Run (no changes made)
+    type: boolean
+    default: true
+  - name: azureServiceConnection
+    displayName: Azure DevOps Service Connection name (Az PowerShell / ARM)
+    type: string
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  - name: auditOutputDir
+    value: '$(Build.ArtifactStagingDirectory)/adf-move-audit'
+  - ${{ if eq(parameters.dryRun, true) }}:
+    - name: whatIfArg
+      value: '-WhatIf'
+  - ${{ else }}:
+    - name: whatIfArg
+      value: ''
+
+stages:
+  - stage: MoveADF
+    displayName: Move ADF and capture audit artifacts
+    jobs:
+      - job: RunMoveADF
+        displayName: Run Move-ADF.ps1
+        steps:
+          - checkout: self
+
+          - task: PowerShell@2
+            displayName: Ensure Az PowerShell modules are available
+            inputs:
+              targetType: inline
+              script: |
+                $modules = 'Az.Accounts','Az.Resources','Az.DataFactory'
+                foreach ($m in $modules) {
+                  if (-not (Get-Module -ListAvailable -Name $m)) {
+                    Install-Module -Name $m -Scope CurrentUser -Force -AllowClobber -Repository PSGallery
+                  }
+                }
+
+          - task: AzurePowerShell@5
+            displayName: Run Move-ADF.ps1
+            inputs:
+              azureSubscription: '${{ parameters.azureServiceConnection }}'
+              ScriptType: FilePath
+              ScriptPath: '$(Build.SourcesDirectory)/Migration/03-Components/ADF/adf-move-automation/Move-ADF.ps1'
+              ScriptArguments: >
+                -SourceResourceGroupName "${{ parameters.sourceResourceGroupName }}"
+                -TargetResourceGroupName "${{ parameters.targetResourceGroupName }}"
+                -DataFactoryName "${{ parameters.dataFactoryName }}"
+                -LogPath "$(auditOutputDir)"
+                $(whatIfArg)
+              azurePowerShellVersion: LatestVersion
+              pwsh: true
+
+          - task: PublishPipelineArtifact@1
+            displayName: Publish audit artifacts
+            condition: always()
+            inputs:
+              targetPath: '$(auditOutputDir)'
+              artifact: 'adf-move-audit'
+              publishLocation: 'pipeline'

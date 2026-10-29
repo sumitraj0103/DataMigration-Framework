@@ -1,0 +1,114 @@
+{
+    "name": "PL_SyncAllProdToLowerEnvironments",
+    "properties": {
+        "description": "Strategy 2 (Prod -> Lower Environment Synchronization): inserts a mig.SyncMasterRun audit row, then reads all active rows from mig.SyncConfiguration (each row now specifies its own TargetEnvironment and SyncStrategy), and invokes PL_SyncProdToLowerEnvironment once per row. Generates one MasterBatchId and forwards it so every child run's mig.SyncRun row can be traced back to this master execution via mig.SyncMasterRun. If any child sync fails, mig.SyncMasterRun is marked FAILED and the pipeline fails explicitly (individual failures are already audited per-table in mig.SyncRun). See Synchronise/README.md.",
+        "variables": {
+            "MasterBatchId": { "type": "String" }
+        },
+        "activities": [
+            {
+                "name": "SetMasterBatchId",
+                "type": "SetVariable",
+                "typeProperties": {
+                    "variableName": "MasterBatchId",
+                    "value": { "value": "@guid()", "type": "Expression" }
+                }
+            },
+            {
+                "name": "InsertSyncMasterRun",
+                "type": "Script",
+                "dependsOn": [ { "activity": "SetMasterBatchId", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "Query",
+                            "text": "INSERT INTO mig.SyncMasterRun (BatchId, RunStatus) VALUES ('@{variables('MasterBatchId')}', 'RUNNING');"
+                        }
+                    ]
+                },
+                "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+            },
+            {
+                "name": "GetSyncConfigurationsByEnvironment",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "InsertSyncMasterRun", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "SELECT SyncConfigurationId, TargetEnvironment FROM mig.SyncConfiguration WHERE IsActive = 1;"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "SyncConfiguration" }
+                    },
+                    "firstRowOnly": false
+                }
+            },
+            {
+                "name": "ForEachSyncConfigurationEnvironment",
+                "type": "ForEach",
+                "dependsOn": [ { "activity": "GetSyncConfigurationsByEnvironment", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "items": { "value": "@activity('GetSyncConfigurationsByEnvironment').output.value", "type": "Expression" },
+                    "isSequential": true,
+                    "activities": [
+                        {
+                            "name": "InvokeSyncProdToLowerEnvironment",
+                            "type": "ExecutePipeline",
+                            "typeProperties": {
+                                "pipeline": { "referenceName": "PL_SyncProdToLowerEnvironment", "type": "PipelineReference" },
+                                "waitOnCompletion": true,
+                                "parameters": {
+                                    "ConfigurationId": "@item().SyncConfigurationId",
+                                    "TargetEnvironment": "@item().TargetEnvironment",
+                                    "MasterBatchId": "@variables('MasterBatchId')"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "MarkSyncMasterRunSuccess",
+                "type": "Script",
+                "dependsOn": [ { "activity": "ForEachSyncConfigurationEnvironment", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "Query",
+                            "text": "UPDATE mig.SyncMasterRun SET RunStatus = 'SUCCESS', CompletedAt = SYSUTCDATETIME() WHERE BatchId = '@{variables('MasterBatchId')}';"
+                        }
+                    ]
+                },
+                "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+            },
+            {
+                "name": "MarkSyncMasterRunFailed",
+                "type": "Script",
+                "dependsOn": [ { "activity": "ForEachSyncConfigurationEnvironment", "dependencyConditions": [ "Failed" ] } ],
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "Query",
+                            "text": "UPDATE mig.SyncMasterRun SET RunStatus = 'FAILED', ErrorMessage = 'One or more PL_SyncProdToLowerEnvironment runs failed; see mig.SyncRun for per-table/per-environment errors.', CompletedAt = SYSUTCDATETIME() WHERE BatchId = '@{variables('MasterBatchId')}';"
+                        }
+                    ]
+                },
+                "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+            },
+            {
+                "name": "FailSyncMasterRun",
+                "type": "Fail",
+                "dependsOn": [ { "activity": "MarkSyncMasterRunFailed", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "message": {
+                        "value": "@concat('Sync master run ', variables('MasterBatchId'), ' failed: one or more PL_SyncProdToLowerEnvironment runs did not complete successfully. See mig.SyncRun for details.')",
+                        "type": "Expression"
+                    },
+                    "errorCode": "SyncBatchFailed"
+                }
+            }
+        ]
+    }
+}

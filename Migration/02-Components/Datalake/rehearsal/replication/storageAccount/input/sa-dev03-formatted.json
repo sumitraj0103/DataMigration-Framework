@@ -1,0 +1,359 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.46.1.21595",
+      "templateHash": "3024584728380065917"
+    }
+  },
+  "parameters": {
+    "StorageAccountName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2026-04-01",
+      "name": "[parameters('StorageAccountName')]",
+      "location": "westeurope",
+      "tags": {
+        "CostCenter": "02-1585",
+        "ApplicationOwner": "ruud.vanlieshout@dllgroup.com",
+        "GroupAssgnInvalid": "false",
+        "AppAssgnInvalid": "true",
+        "BusinessDomain": "IT Enterprise Platforms",
+        "UserAssgnInvalid": "false",
+        "TagVendor": "DMAP",
+        "ENV": "DEV",
+        "CI": "DMAP",
+        "LineofIT": "Enterprise Technology Services"
+      },
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "isLocalUserEnabled": false,
+        "isSftpEnabled": false,
+        "azureFilesIdentityBasedAuthentication": {
+          "directoryServiceOptions": "None"
+        },
+        "minimumTlsVersion": "TLS1_2",
+        "allowBlobPublicAccess": false,
+        "largeFileSharesState": "Disabled",
+        "isHnsEnabled": true,
+        "networkAcls": {
+          "ipv6Rules": [],
+          "resourceAccessRules": [
+            {
+              "tenantId": "07751f8b-9617-49d5-9024-85f034f400ec",
+              "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/providers/Microsoft.Security/datascanners/StorageDataScanner"
+            }
+          ],
+          "bypass": "AzureServices",
+          "virtualNetworkRules": [],
+          "ipRules": [
+            {
+              "value": "185.221.249.174",
+              "action": "Allow"
+            },
+            {
+              "value": "62.207.93.78",
+              "action": "Allow"
+            },
+            {
+              "value": "185.60.28.2",
+              "action": "Allow"
+            }
+          ],
+          "defaultAction": "Allow"
+        },
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": {
+              "keyType": "Account",
+              "enabled": true
+            },
+            "blob": {
+              "keyType": "Account",
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "accessTier": "Hot"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}', parameters('StorageAccountName'), 'default')]",
+      "properties": {
+        "staticWebsite": {
+          "enabled": false
+        },
+        "lastAccessTimeTrackingPolicy": {
+          "enable": true,
+          "name": "AccessTimeTracking",
+          "trackingGranularityInDays": 1,
+          "blobType": [
+            "blockBlob"
+          ]
+        },
+        "containerDeleteRetentionPolicy": {
+          "enabled": true,
+          "days": 7
+        },
+        "cors": {
+          "corsRules": []
+        },
+        "deleteRetentionPolicy": {
+          "allowPermanentDelete": false,
+          "enabled": true,
+          "days": 7
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}', parameters('StorageAccountName'), 'default')]",
+      "properties": {
+        "protocolSettings": {
+          "smb": {}
+        },
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/inventoryPolicies",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}', parameters('StorageAccountName'), 'default')]",
+      "properties": {
+        "policy": {
+          "enabled": true,
+          "type": "Inventory",
+          "rules": [
+            {
+              "destination": "logging",
+              "enabled": true,
+              "name": "Curated all blobs",
+              "definition": {
+                "format": "Parquet",
+                "schedule": "Weekly",
+                "objectType": "Blob",
+                "schemaFields": [
+                  "Name",
+                  "Creation-Time",
+                  "Last-Modified",
+                  "ETag",
+                  "Content-Length",
+                  "Content-Type",
+                  "Content-Encoding",
+                  "BlobType",
+                  "AccessTier",
+                  "AccessTierChangeTime",
+                  "AccessTierInferred",
+                  "Expiry-Time",
+                  "hdi_isfolder",
+                  "Owner",
+                  "Group",
+                  "Permissions",
+                  "Acl",
+                  "Metadata",
+                  "LastAccessTime"
+                ],
+                "filters": {
+                  "blobTypes": [
+                    "blockBlob",
+                    "appendBlob"
+                  ],
+                  "prefixMatch": [
+                    "curated/"
+                  ]
+                }
+              }
+            },
+            {
+              "destination": "logging",
+              "enabled": true,
+              "name": "Raw all blobs",
+              "definition": {
+                "format": "Parquet",
+                "schedule": "Weekly",
+                "objectType": "Blob",
+                "schemaFields": [
+                  "Name",
+                  "Creation-Time",
+                  "Last-Modified",
+                  "ETag",
+                  "Content-Length",
+                  "Content-Type",
+                  "Content-Encoding",
+                  "BlobType",
+                  "AccessTier",
+                  "AccessTierChangeTime",
+                  "AccessTierInferred",
+                  "Expiry-Time",
+                  "hdi_isfolder",
+                  "Owner",
+                  "Group",
+                  "Permissions",
+                  "Acl",
+                  "Metadata",
+                  "LastAccessTime"
+                ],
+                "filters": {
+                  "blobTypes": [
+                    "blockBlob",
+                    "appendBlob"
+                  ],
+                  "prefixMatch": [
+                    "raw/"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices/containers', parameters('StorageAccountName'), 'default', 'logging')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}', parameters('StorageAccountName'), 'default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}', parameters('StorageAccountName'), 'default')]",
+      "properties": {
+        "cors": {
+          "corsRules": []
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}/{2}', parameters('StorageAccountName'), 'default', 'archive')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "None"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('StorageAccountName'), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}/{2}', parameters('StorageAccountName'), 'default', 'curated')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "None"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('StorageAccountName'), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}/{2}', parameters('StorageAccountName'), 'default', 'logging')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "None"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('StorageAccountName'), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}/{2}', parameters('StorageAccountName'), 'default', 'raw')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "None"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('StorageAccountName'), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}/{2}', parameters('StorageAccountName'), 'default', 'test')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "None"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('StorageAccountName'), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}/{2}', parameters('StorageAccountName'), 'default', 'uctest')]",
+      "properties": {
+        "defaultEncryptionScope": "$account-encryption-key",
+        "denyEncryptionScopeOverride": false,
+        "publicAccess": "None"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('StorageAccountName'), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/queueServices/queues",
+      "apiVersion": "2026-04-01",
+      "name": "[format('{0}/{1}/{2}', parameters('StorageAccountName'), 'default', 'aclactionqueue')]",
+      "properties": {
+        "metadata": {}
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/queueServices', parameters('StorageAccountName'), 'default')]"
+      ]
+    }
+  ],
+  "outputs": {
+    "resolvedStorageAccountName": {
+      "type": "string",
+      "value": "[parameters('StorageAccountName')]"
+    }
+  }
+}

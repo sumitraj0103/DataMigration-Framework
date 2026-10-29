@@ -1,0 +1,13 @@
+{
+    "name": "LS_SourceSqlMig_Acc",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source={{SOURCE_ACC_SQL_SERVER_FQDN}};Initial Catalog=DMAP;User ID={{SQL_USERNAME}}",
+            "password": {
+                "type": "SecureString",
+                "value": "{{SQL_PASSWORD}}"
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "name": "PL_LoadAllToStaging",
+    "properties": {
+        "description": "Use Case 1.1: reads mig.metadata_loadToStaging (in the Prd server's DMAP database) and, for every row where Loadtostaging = 1, invokes PL_LoadSourceToStaging with SourceEnvironment=Env (Dev/tst/Acc), SourceDatabase='DMAP' (every environment's database is named DMAP; the environment is identified by which of the 4 SQL servers it lives on), SourceSchema/SourceTable from the row. Lets multiple tables be driven from one metadata table instead of one manual pipeline run per table. MasterBatchId is optional and, when supplied by PL_MasterLoadAndValidate, is forwarded to each PL_LoadSourceToStaging call so its mig.StagingLoadRun row can be traced back to that master run. See adf-copy-parameterized-pipleline.md, Use Case 1.1.",
+        "parameters": {
+            "MasterBatchId": { "type": "string", "defaultValue": "" }
+        },
+        "activities": [
+            {
+                "name": "GetLoadToStagingEntries",
+                "type": "Lookup",
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "SELECT SchemaName, TableName, Env FROM mig.metadata_loadToStaging WHERE Loadtostaging = 1"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "metadata_loadToStaging" }
+                    },
+                    "firstRowOnly": false
+                }
+            },
+            {
+                "name": "ForEachLoadToStagingEntry",
+                "type": "ForEach",
+                "dependsOn": [ { "activity": "GetLoadToStagingEntries", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "items": { "value": "@activity('GetLoadToStagingEntries').output.value", "type": "Expression" },
+                    "isSequential": true,
+                    "activities": [
+                        {
+                            "name": "InvokeLoadSourceToStaging",
+                            "type": "ExecutePipeline",
+                            "typeProperties": {
+                                "pipeline": { "referenceName": "PL_LoadSourceToStaging", "type": "PipelineReference" },
+                                "waitOnCompletion": true,
+                                "parameters": {
+                                    "SourceEnvironment": "@item().Env",
+                                    "SourceDatabase": "DMAP",
+                                    "SourceSchema": "@item().SchemaName",
+                                    "SourceTable": "@item().TableName",
+                                    "MasterBatchId": "@pipeline().parameters.MasterBatchId"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

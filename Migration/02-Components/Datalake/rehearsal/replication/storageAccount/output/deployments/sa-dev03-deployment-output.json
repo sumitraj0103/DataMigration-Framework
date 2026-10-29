@@ -1,0 +1,442 @@
+﻿{
+  "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Resources/deployments/storage-account-deploymentTest-20260826-150547",
+  "location": null,
+  "name": "storage-account-deploymentTest-20260826-150547",
+  "properties": {
+    "correlationId": "52db7e0a-9565-4f27-b12b-a49b7931a6a8",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/fileServices/default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/fileServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/logging",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03/default/logging",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+          },
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/inventoryPolicies/default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/inventoryPolicies"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/queueServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/tableServices/default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default",
+        "resourceType": "Microsoft.Storage/storageAccounts/tableServices"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/archive",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default/archive",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/curated",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default/curated",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/logging",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default/logging",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/raw",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default/raw",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/test",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default/test",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/uctest",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default/uctest",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default",
+            "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+            "resourceName": "mscstadmapsbtraccdev03/default",
+            "resourceType": "Microsoft.Storage/storageAccounts/queueServices"
+          }
+        ],
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default/queues/aclactionqueue",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceName": "mscstadmapsbtraccdev03/default/aclactionqueue",
+        "resourceType": "Microsoft.Storage/storageAccounts/queueServices/queues"
+      }
+    ],
+    "diagnostics": null,
+    "duration": "PT16.1431157S",
+    "error": null,
+    "extensions": [],
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/archive",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/curated",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/logging",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/raw",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/test",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/uctest",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/fileServices/default",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/fileServices"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/inventoryPolicies/default",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/inventoryPolicies"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/queueServices"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default/queues/aclactionqueue",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/queueServices/queues"
+      },
+      {
+        "apiVersion": null,
+        "extension": null,
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/tableServices/default",
+        "identifiers": null,
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "resourceType": "Microsoft.Storage/storageAccounts/tableServices"
+      }
+    ],
+    "outputs": {
+      "resolvedStorageAccountName": {
+        "type": "String",
+        "value": "mscstadmapsbtraccdev03"
+      }
+    },
+    "parameters": {
+      "storageAccountName": {
+        "type": "String",
+        "value": "mscstadmapsbtraccdev03"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "westeurope"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/fileServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/inventoryPolicies",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/queueServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/tableServices",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices/containers",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/queueServices/queues",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "3024584728380065917",
+    "templateLink": null,
+    "timestamp": "2026-08-26T13:06:12.456736+00:00",
+    "validatedResources": null,
+    "validationLevel": null
+  },
+  "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}

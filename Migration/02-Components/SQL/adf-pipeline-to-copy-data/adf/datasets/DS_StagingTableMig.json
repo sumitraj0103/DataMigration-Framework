@@ -1,0 +1,23 @@
+{
+    "name": "DS_StagingTableMig",
+    "properties": {
+        "type": "AzureSqlTable",
+        "linkedServiceName": {
+            "referenceName": "LS_ProdSqlMig",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "SchemaName": {
+                "type": "String",
+                "defaultValue": "stgmig"
+            },
+            "TableName": {
+                "type": "String"
+            }
+        },
+        "typeProperties": {
+            "schema": "@dataset().SchemaName",
+            "table": "@dataset().TableName"
+        }
+    }
+}

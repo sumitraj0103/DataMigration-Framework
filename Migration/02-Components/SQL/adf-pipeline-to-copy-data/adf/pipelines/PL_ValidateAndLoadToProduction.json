@@ -1,0 +1,99 @@
+{
+    "name": "PL_ValidateAndLoadToProduction",
+    "properties": {
+        "description": "Use Case 1.2 (Part 2): runs mig.usp_ValidateTableForProductionLoad for the given ConfigurationId with a fresh BatchId, and only if validation PASSES, calls mig.usp_LoadValidatedTableToProduction to apply the configured LoadStrategy (INSERT/UPDATE/UPSERT/REPLACE/SKIP_EXISTING/INSERT_IF_NOT_EXISTS) to the Production target. If validation FAILS, the pipeline fails explicitly instead of loading, and surfaces the mig.ValidationError rows for troubleshooting. When invoked from PL_MasterLoadAndValidate (via PL_ValidateAndLoadAllToProduction), MasterBatchId is passed in and reused as the BatchId, so mig.ValidationRun/mig.LoadRun can be joined back to mig.MasterRun for that master run; when run standalone, MasterBatchId is left blank and a fresh BatchId is generated. See metadata-validation-loadtoProduction.md and Validate-and-load-Deploy-and-Test-Guide.md.",
+        "parameters": {
+            "ConfigurationId": { "type": "int" },
+            "MasterBatchId": { "type": "string", "defaultValue": "" }
+        },
+        "variables": {
+            "BatchId": { "type": "String" }
+        },
+        "activities": [
+            {
+                "name": "SetBatchId",
+                "type": "SetVariable",
+                "typeProperties": {
+                    "variableName": "BatchId",
+                    "value": { "value": "@if(empty(pipeline().parameters.MasterBatchId), guid(), pipeline().parameters.MasterBatchId)", "type": "Expression" }
+                }
+            },
+            {
+                "name": "RunValidation",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "SetBatchId", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "DECLARE @ValidationRunId BIGINT; EXEC mig.usp_ValidateTableForProductionLoad @ConfigurationId = @{pipeline().parameters.ConfigurationId}, @BatchId = '@{variables('BatchId')}', @ValidationRunId = @ValidationRunId OUTPUT;"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "TableConfiguration" }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "IfValidationPassed",
+                "type": "IfCondition",
+                "dependsOn": [ { "activity": "RunValidation", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "expression": {
+                        "value": "@equals(activity('RunValidation').output.firstRow.ValidationStatus, 'PASSED')",
+                        "type": "Expression"
+                    },
+                    "ifTrueActivities": [
+                        {
+                            "name": "RunProductionLoad",
+                            "type": "Lookup",
+                            "typeProperties": {
+                                "source": {
+                                    "type": "AzureSqlSource",
+                                    "sqlReaderQuery": "DECLARE @LoadRunId BIGINT; EXEC mig.usp_LoadValidatedTableToProduction @ConfigurationId = @{pipeline().parameters.ConfigurationId}, @ValidationRunId = @{activity('RunValidation').output.firstRow.ValidationRunId}, @BatchId = '@{variables('BatchId')}', @LoadRunId = @LoadRunId OUTPUT;"
+                                },
+                                "dataset": {
+                                    "referenceName": "DS_StagingTableMig",
+                                    "type": "DatasetReference",
+                                    "parameters": { "SchemaName": "mig", "TableName": "TableConfiguration" }
+                                },
+                                "firstRowOnly": true
+                            }
+                        }
+                    ],
+                    "ifFalseActivities": [
+                        {
+                            "name": "GetValidationErrors",
+                            "type": "Lookup",
+                            "typeProperties": {
+                                "source": {
+                                    "type": "AzureSqlSource",
+                                    "sqlReaderQuery": "SELECT ErrorType, BusinessKeyValue, ErrorMessage FROM mig.ValidationError WHERE ValidationRunId = @{activity('RunValidation').output.firstRow.ValidationRunId};"
+                                },
+                                "dataset": {
+                                    "referenceName": "DS_StagingTableMig",
+                                    "type": "DatasetReference",
+                                    "parameters": { "SchemaName": "mig", "TableName": "ValidationError" }
+                                },
+                                "firstRowOnly": false
+                            }
+                        },
+                        {
+                            "name": "FailOnValidationFailure",
+                            "type": "Fail",
+                            "dependsOn": [ { "activity": "GetValidationErrors", "dependencyConditions": [ "Succeeded" ] } ],
+                            "typeProperties": {
+                                "message": {
+                                    "value": "Production load blocked: validation @{activity('RunValidation').output.firstRow.ValidationStatus} for ConfigurationId @{pipeline().parameters.ConfigurationId}, ValidationRunId @{activity('RunValidation').output.firstRow.ValidationRunId}, ErrorCount @{activity('RunValidation').output.firstRow.ErrorCount}. See mig.ValidationError for details.",
+                                    "type": "Expression"
+                                },
+                                "errorCode": "ValidationFailed"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

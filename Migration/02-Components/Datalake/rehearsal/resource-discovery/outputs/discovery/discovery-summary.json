@@ -1,0 +1,463 @@
+{
+    "Subscription": {
+        "id": "c47bfe3d-881a-4142-bf65-ec835858a67b",
+        "name": "MSC-SUB-INFRASTRUCTURE",
+        "rbacAccessSummary": {
+            "totalDiscoveredAssignments": 1155,
+            "uniquePrincipals": 480,
+            "uniqueRoles": 40,
+            "subscriptionScopedAssignments": 0,
+            "assignmentsByResourceGroup": {
+                "MSC-RSG-AIMLAN-DEV": 36,
+                "MSC-RSG-COGAGTMON-ACC": 19,
+                "MSC-RSG-RDWS-DEV": 16,
+                "MSC-RSG-BIFA-DEV": 22,
+                "MSC-RSG-BIFA-ACC": 33,
+                "MSC-RSG-COGAGTMON-PRD": 21,
+                "MSC-RSG-DMAP-TST": 91,
+                "MSC-RSG-DMAP-PRD": 150,
+                "MSC-RSG-RMMOD-ACC": 10,
+                "MSC-RSG-BIAU-DEV": 9,
+                "MSC-RSG-BRDWH-DEV": 13,
+                "MSC-RSG-AIMLAN-ACC": 42,
+                "MSC-RSG-BRDWH-ACC": 12,
+                "MSC-RSG-BIAU-ACC": 9,
+                "MSC-RSG-DMAP-ACC": 135,
+                "MSC-RSG-COGAGT-ACC": 113,
+                "MSC-RSG-RDWS-ACC": 11,
+                "MSC-RSG-DMAP-DEV": 126,
+                "MSC-RSG-MODBS-ACC": 49,
+                "MSC-RSG-MSOMS-PRD": 59,
+                "MSC-RSG-BIFA-DR": 6,
+                "MSC-RSG-MODBS-DEV": 47,
+                "MSC-RSG-ANZLM-DEV": 52,
+                "MSC-RSG-ASEU-ACC": 17,
+                "MSC-RSG-DMAPSB-DEV": 32,
+                "MSC-RSG-ASEU-DEV": 15,
+                "MSC-RSG-DMAPSB-TRACC": 10
+            }
+        },
+        "eventGrid": {
+            "systemTopicCount": 8,
+            "eventSubscriptionCount": 295,
+            "triggerCount": 295,
+            "storageAccountCount": 8,
+            "destinationTypes": {
+                "WebHook": 295
+            },
+            "dependencyTypes": {
+                "Datafactory": 295
+            }
+        },
+        "ResourceGroups": [
+            {
+                "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-ACC",
+                "name": "MSC-RSG-DMAP-ACC",
+                "environment": "ACC",
+                "location": "westeurope",
+                "rbacAccessSummary": {
+                    "totalDiscoveredAssignments": 124,
+                    "uniquePrincipals": 84,
+                    "uniqueRoles": 12,
+                    "assignmentsByScopeType": {
+                        "ResourceGroup": 18,
+                        "StorageAccount": 39,
+                        "Container": 67
+                    }
+                },
+                "eventGrid": {
+                    "systemTopicCount": 2,
+                    "eventSubscriptionCount": 81,
+                    "triggerCount": 81,
+                    "storageAccountCount": 2
+                },
+                "storageAccounts": [
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-ACC/providers/Microsoft.Storage/storageAccounts/mscstadmapacc",
+                        "name": "mscstadmapacc",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": false,
+                        "containerCount": 60,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 66,
+                            "uniquePrincipals": 60,
+                            "uniqueRoles": 5,
+                            "assignmentsByScope": {
+                                "StorageAccount": 9,
+                                "Container": 57
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 1,
+                            "eventSubscriptionCount": 35,
+                            "triggerCount": 35
+                        }
+                    },
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-ACC/providers/Microsoft.Storage/storageAccounts/mscstadmapacc01",
+                        "name": "mscstadmapacc01",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": false,
+                        "containerCount": 7,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 4,
+                            "uniquePrincipals": 3,
+                            "uniqueRoles": 3,
+                            "assignmentsByScope": {
+                                "StorageAccount": 4,
+                                "Container": 0
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 0,
+                            "eventSubscriptionCount": 0,
+                            "triggerCount": 0
+                        }
+                    },
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-ACC/providers/Microsoft.Storage/storageAccounts/mscstadmapacc03",
+                        "name": "mscstadmapacc03",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": true,
+                        "containerCount": 4,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 36,
+                            "uniquePrincipals": 25,
+                            "uniqueRoles": 10,
+                            "assignmentsByScope": {
+                                "StorageAccount": 26,
+                                "Container": 10
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 1,
+                            "eventSubscriptionCount": 46,
+                            "triggerCount": 46
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-DEV",
+                "name": "MSC-RSG-DMAP-DEV",
+                "environment": "DEV",
+                "location": "westeurope",
+                "rbacAccessSummary": {
+                    "totalDiscoveredAssignments": 108,
+                    "uniquePrincipals": 68,
+                    "uniqueRoles": 12,
+                    "assignmentsByScopeType": {
+                        "ResourceGroup": 16,
+                        "StorageAccount": 44,
+                        "Container": 48
+                    }
+                },
+                "eventGrid": {
+                    "systemTopicCount": 2,
+                    "eventSubscriptionCount": 48,
+                    "triggerCount": 48,
+                    "storageAccountCount": 2
+                },
+                "storageAccounts": [
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-DEV/providers/Microsoft.Storage/storageAccounts/mscstadmapdev",
+                        "name": "mscstadmapdev",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": false,
+                        "containerCount": 67,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 50,
+                            "uniquePrincipals": 46,
+                            "uniqueRoles": 4,
+                            "assignmentsByScope": {
+                                "StorageAccount": 6,
+                                "Container": 44
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 1,
+                            "eventSubscriptionCount": 35,
+                            "triggerCount": 35
+                        }
+                    },
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-DEV/providers/Microsoft.Storage/storageAccounts/mscstadmapdev01",
+                        "name": "mscstadmapdev01",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": false,
+                        "containerCount": 17,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 4,
+                            "uniquePrincipals": 3,
+                            "uniqueRoles": 3,
+                            "assignmentsByScope": {
+                                "StorageAccount": 4,
+                                "Container": 0
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 0,
+                            "eventSubscriptionCount": 0,
+                            "triggerCount": 0
+                        }
+                    },
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-DEV/providers/Microsoft.Storage/storageAccounts/mscstadmapdev03",
+                        "name": "mscstadmapdev03",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": true,
+                        "containerCount": 6,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 38,
+                            "uniquePrincipals": 29,
+                            "uniqueRoles": 8,
+                            "assignmentsByScope": {
+                                "StorageAccount": 34,
+                                "Container": 4
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 1,
+                            "eventSubscriptionCount": 13,
+                            "triggerCount": 13
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-PRD",
+                "name": "MSC-RSG-DMAP-PRD",
+                "environment": "PRD",
+                "location": "westeurope",
+                "rbacAccessSummary": {
+                    "totalDiscoveredAssignments": 133,
+                    "uniquePrincipals": 89,
+                    "uniqueRoles": 10,
+                    "assignmentsByScopeType": {
+                        "ResourceGroup": 29,
+                        "StorageAccount": 35,
+                        "Container": 69
+                    }
+                },
+                "eventGrid": {
+                    "systemTopicCount": 2,
+                    "eventSubscriptionCount": 99,
+                    "triggerCount": 99,
+                    "storageAccountCount": 2
+                },
+                "storageAccounts": [
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-PRD/providers/Microsoft.Storage/storageAccounts/mscstadmapprd",
+                        "name": "mscstadmapprd",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_RAGRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": false,
+                        "containerCount": 58,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 69,
+                            "uniquePrincipals": 61,
+                            "uniqueRoles": 5,
+                            "assignmentsByScope": {
+                                "StorageAccount": 6,
+                                "Container": 63
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 1,
+                            "eventSubscriptionCount": 35,
+                            "triggerCount": 35
+                        }
+                    },
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-PRD/providers/Microsoft.Storage/storageAccounts/mscstadmapprd01",
+                        "name": "mscstadmapprd01",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": false,
+                        "containerCount": 7,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 4,
+                            "uniquePrincipals": 3,
+                            "uniqueRoles": 3,
+                            "assignmentsByScope": {
+                                "StorageAccount": 4,
+                                "Container": 0
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 0,
+                            "eventSubscriptionCount": 0,
+                            "triggerCount": 0
+                        }
+                    },
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-PRD/providers/Microsoft.Storage/storageAccounts/mscstadmapprd03",
+                        "name": "mscstadmapprd03",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_RAGRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": true,
+                        "containerCount": 5,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 31,
+                            "uniquePrincipals": 23,
+                            "uniqueRoles": 8,
+                            "assignmentsByScope": {
+                                "StorageAccount": 25,
+                                "Container": 6
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 1,
+                            "eventSubscriptionCount": 64,
+                            "triggerCount": 64
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-TST",
+                "name": "MSC-RSG-DMAP-TST",
+                "environment": "TST",
+                "location": "westeurope",
+                "rbacAccessSummary": {
+                    "totalDiscoveredAssignments": 85,
+                    "uniquePrincipals": 53,
+                    "uniqueRoles": 10,
+                    "assignmentsByScopeType": {
+                        "ResourceGroup": 16,
+                        "StorageAccount": 31,
+                        "Container": 38
+                    }
+                },
+                "eventGrid": {
+                    "systemTopicCount": 2,
+                    "eventSubscriptionCount": 67,
+                    "triggerCount": 67,
+                    "storageAccountCount": 2
+                },
+                "storageAccounts": [
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-TST/providers/Microsoft.Storage/storageAccounts/mscstadmaptst",
+                        "name": "mscstadmaptst",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": false,
+                        "containerCount": 49,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 43,
+                            "uniquePrincipals": 37,
+                            "uniqueRoles": 5,
+                            "assignmentsByScope": {
+                                "StorageAccount": 9,
+                                "Container": 34
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 1,
+                            "eventSubscriptionCount": 35,
+                            "triggerCount": 35
+                        }
+                    },
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-TST/providers/Microsoft.Storage/storageAccounts/mscstadmaptst01",
+                        "name": "mscstadmaptst01",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": false,
+                        "containerCount": 7,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 5,
+                            "uniquePrincipals": 3,
+                            "uniqueRoles": 4,
+                            "assignmentsByScope": {
+                                "StorageAccount": 5,
+                                "Container": 0
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 0,
+                            "eventSubscriptionCount": 0,
+                            "triggerCount": 0
+                        }
+                    },
+                    {
+                        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-TST/providers/Microsoft.Storage/storageAccounts/mscstadmaptst03",
+                        "name": "mscstadmaptst03",
+                        "location": "westeurope",
+                        "kind": "StorageV2",
+                        "skuName": {
+                            "name": "Standard_LRS",
+                            "tier": "Standard"
+                        },
+                        "isGen2": true,
+                        "containerCount": 7,
+                        "rbacAccessSummary": {
+                            "totalDiscoveredAssignments": 21,
+                            "uniquePrincipals": 14,
+                            "uniqueRoles": 5,
+                            "assignmentsByScope": {
+                                "StorageAccount": 17,
+                                "Container": 4
+                            }
+                        },
+                        "eventGrid": {
+                            "systemTopicCount": 1,
+                            "eventSubscriptionCount": 32,
+                            "triggerCount": 32
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

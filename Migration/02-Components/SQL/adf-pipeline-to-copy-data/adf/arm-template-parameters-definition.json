@@ -1,0 +1,57 @@
+{
+    "Microsoft.DataFactory/factories/pipelines": "*",
+    "Microsoft.DataFactory/factories/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "computeProperties": {
+                    "dataFlowProperties": {
+                        "computeType": "=",
+                        "coreCount": "=",
+                        "timeToLive": "="
+                    }
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "connectionString": "=",
+                    "accountKey": "=",
+                    "secretAccessKey": "=",
+                    "servicePrincipalKey": "=",
+                    "password": "=",
+                    "sasToken": "="
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/datasets": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "*": "-"
+                }
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/dataflows": "*",
+    "Microsoft.DataFactory/factories/triggers": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "scope": "-",
+                    "pipelines": {
+                        "*": {
+                            "pipelineReference": "-",
+                            "parameters": {
+                                "*": "-"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

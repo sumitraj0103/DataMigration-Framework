@@ -1,0 +1,125 @@
+{
+    "name": "PL_ValidateAndLoadAllToProduction",
+    "properties": {
+        "description": "Use Case 1.2 (Part 2): reads every active row from mig.TableConfiguration (in the Prd server's DMAP database) and invokes PL_ValidateAndLoadToProduction once per ConfigurationId, sequentially, so a validation failure on one table does not stop the others. MasterBatchId is optional and, when supplied by PL_MasterLoadAndValidate, is forwarded to each PL_ValidateAndLoadToProduction call so its mig.ValidationRun/mig.LoadRun rows can be traced back to that master run. IdentityMappingEnv defaults to 'ALL' so mig.usp_RefreshIdentityMapping refreshes every env (acc/dev/tst) that has active identity-family rows in mig.TableConfiguration - needed because all three now run together in a single execution; pass a single env name (e.g. 'acc') instead to refresh just that one. See metadata-validation-loadtoProduction.md and Validate-and-load-Deploy-and-Test-Guide.md.",
+        "parameters": {
+            "MasterBatchId": { "type": "string", "defaultValue": "" },
+            "IdentityMappingEnv": { "type": "string", "defaultValue": "ALL" }
+        },
+        "activities": [
+            {
+                "name": "RefreshIdentityMapping",
+                "type": "Lookup",
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "EXEC mig.usp_RefreshIdentityMapping @Env = '@{pipeline().parameters.IdentityMappingEnv}';"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "TableConfiguration" }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "GetIdentityConfigurations",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "RefreshIdentityMapping", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "SELECT ConfigurationId FROM mig.TableConfiguration WHERE IsActive = 1 AND LoadOrder <= 10 ORDER BY LoadOrder, ConfigurationId"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "TableConfiguration" }
+                    },
+                    "firstRowOnly": false
+                }
+            },
+            {
+                "name": "ForEachIdentityConfiguration",
+                "type": "ForEach",
+                "dependsOn": [ { "activity": "GetIdentityConfigurations", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "items": { "value": "@activity('GetIdentityConfigurations').output.value", "type": "Expression" },
+                    "isSequential": true,
+                    "activities": [
+                        {
+                            "name": "InvokeValidateAndLoadToProduction_Identities",
+                            "type": "ExecutePipeline",
+                            "typeProperties": {
+                                "pipeline": { "referenceName": "PL_ValidateAndLoadToProduction", "type": "PipelineReference" },
+                                "waitOnCompletion": true,
+                                "parameters": {
+                                    "ConfigurationId": "@item().ConfigurationId",
+                                    "MasterBatchId": "@pipeline().parameters.MasterBatchId"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "RefreshIdentityMappingAfterIdentitiesLoad",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "ForEachIdentityConfiguration", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "EXEC mig.usp_RefreshIdentityMapping @Env = '@{pipeline().parameters.IdentityMappingEnv}';"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "TableConfiguration" }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "GetActiveConfigurations",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "RefreshIdentityMappingAfterIdentitiesLoad", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "SELECT ConfigurationId FROM mig.TableConfiguration WHERE IsActive = 1 AND LoadOrder > 10 ORDER BY LoadOrder, ConfigurationId"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "TableConfiguration" }
+                    },
+                    "firstRowOnly": false
+                }
+            },
+            {
+                "name": "ForEachConfiguration",
+                "type": "ForEach",
+                "dependsOn": [ { "activity": "GetActiveConfigurations", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "items": { "value": "@activity('GetActiveConfigurations').output.value", "type": "Expression" },
+                    "isSequential": true,
+                    "activities": [
+                        {
+                            "name": "InvokeValidateAndLoadToProduction",
+                            "type": "ExecutePipeline",
+                            "typeProperties": {
+                                "pipeline": { "referenceName": "PL_ValidateAndLoadToProduction", "type": "PipelineReference" },
+                                "waitOnCompletion": true,
+                                "parameters": {
+                                    "ConfigurationId": "@item().ConfigurationId",
+                                    "MasterBatchId": "@pipeline().parameters.MasterBatchId"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

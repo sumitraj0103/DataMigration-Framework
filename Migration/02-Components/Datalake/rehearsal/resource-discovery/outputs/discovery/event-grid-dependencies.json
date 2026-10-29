@@ -1,0 +1,2707 @@
+{
+    "storageAccounts": [
+        {
+            "environment": "ACC",
+            "storageAccountName": "mscstadmapacc",
+            "eventGridSubscriptions": [
+                {
+                    "name": "5e1029ad-5c42-9ea1-7db8-a322a7f77c5a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX",
+                    "SubjectBeginsWith": "/blobServices/default/containers/landingzone/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "fffb95b2-a4f8-ceae-7858-3776b0616fe8",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Bifa",
+                    "SubjectBeginsWith": "/blobServices/default/containers/bifa/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "12809cfb-dca3-c90c-4981-0c092d322f74",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Biau",
+                    "SubjectBeginsWith": "/blobServices/default/containers/biau/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "81cdc97e-7ed3-f09f-f714-8febb7d99fa4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Brdwh",
+                    "SubjectBeginsWith": "/blobServices/default/containers/brdwh/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "46628ed1-ff2f-2036-ae5c-18e86f299a84",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Crme",
+                    "SubjectBeginsWith": "/blobServices/default/containers/crme/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "60635471-7b05-9eb0-69e5-09795529bc2d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_DMAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/dmap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d1b7bb18-5063-7629-7711-5d93846cefa0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_GRDA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/grd1/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "65cc432e-3032-c5d3-d6fe-fd9cbb7c883c",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Tmfx",
+                    "SubjectBeginsWith": "/blobServices/default/containers/tmfx/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "620fef9b-e1b5-1566-3fba-667b0376a307",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Cogagt",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cogagt/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "72419fab-b9a2-08ce-2617-5ea497877c58",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Aimlan",
+                    "SubjectBeginsWith": "/blobServices/default/containers/aimlan/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a52a0841-8e4e-3795-919a-dfe01af2c9f9",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Emdae",
+                    "SubjectBeginsWith": "/blobServices/default/containers/emdae/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "289658ee-3021-4ee2-ace6-903fbc639ac2",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Aseu",
+                    "SubjectBeginsWith": "/blobServices/default/containers/aseu/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "1d37fd8d-21d3-db57-8613-4c12f73f89c4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Rmmod",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rmmod/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "69c95167-367e-ee16-7d87-cda5ceff9777",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_PPUAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/ppuap/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "21c7cb65-4580-3f3b-915e-e32ec808e519",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_PROMN",
+                    "SubjectBeginsWith": "/blobServices/default/containers/promn/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "37424d47-78f7-8651-6602-edd1c1cc9929",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CFRCC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cfrcc/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "be35253a-bf8b-cb6c-837f-e5a885359e21",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ICVR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/icvr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "7a04a98e-f054-34a8-e284-e6f8a6fcec7b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_AFAAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/afaap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4f5e4ba9-6855-1a9f-3a0a-d7019db3ad05",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_RDD1",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rdd1/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9b2a203a-7792-f779-843c-9f92e39da93d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_GCRD",
+                    "SubjectBeginsWith": "/blobServices/default/containers/gcrd/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "78239a92-0301-4aea-7868-e8862564971d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_RDWS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rdws/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "1d5d0ff6-13cd-9c5d-b95e-328996253f3d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_SMARTCOMM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/smartcomm/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d9a35c7a-bdeb-ad86-1b9c-3550152afb6d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CRRCRS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/crrcrs/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ed32de4a-bfd7-371d-bfea-7974633bb837",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_STA_CHK_FIX_GAPRE",
+                    "SubjectBeginsWith": "/blobServices/default/containers/gapre/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "7d73d197-65b1-cec9-ed37-8389749da2f0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_VFEEInvoicing",
+                    "SubjectBeginsWith": "/blobServices/default/containers/vfe-einvoicing/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4c3a4285-2f8f-8d33-b4c4-6efe3054367f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ASTREP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/astrep/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a56f275e-8dd9-24ca-48c6-d9aae00e1994",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_MMDF",
+                    "SubjectBeginsWith": "/blobServices/default/containers/mmdf/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4667e9c3-b793-6dd3-b406-8aa6d67e72e7",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_HRDH",
+                    "SubjectBeginsWith": "/blobServices/default/containers/hrdh/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e6acc1a4-5bad-647a-0ac9-2f85d108d512",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ITADLR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/itadlr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "2be52ffd-ae73-1ed7-745d-9a7b454818f6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_WRAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/wrap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4238b6ef-2319-77fa-75e1-374bb68342c0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CADMAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cadmap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "27c43540-1bdf-027d-202a-5572f72467b1",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_MDDQEU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/mddqeu/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b97722de-222b-f6f3-c08f-26e8ac0067ef",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_STAT_CHK_FIX_CEAR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cear/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b7e627dc-c01a-cc40-40fa-554490d393f4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CFDA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cfda/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0de648ad-002f-653f-f141-fe2d7ed9bad0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CDQMR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cdqmr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                }
+            ]
+        },
+        {
+            "environment": "ACC",
+            "storageAccountName": "mscstadmapacc03",
+            "eventGridSubscriptions": [
+                {
+                    "name": "c7f056ba-fb20-2897-fddc-fec92db3abb6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Daily_SC_CustomerPortal_Load_V2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/VFSSP_V2/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9133c16d-c863-281a-b054-e91162c18a3b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Daily_SC_PartnerPortal_Load_V2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/VFEURPP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b5a53cad-99d4-6bcb-0a3a-571b7e5b0ce7",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_GoogleAnalyticsFirebase_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/Technology/Google/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8be45bcd-113d-9c6e-861e-d53f120d7038",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_ASEU_AppleAnalytics_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_AS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "32848838-30f8-7e8e-1172-85b7beee8829",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_ASEU_Googleplay_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_GP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "229ad0b5-bc1c-1238-2700-4d6b8b6be388",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_Qualtrics_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_QT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e5cbb3aa-a62a-32e5-f206-c28d3e7e7fe6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_REF_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_RF/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "10c8c2de-fd3e-b763-8f99-9ea051511329",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Daily_ECS_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractOriginationManagement/SPRT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "7848a2c1-a749-8a78-e7bc-3d107e64dd41",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Daily_GBU_DCV_Load",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractOriginationManagement/DCVA/FINISHED_DCVA/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "52d9cacd-de3e-6a53-4a0d-60a64281697a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Monthly_AFC_Load",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/DTS_AGCO/FINISHED_AFC/",
+                    "SubjectEndsWith": "FINISHED_AFC.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "43c19efc-9203-1f15-d72c-77f3a6fcf84f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_countrydataDMAPtoQREPC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/QREPORT/FINISHED_QREPORT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "47ea5a0e-d3ee-f0f5-8e6e-84df632e9f3f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_gate",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/GATE/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f92367a1-2ed2-a0e6-4fb6-5f11dfa777c4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_historydataDMAPtoQREPC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/QREPORT/FINISHED_QREPORT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9941c56f-eeb7-7c79-67ab-c8c63a48a4cf",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_onemi",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ONEMI/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "88336bcd-cf6e-f94e-d522-a6653d9d9465",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_onetrust",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ONETRUST/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "45ea8f8f-8ef6-b88c-d6f0-cff756977fe6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerArchDmaptoBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ARCH/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "dc3007a0-ca16-f886-5243-6269da4d3b8c",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerArchMonthlyDmaptoBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/MonthlyARCH/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0d7656e6-00a0-5f84-fa46-0e79331c1a7e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerDMPAsrcToSpeakup",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/SpeakUp/",
+                    "SubjectEndsWith": ".xlsx",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "fbd6e4d1-6a4f-b057-a76f-3add8637a51b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerHrDmapToBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/HR/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0eab3f4e-667c-8e8f-2865-ac460786554b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerLearnerDmap",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/LEARNER/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "685fd283-a25b-6fb4-9728-3735b7461d76",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "ICV_to_ODSCA_trigger",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/ContractManagement/ODESSA_CA/ICV/",
+                    "SubjectEndsWith": "ICV_to_ODSCA_*.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "54747904-6169-4496-cd5a-16d79dbeeb12",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "CADMAP_bronze_silver_gold",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/ContractManagement/ODESSA_CA/FINISHED_ODESSA_DAILY/",
+                    "SubjectEndsWith": "FINISHED_ODESSA_DAILY.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "458a9fd6-564a-2168-e000-cd516f56a7bd",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_GoodSign_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/AssetManagement/GoodSign/FINISHED_GOODSIGN/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4aca5d04-eabd-a454-ad0f-a6ff792f9cd7",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_OLMUS_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/AssetManagement/OLMUS/FINISHED_OLMUS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "38c4ad34-d6b3-af97-5a61-4a1196174336",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_OLM_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/AssetManagement/OLM/FINISHED_OLM/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "bc0233c6-da30-089a-dc6c-8b85c3a33fb4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_DMBI2ROCKTM-ROCKTM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/OutboundExport/DMBI2ROCKTM/ROCKTM/CheckFile/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "1d8b05f1-3f5d-5eb1-1ed1-4ca166cdcf4e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_DMBI2ROCKTM-ReferenceData",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/OutboundExport/DMBI2ROCKTM/ReferenceData/CheckFile",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d9de83e7-d972-19f7-619f-1909811baaf1",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_RDWS_ExchangeRate",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/RDWS/Latest/EBX/",
+                    "SubjectEndsWith": "EBX~EXCHANGERATE.csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ee33bc18-3a4e-ef1f-e232-ec7f3150908f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_RDWS_HFMREF",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/RDWS/Latest/HFMREF/",
+                    "SubjectEndsWith": "HFMREF~ConsolidationStructure.csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "eef00dde-356b-d711-c484-360ec9eef4fa",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_IsoCountry",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/IsoCountry/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8e552546-8281-f208-acb6-9aaeca1ebc57",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_IsoCurrency",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/IsoCurrency/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d1a61b88-ebfb-a3c0-6475-2adf788d3081",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_ListOfValues",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/ListOfValues/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "caa6757a-2888-1e1f-491d-273a998ef3c5",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_Treasury_Ribpro",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/Treasury/RibPro",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9714c410-0c08-3244-a3ac-00e50cf98ba4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_Treasury_Swift",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/Treasury/Swift",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "31b7f9d0-0823-06ce-c6d9-589fb6646ce3",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_FINAL",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/FINAL_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "09be2025-dac1-0d50-cf76-4f5187385ffa",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_INFCA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/INFCA_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "6e45bebe-943f-6b17-f8a2-0b0a0345aa5a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_OLMUS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/OLMUS_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "fd337765-2e69-7f57-0669-8b1a2d6c74f4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_INFUS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/INFUS_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c1c483ac-fb0f-26bd-6d28-70139ce92801",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_ILSEU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/ILSEU_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3628b897-86f3-034c-3467-b7cbc92bc372",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_ANZLM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/ANZLM/Finished_ANZLM/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0a9bc49b-fe02-1ceb-838e-ee1b709ab368",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_AMR_ASLIRT",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/ASLIRT/Finished_ASLIRT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e1fe0ad6-6663-aa77-7756-add4f2706ed9",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_ILSEU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/ILSEU/Finished_ILSEU/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8a077dbc-8b61-78f4-ffd9-489114df6d43",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_MASTER_AMR_ASLAUC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/ASLAUC/Finished_ASLAUC/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d79e82bc-b7b4-4c92-b9bb-ce4990651b24",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_MASTER_AMR_INFUS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/INFUS/Finished_INFUS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3c69c332-18f8-4dd6-b2fc-87faba0d1ecb",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_MASTER_AMR_FINAL",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/FINAL/Finished_FINAL/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "02bde997-de9b-59b2-e513-c5dc9f68a199",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_Event_Load_CCRIS_Curated",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/CFDA/CF/",
+                    "SubjectEndsWith": "DeliveryControl.parquet",
+                    "DependencyType": "Datafactory"
+                }
+            ]
+        },
+        {
+            "environment": "DEV",
+            "storageAccountName": "mscstadmapdev",
+            "eventGridSubscriptions": [
+                {
+                    "name": "618358c7-52dd-3995-e850-6c4f66b1d4d1",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX",
+                    "SubjectBeginsWith": "/blobServices/default/containers/landingzone/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0ac25536-bdc8-dba5-30bc-44104aa03269",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Bifa",
+                    "SubjectBeginsWith": "/blobServices/default/containers/bifa/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a1b718d4-32a0-24c5-b18a-91bb9fe994f3",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Biau",
+                    "SubjectBeginsWith": "/blobServices/default/containers/biau/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3a3d36af-3d5e-2fe0-28a7-2f971b29f1af",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Crme",
+                    "SubjectBeginsWith": "/blobServices/default/containers/crme/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3e4deaaa-cf01-095b-5c4f-87f3a14eb0cd",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Brdwh",
+                    "SubjectBeginsWith": "/blobServices/default/containers/brdwh/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3b77498c-8cba-73f2-f9d0-15207516ce20",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_DMAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/dmap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8d346954-74ae-ced2-a08b-0527dc1e7056",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_GRDA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/grd1/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0e567b60-83ba-5089-b61e-29d462535c56",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Tmfx",
+                    "SubjectBeginsWith": "/blobServices/default/containers/tmfx/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "22f22906-5154-f6d9-5800-926adf7f26a5",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Cogagt",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cogagt/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ac4c5c79-e583-7837-8eeb-353eb639a64a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Emdae",
+                    "SubjectBeginsWith": "/blobServices/default/containers/emdae/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8db44a29-54e2-33d1-6df6-1429c72eb850",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Aimlan",
+                    "SubjectBeginsWith": "/blobServices/default/containers/aimlan/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "129fa34b-2ca5-16b0-edba-bbb66cb659fa",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_PPUAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/ppuap/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b18c25eb-722c-4fbf-b87c-889f15c6fc53",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Rmmod",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rmmod/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "24ffdf94-0e05-3031-fc1f-656eae29ea8b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Aseu",
+                    "SubjectBeginsWith": "/blobServices/default/containers/aseu/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5d5a4021-cfa2-48cb-e501-0d25b5590fe0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_PROMN",
+                    "SubjectBeginsWith": "/blobServices/default/containers/promn/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d5083d0d-4800-92ae-79ad-f9c575409f4c",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CFRCC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cfrcc/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ba8b64e6-1e32-06e6-de1f-842ceabde754",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ICVR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/icvr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4fd06c79-e086-6aff-9897-d3509f7d6970",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_RDD1",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rdd1/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "7a012c4f-e88f-b6f9-79ee-505d110a43eb",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_GCRD",
+                    "SubjectBeginsWith": "/blobServices/default/containers/gcrd/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3be37244-ab91-099b-fa03-e5f7872b91f8",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_AFAAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/afaap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "565da765-2a41-10de-e267-62324a405d59",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_RDWS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rdws/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "7f96dc19-7112-8b62-884a-a11b05ff0f85",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_SMARTCOMM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/smartcomm/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e5b46e8b-1364-98ce-e9c5-53f3016eac1a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CRRCRS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/crrcrs/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "acba7b18-3928-1f64-1398-d629ca52d0b2",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_STA_CHK_FIX_GAPRE",
+                    "SubjectBeginsWith": "/blobServices/default/containers/gapre/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "88c0fd7b-57c8-6ddf-6bc9-aa0c0b3e59be",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_VFEEInvoicing",
+                    "SubjectBeginsWith": "/blobServices/default/containers/vfe-einvoicing/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "44444376-8cb8-9ead-631b-a0112245868e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ASTREP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/astrep/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "47dd7cee-ec59-8b2d-e12c-bcaf085cc1e4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_MMDF",
+                    "SubjectBeginsWith": "/blobServices/default/containers/mmdf/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "65eb46b3-d18b-e188-f04d-ec439a378dd1",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CFDA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cfda/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "96bccd4a-0ffb-6928-cbac-c90460a8be39",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_MDDQEU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/mddqeu/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0f12a879-5eda-ed71-d742-8cb27c9ba52f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_HRDH",
+                    "SubjectBeginsWith": "/blobServices/default/containers/hrdh/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8721d3c5-e16a-50dc-cd75-eff414d45fa5",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_STAT_CHK_FIX_CEAR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cear/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "717d2d08-b3c0-5f59-b02c-27dd05bf0e69",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_WRAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/wrap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "76680c7e-8ee2-e493-d476-e44798ce4762",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CADMAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cadmap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5b99b5a8-2185-f8eb-a42a-436c9719a4d1",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ITADLR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/itadlr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "7f26e6a9-cc4b-fccd-8755-06331c766c10",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CDQMR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cdqmr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                }
+            ]
+        },
+        {
+            "environment": "DEV",
+            "storageAccountName": "mscstadmapdev03",
+            "eventGridSubscriptions": [
+                {
+                    "name": "0e5505a8-4e82-256f-1372-849d25d95915",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Daily_SC_CustomerPortal_Load_V2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/VFSSP_V2/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ff89f44e-7ea1-5bf7-b370-786b383a775f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Daily_SC_PartnerPortal_Load_V2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/VFEURPP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d1036979-3c86-19d3-8438-2bee66d212f4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_GoogleAnalyticsFirebase_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/Technology/Google/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5b935034-287c-4863-8f73-d401164904b5",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_ASEU_AppleAnalytics_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_AS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "88822f96-7d45-f98c-d081-314d0a116885",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_ASEU_Googleplay_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_GP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d95a7fb6-d835-6006-2143-a6b2368b9a91",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_Qualtrics_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_QT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "912a4bcc-f285-c7a1-8047-47b0c9443864",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_REF_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_RF/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0385e76f-2b6b-ab39-914e-ba79ff8b3302",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Daily_ECS_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractOriginationManagement/SPRT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "222b9825-a33f-6057-880e-23ce9bc1df1b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Daily_GBU_DCV_Load",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractOriginationManagement/DCVA/FINISHED_DCVA/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "cc38f169-ffef-4b16-1c2f-db2458af189e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Monthly_AFC_Load",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/DTS_AGCO/FINISHED_AFC/",
+                    "SubjectEndsWith": "FINISHED_AFC.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d432dbd1-d01f-19d1-a32e-01223d2c736f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_GoodSign_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/AssetManagement/GoodSign/FINISHED_GOODSIGN/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5b3b7a75-bba5-eec4-c1b9-221611bc47fe",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_OLMUS_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/AssetManagement/OLMUS/FINISHED_OLMUS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "aad67e4b-ca79-029c-5cbf-29ea7313e70f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_OLM_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/AssetManagement/OLM/FINISHED_OLM/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                }
+            ]
+        },
+        {
+            "environment": "PRD",
+            "storageAccountName": "mscstadmapprd",
+            "eventGridSubscriptions": [
+                {
+                    "name": "e3d0d3d0-48d4-f4e4-599e-ecbf9d05da52",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_STAT_CHK_FIX_CEAR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cear/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "69891e8d-c82d-7264-1b9b-dd6f4e85e833",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_STA_CHK_FIX_GAPRE",
+                    "SubjectBeginsWith": "/blobServices/default/containers/gapre/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d8ee607f-ec4d-5a42-8f74-0e4ba144e654",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX",
+                    "SubjectBeginsWith": "/blobServices/default/containers/landingzone/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "1fa054f0-54ad-834a-4cdf-0f6537af387f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_AFAAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/afaap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "6ad19fc2-fcec-e573-a8b4-bc8a4dd341e3",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ASTREP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/astrep/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "1ea47381-ac2d-9e57-c3cb-8c78d089ef3b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Aimlan",
+                    "SubjectBeginsWith": "/blobServices/default/containers/aimlan/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ed3c6f40-6a8f-a65a-b72d-f1c1dfa9fad9",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Aseu",
+                    "SubjectBeginsWith": "/blobServices/default/containers/aseu/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c711ba80-a53c-8a97-8b4c-29e42e6f47e7",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Biau",
+                    "SubjectBeginsWith": "/blobServices/default/containers/biau/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a21fd520-80b6-5d6b-49a4-8e77c46825fc",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Bifa",
+                    "SubjectBeginsWith": "/blobServices/default/containers/bifa/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "bee1f749-19b2-12ea-8a62-c768f5520ccd",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Brdwh",
+                    "SubjectBeginsWith": "/blobServices/default/containers/brdwh/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "61162ad3-e37d-95ab-16a8-8f384647ea3e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CADMAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cadmap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "2fbf2936-fcdd-09af-0a1e-d1a680b06b9e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CDQMR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cdqmr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "22fe8ef4-fd52-b559-e8dd-0298c942b920",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CFDA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cfda/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e48e3246-0a25-5d3b-e737-c2270ddff991",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CFRCC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cfrcc/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "eba5ee98-9672-4b02-47c4-0fb371f90ab3",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CRRCRS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/crrcrs/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9ef61cce-b21c-24bd-9bfd-96e4b94590a2",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Cogagt",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cogagt/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "753b0915-4c2f-789a-bf4d-8abcfeef9dc7",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Crme",
+                    "SubjectBeginsWith": "/blobServices/default/containers/crme/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "747325e0-0d4d-6ff7-4682-8f48f852b114",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_DMAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/dmap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c03899b7-f458-cc63-99bd-81a69fb8170f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Emdae",
+                    "SubjectBeginsWith": "/blobServices/default/containers/emdae/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e1be62ff-88b0-c6e0-dc3e-f229745b150e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_GCRD",
+                    "SubjectBeginsWith": "/blobServices/default/containers/gcrd/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0b8df7d9-59b9-5a04-7371-51bdeb07ccea",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_GRDA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/grd1/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "616b7d37-da40-8f9a-6f98-6cb5d2e624c9",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_HRDH",
+                    "SubjectBeginsWith": "/blobServices/default/containers/hrdh/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d50ca0fd-1652-2408-73e5-f9f42a1e2676",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ICVR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/icvr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d3e9d805-780c-6e3a-1fdd-6da00ae85e73",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ITADLR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/itadlr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c4ae4b4e-e935-ea7e-3090-a4da5d9983f6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_MDDQEU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/mddqeu/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c1b57d2b-a49c-5ad9-4af0-74270d642072",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_MMDF",
+                    "SubjectBeginsWith": "/blobServices/default/containers/mmdf/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3dc7ee57-5900-e872-ad13-ae0b673fb697",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_PPUAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/ppuap/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8d1a929c-2c78-ffa8-e341-9a83c6d62923",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_PROMN",
+                    "SubjectBeginsWith": "/blobServices/default/containers/promn/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a5487596-13eb-2f6c-0451-856c4bfa5790",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_RDD1",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rdd1/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ca16ac24-8665-5c67-02b0-bb1c0d50313c",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_RDWS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rdws/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "78b2f2f8-54fe-ad2c-87e9-ed01328de30b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Rmmod",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rmmod/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "960a18d1-7312-5c8e-d9d2-80833cb21e43",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_SMARTCOMM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/smartcomm/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b9d2db02-3a92-2f37-565a-bc231282106e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Tmfx",
+                    "SubjectBeginsWith": "/blobServices/default/containers/tmfx/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "da234329-a7b2-cb88-6d4b-38727ae8018a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_VFEEInvoicing",
+                    "SubjectBeginsWith": "/blobServices/default/containers/vfe-einvoicing/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "31ba7996-6d80-8ade-a9e7-308d1f74d8e6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_WRAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/wrap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                }
+            ]
+        },
+        {
+            "environment": "PRD",
+            "storageAccountName": "mscstadmapprd03",
+            "eventGridSubscriptions": [
+                {
+                    "name": "389e3b36-84ff-d17b-d2cf-38d1defb967c",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "FileWatcherDMAPdatalake",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/RiskManagement/ICV_ICVR/FINISHED_ICV/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e93581c1-6946-2396-f244-435ae702ccd6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "A2-Trigger-Quantum",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/Treasury/QUANTUMLIABILITY/Contract/",
+                    "SubjectEndsWith": ".dta",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0eeeaaac-8782-4cd3-a10c-28cd726a86a8",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "A3-Trigger-HFM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/FinancialManagement/HFMFIN/FINISHED_HFMFIN/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "2dbe1106-1117-be24-b69c-74de606c10b8",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "A1-Trigger-BIFA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/DMBI2GAPRE/Periodicity=M/DeliveryControl/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e444551b-ee1d-f56b-daef-b155b35aabfb",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/RiskManagement/HistoricArchive/",
+                    "SubjectEndsWith": "RMMOD.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c249ab2b-5d80-91b9-6eba-196d1d94bc61",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_BHVR_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/RiskManagement/HistoricArchive",
+                    "SubjectEndsWith": "Behavioral_RMMOD.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8379a320-76f1-ee98-e79a-577a67aeaf73",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Daily_SC_CustomerPortal_Load_V2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/VFSSP_V2/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "2d710b1e-a35e-aef3-df17-7cc347a1052f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Daily_SC_PartnerPortal_Load_V2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/VFEURPP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a9ee73b2-4280-d10c-4399-08562dc07386",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_GoogleAnalyticsFirebase_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/Technology/Google/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "321761c5-a218-bba5-343e-b2129399960d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_ASEU_AppleAnalytics_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_AS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ed0f00f2-fc28-1c37-40e6-bfc6398ce473",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_ASEU_Googleplay_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_GP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "80ffff26-ef2e-9a6d-63dc-dcbfaaa4b450",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_Qualtrics_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_QT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a9a226c1-7446-c9db-38fd-d9acc0e1954c",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_REF_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_RF/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5e2a2805-dbdf-23ba-be11-1584428dcaa9",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Daily_ECS_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractOriginationManagement/SPRT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c5be4c1a-306e-ccc2-1319-7a1ed2a4aa09",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Daily_GBU_DCV_Load",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractOriginationManagement/DCVA/FINISHED_DCVA/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "633e1e22-bd5a-6f84-e04f-9a8b7f41b333",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Monthly_AFC_Load",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/DTS_AGCO/FINISHED_AFC/",
+                    "SubjectEndsWith": "FINISHED_AFC.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e3e12779-4348-a13f-503f-59fc33d199c7",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "CADMAP_bronze_silver_gold",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/ContractManagement/ODESSA_CA/FINISHED_ODESSA_DAILY/",
+                    "SubjectEndsWith": "FINISHED_ODESSA_DAILY.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "643ec009-89c9-4661-1e70-196a87205c0a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "ICV_to_ODSCA_trigger",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/ContractManagement/ODESSA_CA/ICV/",
+                    "SubjectEndsWith": "ICV_to_ODSCA_*.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b05cf076-f982-4404-ea4a-6666ed9e7bf8",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_countrydataDMAPtoQREPC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/QREPORT/FINISHED_QREPORT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "878314b3-4bfd-32d3-425b-747d04be11a4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_gate",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/GATE/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "6cc98711-8913-daba-7c03-956b0cc36061",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_historydataDMAPtoQREPC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/QREPORT/FINISHED_QREPORT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5af490fd-13de-b858-0915-aaff92bb82d0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_onemi",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ONEMI/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "6b2c8b3b-5f5b-f6fd-6af5-477e4de04fb9",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_onetrust",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ONETRUST/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9edce599-c5f0-23f8-ea0e-4e84de67c6ce",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerArchDmaptoBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ARCH/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "926f99fa-c253-e627-c6a7-3d77238e32cf",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerArchMonthlyDmaptoBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/MonthlyARCH/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "913fe365-5078-a864-c228-87dd194af7d4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerDMPAsrcToSpeakup",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/SpeakUp/",
+                    "SubjectEndsWith": ".xlsx",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "da777e41-c274-4918-93ea-c90e4ae9742e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerHrDmapToBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/HR/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "688a38a0-867b-1220-06f2-872417453047",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerLearnerDmap",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/LEARNER/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "cb4b1472-e41a-44ea-cdfd-c6170bf7fe1e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_INSERT_IMP_OLFMUS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/OLFMUS/Finished_OLFMUS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "50ab279f-8a1e-e664-d417-c219f1fdfb00",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_DMBI2ROCKTM-ROCKTM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/OutboundExport/DMBI2ROCKTM/ROCKTM/CheckFile/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "1b83b897-164a-2041-0771-16a5e3e61afb",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_DMBI2ROCKTM-ReferenceData",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/OutboundExport/DMBI2ROCKTM/ReferenceData/CheckFile",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9bedbe51-3cba-5546-10d2-902a1ebe4e86",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_RDWS_ExchangeRate",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/RDWS/Latest/EBX/",
+                    "SubjectEndsWith": "EBX~EXCHANGERATE.csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3347f4da-7ab1-2bac-2cf1-73ce4a6a8f9f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_RDWS_HFMREF",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/RDWS/Latest/HFMREF/",
+                    "SubjectEndsWith": "HFMREF~ConsolidationStructure.csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "030bc760-9852-6278-d16c-3b3e067df308",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_IsoCountry",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/IsoCountry/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f05ae4c6-e981-89af-f006-77e1484de513",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_IsoCurrency",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/IsoCurrency/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "dcf73857-0b94-1e63-9b14-65b2c3d7c55f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_ListOfValues",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/ListOfValues/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f1b627b6-aef4-3e96-cc28-27a777382147",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_Treasury_Ribpro",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/Treasury/RibPro",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "2e7c2e3b-d54b-ea8b-23b3-5f446a52ef84",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_Treasury_Swift",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/Treasury/Swift",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "2d6d0e52-fa0e-03f8-6351-40205d9daf08",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_EBX",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/RDWS/Archive/EBX/DeliveryControl/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "2d3c2c91-996c-0241-dd2c-947227f2198f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSBE",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSBE/FINISHED_ILSBE/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "fbf0680c-fa33-06ca-da2a-94d667c2e4c7",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSDL",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSDL/FINISHED_ILSDL/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e9b54530-86b1-3a27-8819-461bcd2edaf0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSDU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSDU/FINISHED_ILSDU/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9ff2a31e-fcb3-d33e-97f5-e3b5d47112f2",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSFR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSFR/FINISHED_ILSFR/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "300f51cf-3b9b-fdce-e29f-7ca84ced4273",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSIE",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSIE/FINISHED_ILSIE/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e0a27005-79a3-45f8-3193-73d025baad78",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSMD",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSMD/FINISHED_ILSMD/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b81b450d-0f85-f48b-ee57-73d316ab7948",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSME",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSME/FINISHED_ILSME/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f3c4efd0-2a7a-f142-3da8-20c0c67f52b2",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSSP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSSP/FINISHED_ILSSP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4a0cfae0-5a4a-0b59-98fb-3b70a15e8f4e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_DELIVERY_ILS_ILSUK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/ILSUK/FINISHED_ILSUK/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d2ea584e-9b7f-ebee-ed24-9ffbcf7aca25",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_GoodSign_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/AssetManagement/GoodSign/FINISHED_GOODSIGN/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9926feeb-cb34-c3c1-a423-328615add035",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_OLMUS_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/AssetManagement/OLMUS/FINISHED_OLMUS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "1420a9c0-a2db-0ab1-0d62-66111882c2a1",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_OLM_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/AssetManagement/OLM/FINISHED_OLM/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5a9104cc-4f9d-52f0-1188-88e57300a072",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_INFCA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/INFCA_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d9a99a5b-2ce1-c265-9237-a0c33a17564b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_OLMUS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/OLMUS_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "225eb740-b678-1ed7-5c3d-e4786f726e3a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_FINAL",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/FINAL_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "09b1f88d-8389-e3fc-da9f-9afb046bd3d8",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_ILSEU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/ILSEU_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d886fb35-832b-fa60-290a-00bd938b9575",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_SPSS_INFUS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/SPSS/INFUS_ASTREP/",
+                    "SubjectEndsWith": ".csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "dbddb627-0ba1-ba59-ab81-53111c91e26d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_ANZLM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/ANZLM/Finished_ANZLM/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8ebb45a2-af23-8817-c1a2-773fdf876229",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_AMR_ASLIRT",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/ASLIRT/Finished_ASLIRT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "64866906-3431-48ac-b906-20551efa33b1",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_ILSEU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/ILSEU/Finished_ILSEU/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a16fb8de-2825-12e1-41e4-96deaa59ca1a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_MASTER_AMR_ASLAUC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/ASLAUC/Finished_ASLAUC/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3e670a5b-d338-040d-caf2-6c5e87c63ceb",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_MASTER_AMR_INFUS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/INFUS/Finished_INFUS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f298f1c9-642f-a481-2d4b-5c67d6054bb0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_MASTER_AMR_FINAL",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/AssetManagement/FINAL/Finished_FINAL/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b414ff2f-77c1-aacb-f022-6c4a5cc30cc6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_Event_Load_CCRIS_Curated",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/CFDA/CF/",
+                    "SubjectEndsWith": "DeliveryControl.parquet",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a50adef3-6179-01d5-a53e-bc99fc4e34ad",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoad_AMR_RAW_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/FinancialManagement/AMR/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                }
+            ]
+        },
+        {
+            "environment": "TST",
+            "storageAccountName": "mscstadmaptst",
+            "eventGridSubscriptions": [
+                {
+                    "name": "a5a4153e-f453-5e79-d9ef-c7d5a55b96b5",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Bifa",
+                    "SubjectBeginsWith": "/blobServices/default/containers/bifa/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e8dd46a3-1b87-3938-dd39-8d17407a3d66",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Crme",
+                    "SubjectBeginsWith": "/blobServices/default/containers/crme/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "323319f6-cf17-7793-1aae-f4ebd30cd983",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Tmfx",
+                    "SubjectBeginsWith": "/blobServices/default/containers/tmfx/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "81224820-85a9-5544-b75d-0d08dfc81572",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX",
+                    "SubjectBeginsWith": "/blobServices/default/containers/landingzone/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "28dd00ea-8312-c758-14b6-068e15b03733",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_GRDA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/grd1/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "dcb476ef-370f-2b69-fe5e-c04c17aa17f6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_DMAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/dmap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "57174b02-5e11-c6db-de11-2287a3bc55e6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Cogagt",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cogagt/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5d071dcd-22bf-772f-576d-b588936dd469",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Aimlan",
+                    "SubjectBeginsWith": "/blobServices/default/containers/aimlan/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "a0a9a757-05e4-cbfb-b7eb-e439daaa8b44",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Brdwh",
+                    "SubjectBeginsWith": "/blobServices/default/containers/brdwh/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3af86a69-5d75-b397-9adf-da0928aca725",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Biau",
+                    "SubjectBeginsWith": "/blobServices/default/containers/biau/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "827b15a6-d50f-5034-7ea9-a28bfd79de6d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Emdae",
+                    "SubjectBeginsWith": "/blobServices/default/containers/emdae/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c71eea95-1e0f-4f64-8485-ced91c1d7a5e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_PPUAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/ppuap/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "61f81775-c9f1-0b8f-603a-b75f2e000af4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Rmmod",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rmmod/blobs/",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "23ef186e-d8d2-f464-f915-2f0865871c6e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_Aseu",
+                    "SubjectBeginsWith": "/blobServices/default/containers/aseu/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "703410ed-3e14-28b5-2387-a403da5ad50d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_PROMN",
+                    "SubjectBeginsWith": "/blobServices/default/containers/promn/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "6c89fc63-6c0f-0bd0-f1ee-fd16e61241b8",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CFRCC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cfrcc/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "0ca129f2-ebe7-827b-2b88-9f3269aa8354",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ICVR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/icvr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "608b39a4-4f20-fc44-3a7c-43d59c1b888d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_AFAAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/afaap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4271e642-a736-1060-ac85-05e64274a3c0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_RDD1",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rdd1/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "139da26e-5ec2-fc4f-7d55-ea7e5a12a4c8",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_GCRD",
+                    "SubjectBeginsWith": "/blobServices/default/containers/gcrd/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5d69f625-fcb9-16cd-a778-510265e2a188",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_RDWS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/rdws/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "21d63bf3-4f73-4a10-70de-f2901407eef0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_SMARTCOMM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/smartcomm/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "41277757-0e18-5457-8ffc-020b165e7125",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CRRCRS",
+                    "SubjectBeginsWith": "/blobServices/default/containers/crrcrs/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4ed09f55-8a2c-8732-4d0b-2d36866c0d43",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_STA_CHK_FIX_GAPRE",
+                    "SubjectBeginsWith": "/blobServices/default/containers/gapre/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e76eb5b4-4fc4-9a28-ad33-c7697f1be02b",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_VFEEInvoicing",
+                    "SubjectBeginsWith": "/blobServices/default/containers/vfe-einvoicing/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "417c5790-0455-b2eb-f037-ffe347629351",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_MMDF",
+                    "SubjectBeginsWith": "/blobServices/default/containers/mmdf/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "aa002551-c716-e5e5-5aae-2a75db419101",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ASTREP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/astrep/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f0421fa2-8c33-15cb-8f4b-a95453bb8375",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_HRDH",
+                    "SubjectBeginsWith": "/blobServices/default/containers/hrdh/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8ca028bc-a448-94dc-044a-c6af2ed84ebe",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CFDA",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cfda/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "ac6c543d-0062-3137-51ce-e8e57dd6c0f0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_MDDQEU",
+                    "SubjectBeginsWith": "/blobServices/default/containers/mddqeu/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "c1bf766d-55c9-0657-52cf-cc2905de1483",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EVENT_STAT_CHK_FIX_CEAR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cear/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f8f100ab-0317-735c-477e-25855048eb0e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_WRAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/wrap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "217a7598-bafb-c79e-fd25-fb8c63c91308",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CADMAP",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cadmap/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f28910e0-55a9-0a80-f699-d9d575c4ea6d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_ITADLR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/itadlr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "34bf75ba-41ef-467b-4687-ae41f3c55e76",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_STA_CHK_FIX_CDQMR",
+                    "SubjectBeginsWith": "/blobServices/default/containers/cdqmr/blobs/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                }
+            ]
+        },
+        {
+            "environment": "TST",
+            "storageAccountName": "mscstadmaptst03",
+            "eventGridSubscriptions": [
+                {
+                    "name": "7b97f938-f66c-15f2-f771-8c749167bb0d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Daily_SC_CustomerPortal_Load_V2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/VFSSP_V2/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d83aa8bb-f069-5914-d8e2-2ca39a1abf93",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Daily_SC_PartnerPortal_Load_V2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/VFEURPP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "bd36890b-199a-0c17-d60e-f11caf3d5f93",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_GoogleAnalyticsFirebase_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/Technology/Google/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f11602d9-ef42-1054-931d-46cfc6416233",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_ASEU_AppleAnalytics_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_AS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e8b3053f-d939-d351-ecfc-7a17ae0e0e3c",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_ASEU_Googleplay_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_GP/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "31fa0a9a-ccc0-1cc1-0787-55e7ae664a17",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_Qualtrics_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_QT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e51f6772-7636-28fa-6171-caaec3f09a1c",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "EventSch_Monthly_REF_Load_Gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/CustomerManagement/ASEU_RF/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "6eb1fb7b-18bb-ed79-6003-4b98b36a6945",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Daily_ECS_Load_gen2",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractOriginationManagement/SPRT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "37073538-b0a8-738a-8942-abfe3f127e5e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Daily_GBU_DCV_Load",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractOriginationManagement/DCVA/FINISHED_DCVA/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "f4fbf44f-bdf2-d924-93bc-7fd96ae1a9ea",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "Event_Monthly_AFC_Load",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/ContractManagement/DTS_AGCO/FINISHED_AFC/",
+                    "SubjectEndsWith": "FINISHED_AFC.CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "4893f121-488d-17eb-0af3-588ae62fb3c0",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_countrydataDMAPtoQREPC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/QREPORT/FINISHED_QREPORT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "9066ea92-4337-d303-c0cf-658dfac948f9",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_gate",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/GATE/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "1c48b9a6-9425-181a-bbc6-7d965f33fce6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_historydataDMAPtoQREPC",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/QREPORT/FINISHED_QREPORT/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "754b0dbd-cd1a-8695-a2e7-723eee6c534a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_onemi",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ONEMI/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8d7b6567-0618-122c-3d8f-19c5cdcf202f",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "event_trigger_onetrust",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ONETRUST/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5cc88e2c-9ddd-a64e-ba63-7c147cd83fd7",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerArchDmaptoBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/ARCH/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "8c69cd74-a96f-b5ed-afcc-a6becf3c9f79",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerArchMonthlyDmaptoBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/MonthlyARCH/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "b86ad7fc-eec0-2466-d064-09d01bb4d17e",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerDMPAsrcToSpeakup",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/SpeakUp/",
+                    "SubjectEndsWith": ".xlsx",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "91ca2909-9e16-64de-5a30-0c1abb6e6e72",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerHrDmapToBlob",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/HR/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "fc99a84e-1b6d-e89c-983f-0206938e1bf3",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "triggerLearnerDmap",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/ComplianceManagement/LEARNER/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "7f5092fc-ea4e-1f33-11e6-2e8087493890",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_GoodSign_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Europe/AssetManagement/GoodSign/FINISHED_GOODSIGN/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "5047ac2d-0fb9-9a91-8938-5937bc6498ad",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_OLMUS_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/AssetManagement/OLMUS/FINISHED_OLMUS/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "d8316159-51a4-3f3e-ba39-f3d8bf694514",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TRG_EventStartLoadDmap_OLM_CHK",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/NorthAmerica/AssetManagement/OLM/FINISHED_OLM/",
+                    "SubjectEndsWith": ".CHK",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "84b7bff6-6d10-2c35-8124-2498869410f5",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_DMBI2ROCKTM-ROCKTM",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/OutboundExport/DMBI2ROCKTM/ROCKTM/CheckFile/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "e2e0795b-530e-62c5-0522-07035ff3fec4",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_DMBI2ROCKTM-ReferenceData",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/OutboundExport/DMBI2ROCKTM/ReferenceData/CheckFile",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "35c1320c-ec4d-4599-30d6-a2cb25978838",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_RDWS_ExchangeRate",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/RDWS/Latest/EBX/",
+                    "SubjectEndsWith": "EBX~EXCHANGERATE.csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "344b1694-2777-ef89-c41c-37fb29859c41",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_RDWS_HFMREF",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/RDWS/Latest/HFMREF/",
+                    "SubjectEndsWith": "HFMREF~ConsolidationStructure.csv",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3ab3775c-2274-4612-9397-a2a89a96520d",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_IsoCountry",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/IsoCountry/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "88dfb16b-9968-56fc-2e77-b81369fcc971",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_IsoCurrency",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/IsoCurrency/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "7b6f3163-70b3-e2e1-e380-58ef3843e415",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_ReferenceDataExport_ListOfValues",
+                    "SubjectBeginsWith": "/blobServices/default/containers/curated/blobs/BIFA/ReferenceDataExport/ListOfValues/Region=Global/Periodicity=D/",
+                    "SubjectEndsWith": ".parq",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "cb7ac07e-c807-b0aa-9b0c-8a8d24754f0a",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_Treasury_Ribpro",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/Treasury/RibPro",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                },
+                {
+                    "name": "3c6341cf-fa41-be17-0c31-81336433d2b6",
+                    "eventType": "Microsoft.Storage.BlobCreated",
+                    "endpointType": "WebHook",
+                    "triggerName": "TG_DMAP_Treasury_Swift",
+                    "SubjectBeginsWith": "/blobServices/default/containers/raw/blobs/Global/Treasury/Swift",
+                    "SubjectEndsWith": ".chk",
+                    "DependencyType": "Datafactory"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,123 @@
+{
+    "name": "PL_MasterLoadAndValidate",
+    "properties": {
+        "description": "Master orchestration pipeline: generates one MasterBatchId and inserts a mig.MasterRun audit row, then runs PL_LoadAllToStaging (Use Case 1.1, forwarding MasterBatchId so each PL_LoadSourceToStaging call logs a linked mig.StagingLoadRun row) to completion, then, only on success, runs PL_ValidateAndLoadAllToProduction (Use Case 1.2 Part 2, forwarding MasterBatchId so it is reused as mig.ValidationRun/mig.LoadRun.BatchId) to validate and load all active tables to production. mig.MasterRun.BatchId links all three audit tables together for a single master run. See metadata-validation-loadtoProduction.md and Database-Migration-Execution.md.",
+        "variables": {
+            "MasterBatchId": { "type": "String" }
+        },
+        "activities": [
+            {
+                "name": "SetMasterBatchId",
+                "type": "SetVariable",
+                "typeProperties": {
+                    "variableName": "MasterBatchId",
+                    "value": { "value": "@guid()", "type": "Expression" }
+                }
+            },
+            {
+                "name": "InsertMasterRun",
+                "type": "Script",
+                "dependsOn": [ { "activity": "SetMasterBatchId", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "Query",
+                            "text": "INSERT INTO mig.MasterRun (BatchId, RunStatus) VALUES ('@{variables('MasterBatchId')}', 'RUNNING');"
+                        }
+                    ]
+                },
+                "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+            },
+            {
+                "name": "InvokeLoadAllToStaging",
+                "type": "ExecutePipeline",
+                "dependsOn": [ { "activity": "InsertMasterRun", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "pipeline": { "referenceName": "PL_LoadAllToStaging", "type": "PipelineReference" },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "MasterBatchId": "@variables('MasterBatchId')"
+                    }
+                }
+            },
+            {
+                "name": "InvokeValidateAndLoadAllToProduction",
+                "type": "ExecutePipeline",
+                "dependsOn": [ { "activity": "InvokeLoadAllToStaging", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "pipeline": { "referenceName": "PL_ValidateAndLoadAllToProduction", "type": "PipelineReference" },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "MasterBatchId": "@variables('MasterBatchId')"
+                    }
+                }
+            },
+            {
+                "name": "MarkMasterRunSuccess",
+                "type": "Script",
+                "dependsOn": [ { "activity": "InvokeValidateAndLoadAllToProduction", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "Query",
+                            "text": "UPDATE mig.MasterRun SET RunStatus = 'SUCCESS', CompletedAt = SYSUTCDATETIME() WHERE BatchId = '@{variables('MasterBatchId')}';"
+                        }
+                    ]
+                },
+                "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+            },
+            {
+                "name": "MarkMasterRunFailed_Staging",
+                "type": "Script",
+                "dependsOn": [ { "activity": "InvokeLoadAllToStaging", "dependencyConditions": [ "Failed" ] } ],
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "Query",
+                            "text": "UPDATE mig.MasterRun SET RunStatus = 'FAILED', ErrorMessage = 'PL_LoadAllToStaging did not complete successfully; see mig.StagingLoadRun for details.', CompletedAt = SYSUTCDATETIME() WHERE BatchId = '@{variables('MasterBatchId')}';"
+                        }
+                    ]
+                },
+                "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+            },
+            {
+                "name": "FailMasterRun_Staging",
+                "type": "Fail",
+                "dependsOn": [ { "activity": "MarkMasterRunFailed_Staging", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "message": {
+                        "value": "@concat('Master run ', variables('MasterBatchId'), ' failed: PL_LoadAllToStaging did not complete successfully. See mig.StagingLoadRun for details.')",
+                        "type": "Expression"
+                    },
+                    "errorCode": "LoadToStagingFailed"
+                }
+            },
+            {
+                "name": "MarkMasterRunFailed_Validate",
+                "type": "Script",
+                "dependsOn": [ { "activity": "InvokeValidateAndLoadAllToProduction", "dependencyConditions": [ "Failed" ] } ],
+                "typeProperties": {
+                    "scripts": [
+                        {
+                            "type": "Query",
+                            "text": "UPDATE mig.MasterRun SET RunStatus = 'FAILED', ErrorMessage = 'PL_ValidateAndLoadAllToProduction did not complete successfully; see mig.ValidationError/mig.LoadRun for details.', CompletedAt = SYSUTCDATETIME() WHERE BatchId = '@{variables('MasterBatchId')}';"
+                        }
+                    ]
+                },
+                "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+            },
+            {
+                "name": "FailMasterRun_Validate",
+                "type": "Fail",
+                "dependsOn": [ { "activity": "MarkMasterRunFailed_Validate", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "message": {
+                        "value": "@concat('Master run ', variables('MasterBatchId'), ' failed: PL_ValidateAndLoadAllToProduction did not complete successfully. See mig.ValidationError/mig.LoadRun for details.')",
+                        "type": "Expression"
+                    },
+                    "errorCode": "ValidateAndLoadFailed"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,58 @@
+trigger: none
+
+pr: none
+
+parameters:
+
+  - name: serviceConnection
+    displayName: 'Service Connection' 
+    type: string
+    default: AZURERM-MSC-RSG-DMAP-TST # Use AZURERM-MSC-RSG-DMAP-TST for rehearsal mode only
+    values:
+      - AZURERM-MSC-RSG-DMAP-TST
+      - AZURERM-MSC-RSG-DMAP-PRD
+
+  - name: storageAccountName
+    displayName: 'Storage Account Name'
+    type: string
+
+  - name: resourceGroup
+    displayName: 'Resource Group'
+    type: string
+    default: MSC-RSG-DMAP-TST
+
+  - name: environment
+    displayName: 'Storage Account Environment' # For rehearsal, we take the RBACS on the DEV environment.
+    type: string
+    default: DEV
+    values:
+      - DEV
+      - TST
+      - ACC
+
+  - name: mode
+    displayName: 'Deployment Mode'
+    type: string
+    default: Rehearsal
+    values:
+      - Rehearsal
+      - Migration
+
+
+pool:
+  vmImage: 'windows-2022'
+
+steps:
+  - task: AzureCLI@2
+    displayName: 'Reassign RBAC Roles'
+    inputs:
+      azureSubscription: '${{ parameters.serviceConnection }}'
+      scriptType: 'pscore'
+      scriptLocation: 'scriptPath'
+      scriptPath: '$(Build.SourcesDirectory)/Migration/03-Components/Datalake/rehearsal/replication/rbac/deploy-rbac.ps1'
+      arguments: >
+        -ResourceName "${{ parameters.storageAccountName }}"
+        -ResourceGroup "${{ parameters.resourceGroup }}"
+        -Environment "${{ parameters.environment }}"
+        -Mode "${{ parameters.mode }}"
+    

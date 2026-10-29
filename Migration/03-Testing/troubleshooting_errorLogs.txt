@@ -1,0 +1,12 @@
+1- SQL Execution failed manual ADF Run
+Failure happened on 'Source' side. ErrorCode=SqlOperationFailed,
+'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
+Message=A database operation failed with the following error: 'The EXECUTE permission was denied on the object 'sp_GetFolderMappingSourceFolder_V2', database 'DMAP', schema 'dbo'.',Source=,''Type=System.Data.SqlClient.SqlException,
+Message=The EXECUTE permission was denied on the object 'sp_GetFolderMappingSourceFolder_V2', database 'DMAP', schema 'dbo'.,Source=.Net SqlClient Data Provider,
+SqlErrorNumber=229,Class=14,ErrorCode=-2146232060,State=5,Errors=[{Class=14,Number=229,State=5,Message=The EXECUTE permission was denied on the object 'sp_GetFolderMappingSourceFolder_V2', database 'DMAP', schema 'dbo'.,},],'
+
+The error means that the user or service principal running the data transfer operation does not have EXECUTE permission on the stored procedure sp_GetFolderMappingSourceFolder_V2 in the DMAP database.
+This is a SQL Server security error (Error 229), indicating a lack of required permissions to run the stored procedure.
+To resolve this, a database administrator should grant EXECUTE permission on the stored procedure to the user or service principal being used for the data transfer.
+
+This was resolved when access permissions to execute stored procedure were granted to the ADF Service Principal.

@@ -1,0 +1,451 @@
+﻿principalId,principalName,roleName,scopeType,resourceGroupName,storageAccountName,containerName,principalCategory,environment,RequiredInProd,Strategy,RehearsalEquivalentPrincipal,ProdEquivalentPrincipal,Notes
+8a2f0064-528e-41be-a710-3a07b234bb4f,AzureDatabricks,Key Vault Secrets Officer,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Review,Review,,,Assignment only exists in Dev Environment
+4c9c095b-5015-4658-9228-3069187a7a1c,G-AM-DMAPLZBIFA-CONTRIBUTOR-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,bifa,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+fbbd3b90-ca08-4af2-b5d0-4d5dba50824b,G-AM-DMAPLZBIFA-CONTRIBUTOR-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,bifa,Group,PRD,Yes,Keep,,,
+fbbd3b90-ca08-4af2-b5d0-4d5dba50824b,G-AM-DMAPLZBIFA-CONTRIBUTOR-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,bifa,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+51597050-7894-499d-912a-61c7af2471e8,G-AP-BIFA-ACC-GDMC,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,bifa,Group,ACC,Yes,Keep,,,Access group permissions retained as-is after move
+aaa8adfc-fce8-4dd8-805f-b65f693ea6f4,G-AP-BIFA-PRD-GDMC,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,bifa,Group,PRD,Yes,Keep,,,
+2ef46d3f-bc6c-4402-b761-f6322aeb79db,G-AP-CDDX-DataReader-PRD,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,cddx,Group,PRD,Yes,Keep,,,
+290f2540-555d-4536-932d-38673d3088f8,G-AP-COGAGT-READER-PRD,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,cogagt,Group,PRD,Yes,Keep,,,
+3305cc9f-ebbe-45d3-a95f-4a4cae1e2331,G-AP-CRME-DATAREADER-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,crme,Group,ACC,Yes,Keep,,,Access group permissions retained as-is after move
+41628a33-b4b7-4d5f-a1a3-772311b2e263,G-AP-DMAP-FCM-DataReader-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,landingzone,Group,ACC,Yes,Keep,,,Access group permissions retained as-is after move
+c1cd2b40-91ce-4f90-b1f6-730f3eeea856,G-AP-DMAP-FCM-DataReader-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,landingzone,Group,PRD,Yes,Keep,,,
+38009baa-b502-40ae-a5e8-60c4c6a54cd4,G-AP-DMAP-READER-ACC,Storage Blob Data Reader,ResourceGroup,MSC-RSG-DMAP-ACC,,,Group,ACC,Yes,Keep,,,Access group permissions retained as-is after move
+38009baa-b502-40ae-a5e8-60c4c6a54cd4,G-AP-DMAP-READER-ACC,Reader,ResourceGroup,MSC-RSG-DMAP-ACC,,,Group,ACC,Yes,Keep,,,Access group permissions retained as-is after move
+38009baa-b502-40ae-a5e8-60c4c6a54cd4,G-AP-DMAP-READER-ACC,Storage Blob Data Reader,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,Group,ACC,Yes,Keep,,,Access group permissions retained as-is after move
+1ed153d6-5541-4ba8-95d3-d06457dea71c,G-AP-EMDAE-DATAREADER-PRD,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,emdae,Group,PRD,Yes,Keep,,,
+da8f14ac-3066-418c-9dcd-6e09cd3d857c,G-AP-GRD1-DATAREADER-PRD,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,grd1,Group,ACC,Yes,Keep,,,Access group permissions retained as-is after move
+41caa632-6375-4f50-b5d6-4510f6914724,G-AP-ITADLR-A-DATAREADER,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,itadlr,Group,ACC,Yes,Keep,,,Access group permissions retained as-is after move
+a1567b5a-5aa2-4256-b682-7b73fa6acd6c,G-AP-ITADLR-P-DATAREADER,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,itadlr,Group,PRD,Yes,Keep,,,
+1244260d-6703-4b46-bac9-3ea2fe4e2784,hydratedata,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ManagedIdentity,PRD,,,,,
+1528c9d1-76d6-4e9e-8da6-ce4057fb2f7c,MSC-APP-AIMLAN-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,aimlan,ServicePrincipal,ACC,Yes,Keep,,,Assignment retained as-is after move
+6f9d68fe-fca9-4d3d-b62b-0121ac501bd0,MSC-APP-DMAP-ACC-BCKP,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,curated,ServicePrincipal,ACC,Review,Review,,MSC-APP-DMAP-PRD-BCKP,"Equivalent identity exists in PROD. But confirm if we can reassign this rbac to equivalent PROD identity, or recreate this rbac as-is in target scope"
+6f9d68fe-fca9-4d3d-b62b-0121ac501bd0,MSC-APP-DMAP-ACC-BCKP,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd03,curated,ServicePrincipal,PRD,Yes,Keep,,,
+6f9d68fe-fca9-4d3d-b62b-0121ac501bd0,MSC-APP-DMAP-ACC-BCKP,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,archive,ServicePrincipal,ACC,Review,Review,,MSC-APP-DMAP-PRD-BCKP,"Equivalent identity exists in PROD. But confirm if we can reassign this rbac to equivalent PROD identity, or recreate this rbac as-is in target scope"
+6f9d68fe-fca9-4d3d-b62b-0121ac501bd0,MSC-APP-DMAP-ACC-BCKP,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,archive,ServicePrincipal,ACC,Review,Review,,MSC-APP-DMAP-PRD-BCKP,"Equivalent identity exists in PROD. But confirm if we can reassign this rbac to equivalent PROD identity, or recreate this rbac as-is in target scope"
+6f9d68fe-fca9-4d3d-b62b-0121ac501bd0,MSC-APP-DMAP-ACC-BCKP,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,raw,ServicePrincipal,ACC,Review,Review,,MSC-APP-DMAP-PRD-BCKP,"Equivalent identity exists in PROD. But confirm if we can reassign this rbac to equivalent PROD identity, or recreate this rbac as-is in target scope"
+ee91673a-b0e6-4d1b-b14e-c295f0394314,MSC-APP-DMAP-PRD-BCKP,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd03,curated,ServicePrincipal,PRD,Yes,Keep,,,
+ee91673a-b0e6-4d1b-b14e-c295f0394314,MSC-APP-DMAP-PRD-BCKP,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd03,archive,ServicePrincipal,PRD,Yes,Keep,,,
+ee91673a-b0e6-4d1b-b14e-c295f0394314,MSC-APP-DMAP-PRD-BCKP,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,raw,ServicePrincipal,ACC,Review,Review,,MSC-APP-DMAP-PRD-BCKP,"Equivalent identity exists in PROD. But confirm if we can reassign this rbac to equivalent PROD identity, or recreate this rbac as-is in target scope"
+ee91673a-b0e6-4d1b-b14e-c295f0394314,MSC-APP-DMAP-PRD-BCKP,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,curated,ServicePrincipal,ACC,Review,Review,,MSC-APP-DMAP-PRD-BCKP,"Equivalent identity exists in PROD. But confirm if we can reassign this rbac to equivalent PROD identity, or recreate this rbac as-is in target scope"
+ee91673a-b0e6-4d1b-b14e-c295f0394314,MSC-APP-DMAP-PRD-BCKP,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd03,raw,ServicePrincipal,PRD,Yes,Keep,,,
+b8d7a0aa-1df2-4aee-b5fe-710b440d8d03,MSC-DAF-BIFA-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,outbound,ManagedIdentity,ACC,,,,,
+b8d7a0aa-1df2-4aee-b5fe-710b440d8d03,MSC-DAF-BIFA-ACC,Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,bifa,ManagedIdentity,ACC,,,,,
+0517309a-6b3c-408a-994d-6e37f4bfb8bb,MSC-DAF-BIFA-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,outbound,ManagedIdentity,DEV,Yes,Keep,,,
+38099859-f7ba-4870-9d5b-4b6ed4a4feb2,MSC-DAF-DMAP-ACC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+38099859-f7ba-4870-9d5b-4b6ed4a4feb2,MSC-DAF-DMAP-ACC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,ManagedIdentity,ACC,,,,,
+38099859-f7ba-4870-9d5b-4b6ed4a4feb2,MSC-DAF-DMAP-ACC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc01,,ManagedIdentity,ACC,,,,,
+82d1a808-ab3d-4fb7-917e-0b2feaebee0d,MSC-DAF-DMAP-DEV,Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ManagedIdentity,DEV,,,,,
+82d1a808-ab3d-4fb7-917e-0b2feaebee0d,MSC-DAF-DMAP-DEV,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ManagedIdentity,DEV,,,,,
+82d1a808-ab3d-4fb7-917e-0b2feaebee0d,MSC-DAF-DMAP-DEV,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev01,,ManagedIdentity,DEV,,,,,
+82d1a808-ab3d-4fb7-917e-0b2feaebee0d,MSC-DAF-DMAP-DEV,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev,,ManagedIdentity,DEV,,,,,
+82d1a808-ab3d-4fb7-917e-0b2feaebee0d,MSC-DAF-DMAP-DEV,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+82d1a808-ab3d-4fb7-917e-0b2feaebee0d,MSC-DAF-DMAP-DEV,Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+82d1a808-ab3d-4fb7-917e-0b2feaebee0d,MSC-DAF-DMAP-DEV,Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ManagedIdentity,TST,,,,,
+82d1a808-ab3d-4fb7-917e-0b2feaebee0d,MSC-DAF-DMAP-DEV,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ManagedIdentity,TST,,,,,
+cdb433aa-a7bd-40fe-858a-73fce459c8fa,MSC-DAF-DMAP-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd,,ManagedIdentity,PRD,,,,,
+cdb433aa-a7bd-40fe-858a-73fce459c8fa,MSC-DAF-DMAP-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd01,,ManagedIdentity,PRD,,,,,
+cdb433aa-a7bd-40fe-858a-73fce459c8fa,MSC-DAF-DMAP-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ManagedIdentity,PRD,,,,,
+cdb433aa-a7bd-40fe-858a-73fce459c8fa,MSC-DAF-DMAP-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+a5d40d61-59be-4fe2-bc3b-60d698beaf44,MSC-DAF-DMAPSB-MGPOC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ManagedIdentity,DEV,,,,,
+a5d40d61-59be-4fe2-bc3b-60d698beaf44,MSC-DAF-DMAPSB-MGPOC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev,,ManagedIdentity,DEV,,,,,
+a5d40d61-59be-4fe2-bc3b-60d698beaf44,MSC-DAF-DMAPSB-MGPOC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ManagedIdentity,TST,,,,,
+a5d40d61-59be-4fe2-bc3b-60d698beaf44,MSC-DAF-DMAPSB-MGPOC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+9a23fa06-9423-4a96-8c0c-a1ddef32aec6,MSC-DAF-DMAP-TST,Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ManagedIdentity,TST,,,,,
+9a23fa06-9423-4a96-8c0c-a1ddef32aec6,MSC-DAF-DMAP-TST,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ManagedIdentity,TST,,,,,
+9a23fa06-9423-4a96-8c0c-a1ddef32aec6,MSC-DAF-DMAP-TST,Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+9a23fa06-9423-4a96-8c0c-a1ddef32aec6,MSC-DAF-DMAP-TST,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+9a23fa06-9423-4a96-8c0c-a1ddef32aec6,MSC-DAF-DMAP-TST,Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst01,,ManagedIdentity,TST,,,,,
+9a23fa06-9423-4a96-8c0c-a1ddef32aec6,MSC-DAF-DMAP-TST,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst01,,ManagedIdentity,TST,,,,,
+77f3c4cc-0da0-4774-a1e5-f65eb71c9849,MSC-DAF-RMMOD-ACC,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,outbound,ManagedIdentity,ACC,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev03,curated,ManagedIdentity,DEV,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Delegator,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Delegator,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,curated,ManagedIdentity,ACC,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Delegator,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ManagedIdentity,PRD,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd03,curated,ManagedIdentity,PRD,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst03,curated,ManagedIdentity,TST,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst03,uctest,ManagedIdentity,TST,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Delegator,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ManagedIdentity,DEV,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev03,uctest,ManagedIdentity,DEV,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst03,uctest1607temp,ManagedIdentity,TST,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst03,raw,ManagedIdentity,TST,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd03,raw,ManagedIdentity,PRD,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,raw,ManagedIdentity,ACC,,,,,
+883f0d7c-d586-49d1-8abb-f8d6a06c3d28,MSC-DBRAC-DBRUC-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev03,raw,ManagedIdentity,DEV,,,,,
+26803fc8-0a90-4650-b908-2aa92318b7ec,MSC-FUA-DMAP-ACC,Storage Blob Data Owner,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,curated,ManagedIdentity,ACC,,,,,
+26803fc8-0a90-4650-b908-2aa92318b7ec,MSC-FUA-DMAP-ACC,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+181be34d-b7d2-436d-9de6-fc1b60ddb000,MSC-FUA-DMAP-ACC-API,Storage Queue Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc01,,ManagedIdentity,ACC,,,,,
+181be34d-b7d2-436d-9de6-fc1b60ddb000,MSC-FUA-DMAP-ACC-API,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+181be34d-b7d2-436d-9de6-fc1b60ddb000,MSC-FUA-DMAP-ACC-API,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc01,,ManagedIdentity,ACC,,,,,
+181be34d-b7d2-436d-9de6-fc1b60ddb000,MSC-FUA-DMAP-ACC-API,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,ManagedIdentity,ACC,,,,,
+b66328e6-39ac-43ab-af2a-b227425ea67f,MSC-FUA-DMAP-DEV,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ManagedIdentity,DEV,,,,,
+1be73d3f-80cf-4a4a-9d4c-061a7f956016,MSC-FUA-DMAP-DEV-API,Storage Queue Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev01,,ManagedIdentity,DEV,,,,,
+1be73d3f-80cf-4a4a-9d4c-061a7f956016,MSC-FUA-DMAP-DEV-API,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ManagedIdentity,DEV,,,,,
+1be73d3f-80cf-4a4a-9d4c-061a7f956016,MSC-FUA-DMAP-DEV-API,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev01,,ManagedIdentity,DEV,,,,,
+1be73d3f-80cf-4a4a-9d4c-061a7f956016,MSC-FUA-DMAP-DEV-API,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev,,ManagedIdentity,DEV,,,,,
+dba6eb0f-41ef-4586-8063-597c6a39c38e,MSC-FUA-DMAP-PRD,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ManagedIdentity,PRD,,,,,
+dba6eb0f-41ef-4586-8063-597c6a39c38e,MSC-FUA-DMAP-PRD,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+12dbd030-3f2e-4cac-9641-bee575efe393,MSC-FUA-DMAP-PRD-API,Storage Queue Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd01,,ManagedIdentity,PRD,,,,,
+12dbd030-3f2e-4cac-9641-bee575efe393,MSC-FUA-DMAP-PRD-API,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ManagedIdentity,PRD,,,,,
+12dbd030-3f2e-4cac-9641-bee575efe393,MSC-FUA-DMAP-PRD-API,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd01,,ManagedIdentity,PRD,,,,,
+12dbd030-3f2e-4cac-9641-bee575efe393,MSC-FUA-DMAP-PRD-API,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd,,ManagedIdentity,PRD,,,,,
+ab3abda5-86c5-4f71-be25-ed702efcf4f0,MSC-FUA-DMAP-TST,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+289ce5be-8c6b-4c13-9c2b-dda5199d135b,MSC-FUA-DMAP-TST-API,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+289ce5be-8c6b-4c13-9c2b-dda5199d135b,MSC-FUA-DMAP-TST-API,Storage Queue Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst01,,ManagedIdentity,TST,,,,,
+289ce5be-8c6b-4c13-9c2b-dda5199d135b,MSC-FUA-DMAP-TST-API,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst01,,ManagedIdentity,TST,,,,,
+289ce5be-8c6b-4c13-9c2b-dda5199d135b,MSC-FUA-DMAP-TST-API,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ManagedIdentity,TST,,,,,
+07782825-60bd-431b-80d5-3212454a378a,MSC-LOG-RBAC-ACC,Reader,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,ManagedIdentity,ACC,,,,,
+07782825-60bd-431b-80d5-3212454a378a,MSC-LOG-RBAC-ACC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+d5b7d671-2493-4f5b-9dea-11e2f49b4e1e,MSC-LOG-RBAC-DEV,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ManagedIdentity,DEV,,,,,
+d5b7d671-2493-4f5b-9dea-11e2f49b4e1e,MSC-LOG-RBAC-DEV,Reader,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev,,ManagedIdentity,DEV,,,,,
+edf872d4-95ef-4c0c-9ef3-f95dd2a00869,MSC-LOG-RBAC-PRD,Reader,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd,,ManagedIdentity,PRD,,,,,
+edf872d4-95ef-4c0c-9ef3-f95dd2a00869,MSC-LOG-RBAC-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ManagedIdentity,PRD,,,,,
+2823a4bb-bf3a-4f3e-8299-b56c5f28f218,MSC-LOG-RBAC-TST,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ManagedIdentity,TST,,,,,
+2823a4bb-bf3a-4f3e-8299-b56c5f28f218,MSC-LOG-RBAC-TST,Reader,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ManagedIdentity,TST,,,,,
+8100666b-0151-4be4-90dc-ab9cddd45d34,MSC-PUR-DMAP-ACC,Storage Blob Data Reader,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+8100666b-0151-4be4-90dc-ab9cddd45d34,MSC-PUR-DMAP-ACC,Storage Blob Data Reader,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,ManagedIdentity,ACC,,,,,
+8100666b-0151-4be4-90dc-ab9cddd45d34,MSC-PUR-DMAP-ACC,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+3ef280eb-9247-46e4-bda5-10239941c654,MSC-PUR-DMAP-PRD,Storage Blob Data Reader,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ManagedIdentity,PRD,,,,,
+aa61445c-dc51-433d-abf0-a273d9bd20d1,mscstadmapacc03,Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Review,,,Application service principal matching SA name. Confirm PROD identity mapping
+aa61445c-dc51-433d-abf0-a273d9bd20d1,mscstadmapacc03,Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Review,,,Application service principal matching SA name. Confirm PROD identity mapping
+aa61445c-dc51-433d-abf0-a273d9bd20d1,mscstadmapacc03,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Review,,,Application service principal matching SA name. Confirm PROD identity mapping
+685efa29-66ee-4326-a63d-0b0111312b5b,mscstadmapdev03,Owner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Review,,,Application service principal matching SA name. Confirm PROD identity mapping
+685efa29-66ee-4326-a63d-0b0111312b5b,mscstadmapdev03,Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Review,,,Application service principal matching SA name. Confirm PROD identity mapping
+685efa29-66ee-4326-a63d-0b0111312b5b,mscstadmapdev03,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Review,,,Application service principal matching SA name. Confirm PROD identity mapping
+2aecd255-7ffe-40bf-81aa-c49e29a6c6a7,mscstadmapprd03,Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+2aecd255-7ffe-40bf-81aa-c49e29a6c6a7,mscstadmapprd03,Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+2aecd255-7ffe-40bf-81aa-c49e29a6c6a7,mscstadmapprd03,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+9cee2a67-686b-4814-bc56-3ab0e5e61b90,PAG-DMAP-CONTRIBUTOR-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,dmap,Group,ACC,Yes,Reassign,,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+9cee2a67-686b-4814-bc56-3ab0e5e61b90,PAG-DMAP-CONTRIBUTOR-ACC,Contributor,ResourceGroup,MSC-RSG-DMAP-ACC,,,Group,ACC,No,Skip,,,Equivalent PROD principal already has the required assignment
+9cee2a67-686b-4814-bc56-3ab0e5e61b90,PAG-DMAP-CONTRIBUTOR-ACC,Remove Locks,ResourceGroup,MSC-RSG-DMAP-ACC,,,Group,ACC,No,Skip,,,Equivalent PROD principal already has the required assignment
+9cee2a67-686b-4814-bc56-3ab0e5e61b90,PAG-DMAP-CONTRIBUTOR-ACC,Storage Queue Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc01,,Group,ACC,Yes,Reassign,,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+7bfaa683-34c8-4065-88cb-07c6f4cf1212,PAG-DMAP-CONTRIBUTOR-DEV,Storage Blob Data Reader,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Reassign,PAG-DMAP-CONTRIBUTOR-TST,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+7bfaa683-34c8-4065-88cb-07c6f4cf1212,PAG-DMAP-CONTRIBUTOR-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev03,curated,Group,DEV,Yes,Reassign,PAG-DMAP-CONTRIBUTOR-TST,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+7bfaa683-34c8-4065-88cb-07c6f4cf1212,PAG-DMAP-CONTRIBUTOR-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,dmap,Group,DEV,Yes,Reassign,PAG-DMAP-CONTRIBUTOR-TST,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+7bfaa683-34c8-4065-88cb-07c6f4cf1212,PAG-DMAP-CONTRIBUTOR-DEV,Contributor,ResourceGroup,MSC-RSG-DMAP-DEV,,,Group,DEV,No,Skip,,,Equivalent PROD principal already has the required assignment.
+7bfaa683-34c8-4065-88cb-07c6f4cf1212,PAG-DMAP-CONTRIBUTOR-DEV,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Reassign,PAG-DMAP-CONTRIBUTOR-TST,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+7bfaa683-34c8-4065-88cb-07c6f4cf1212,PAG-DMAP-CONTRIBUTOR-DEV,Remove Locks,ResourceGroup,MSC-RSG-DMAP-DEV,,,Group,DEV,No,Skip,,,Equivalent PROD principal already has the required assignment.
+7bfaa683-34c8-4065-88cb-07c6f4cf1212,PAG-DMAP-CONTRIBUTOR-DEV,Storage Queue Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev01,,Group,DEV,Yes,Reassign,PAG-DMAP-CONTRIBUTOR-TST,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+f1ab73d7-c95b-4708-81b9-0c6b26180e19,PAG-DMAP-CONTRIBUTOR-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,dmap,Group,PRD,Yes,Keep,,,
+f1ab73d7-c95b-4708-81b9-0c6b26180e19,PAG-DMAP-CONTRIBUTOR-PRD,Contributor,ResourceGroup,MSC-RSG-DMAP-PRD,,,Group,PRD,Yes,Keep,,,
+f1ab73d7-c95b-4708-81b9-0c6b26180e19,PAG-DMAP-CONTRIBUTOR-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,Group,PRD,Yes,Keep,,,
+f1ab73d7-c95b-4708-81b9-0c6b26180e19,PAG-DMAP-CONTRIBUTOR-PRD,Storage Queue Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd01,,Group,PRD,Yes,Keep,,,
+f1ab73d7-c95b-4708-81b9-0c6b26180e19,PAG-DMAP-CONTRIBUTOR-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,Group,ACC,Yes,Keep,,,Recreate assignment as-is in PROD after move
+f1ab73d7-c95b-4708-81b9-0c6b26180e19,PAG-DMAP-CONTRIBUTOR-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,Group,PRD,Yes,Keep,,,
+acd7d5f4-83e2-4292-b0c1-1d3d76586713,PAG-DMAP-CONTRIBUTOR-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,dmap,Group,TST,Review,Reassign,PAG-DMAP-CONTRIBUTOR-TST,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+acd7d5f4-83e2-4292-b0c1-1d3d76586713,PAG-DMAP-CONTRIBUTOR-TST,Contributor,ResourceGroup,MSC-RSG-DMAP-TST,,,Group,TST,No,Skip,,,Equivalent PROD principal already has the required assignment
+acd7d5f4-83e2-4292-b0c1-1d3d76586713,PAG-DMAP-CONTRIBUTOR-TST,Owner,ResourceGroup,MSC-RSG-DMAP-TST,,,Group,TST,Review,Review,,PAG-DMAP-CONTRIBUTOR-PRD,Equivalent PROD principal does not have Owner role assignment
+acd7d5f4-83e2-4292-b0c1-1d3d76586713,PAG-DMAP-CONTRIBUTOR-TST,Remove Locks,ResourceGroup,MSC-RSG-DMAP-TST,,,Group,TST,No,Skip,,,Equivalent PROD principal already has the required assignment
+acd7d5f4-83e2-4292-b0c1-1d3d76586713,PAG-DMAP-CONTRIBUTOR-TST,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,Group,TST,Review,Review,,PAG-DMAP-CONTRIBUTOR-PRD,Equivalent PROD principal does not have storage blob data owner on any of the PROD storage accounts. Do we really need this in PROD after storage account move?
+acd7d5f4-83e2-4292-b0c1-1d3d76586713,PAG-DMAP-CONTRIBUTOR-TST,Storage Queue Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst01,,Group,TST,Yes,Reassign,PAG-DMAP-CONTRIBUTOR-TST,PAG-DMAP-CONTRIBUTOR-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+af86283a-8f3e-46bc-8277-55b1ac5f70dd,PAG-DMAP-READER-ACC,Storage Blob Data Reader,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,Group,ACC,Yes,Reassign,,PAG-DMAP-READER-PRD,Provide ProdEquivalentPrincipal with this assignment after move
+af86283a-8f3e-46bc-8277-55b1ac5f70dd,PAG-DMAP-READER-ACC,Reader,ResourceGroup,MSC-RSG-DMAP-ACC,,,Group,ACC,No,Skip,,,Equivalent PROD principal already has the required assignment
+af86283a-8f3e-46bc-8277-55b1ac5f70dd,PAG-DMAP-READER-ACC,Storage Blob Data Reader,ResourceGroup,MSC-RSG-DMAP-ACC,,,Group,ACC,No,Skip,,,Equivalent PROD principal already has the required assignment
+30cf623b-0334-4b6b-9937-e21a75e7f11e,PAG-DMAP-READER-DEV,Storage Blob Data Reader,ResourceGroup,MSC-RSG-DMAP-DEV,,,Group,DEV,No,Skip,,,Equivalent PROD principal already has the required assignment
+30cf623b-0334-4b6b-9937-e21a75e7f11e,PAG-DMAP-READER-DEV,Reader,ResourceGroup,MSC-RSG-DMAP-DEV,,,Group,DEV,No,Skip,,,Equivalent PROD principal already has the required assignment
+b7eae90e-b101-453e-95d7-edd865858792,PAG-DMAP-READER-PRD,Storage Blob Data Reader,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,Group,PRD,Yes,Keep,,,
+b7eae90e-b101-453e-95d7-edd865858792,PAG-DMAP-READER-PRD,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,dmap,Group,PRD,Yes,Keep,,,
+b7eae90e-b101-453e-95d7-edd865858792,PAG-DMAP-READER-PRD,Storage Blob Data Reader,ResourceGroup,MSC-RSG-DMAP-PRD,,,Group,PRD,Yes,Keep,,,
+b7eae90e-b101-453e-95d7-edd865858792,PAG-DMAP-READER-PRD,Reader,ResourceGroup,MSC-RSG-DMAP-PRD,,,Group,PRD,Yes,Keep,,,
+e9055d48-b337-42d4-9619-6d803dbb341a,PAG-DMAP-READER-TST,Storage Blob Data Reader,ResourceGroup,MSC-RSG-DMAP-TST,,,Group,TST,No,Skip,,,Equivalent PROD principal already has the required assignment
+e9055d48-b337-42d4-9619-6d803dbb341a,PAG-DMAP-READER-TST,Reader,ResourceGroup,MSC-RSG-DMAP-TST,,,Group,TST,No,Skip,,,Equivalent PROD principal already has the required assignment
+da13b944-4876-43e5-a7fd-4107b8419bfb,PRG-AFAAP-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,afaap,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+8f1afc82-6a3b-4a47-8c65-415fd0084ed7,PRG-AFAAP-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,afaap,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+45aa3e94-39d2-4d87-96f3-37ba5f8fdd7a,PRG-AFAAP-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,afaap,Group,PRD,Yes,Keep,,,
+b596c5ba-d82a-4090-b25f-beba329ac939,PRG-AFAAP-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,afaap,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+4ff0d9e1-666c-496d-9c6d-aa5a9f3f942e,PRG-AIMLAN-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,aimlan,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+5fc5ede1-811f-4745-a89b-1395ef878cf7,PRG-AIMLAN-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,aimlan,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+a3d1e745-488f-46bc-8dea-bd5366f05f54,PRG-AIMLAN-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,aimlan,Group,PRD,Yes,Keep,,,
+3f48212f-5397-4c34-88b2-df4a79cb7a64,PRG-ASEU-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,aseu,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+3f48212f-5397-4c34-88b2-df4a79cb7a64,PRG-ASEU-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,promn,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+5e850586-1e14-4cd1-b54c-978f877cdad1,PRG-ASEU-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,aseu,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+5e850586-1e14-4cd1-b54c-978f877cdad1,PRG-ASEU-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,promn,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+5e850586-1e14-4cd1-b54c-978f877cdad1,PRG-ASEU-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+853ecc4b-eed9-4d51-bfb0-daaf732d1a91,PRG-ASEU-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,aseu,Group,PRD,Yes,Keep,,,
+853ecc4b-eed9-4d51-bfb0-daaf732d1a91,PRG-ASEU-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,promn,Group,PRD,Yes,Keep,,,
+029eec3c-c951-4bb7-814b-3332845a8587,PRG-ASEU-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,aseu,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+029eec3c-c951-4bb7-814b-3332845a8587,PRG-ASEU-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,promn,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+a175ffdc-0c6d-4ede-89e2-b2a78168d77d,PRG-ASTREP-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,astrep,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+fa722547-18af-4b27-b9a2-45149138fe75,PRG-ASTREP-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,-,Contributor access group must be retained after move
+fa722547-18af-4b27-b9a2-45149138fe75,PRG-ASTREP-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,astrep,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+bf42184e-6804-4086-adf2-33fa565ed5e1,PRG-ASTREP-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,astrep,Group,PRD,Yes,Keep,,,
+b4aef163-db62-48e2-912b-8512c4278857,PRG-BIAU-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,biau,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+5ddd0cd6-5088-4676-8a2a-20ba473bd08d,PRG-BIAU-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,biau,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+ab5bb22e-40db-476d-a8f4-217cf5f0e623,PRG-BIAU-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,biau,Group,PRD,Yes,Keep,,,
+20330e00-9ec1-429c-87b2-6ba6fdfc02ee,PRG-BIFA-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,bifa,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+20330e00-9ec1-429c-87b2-6ba6fdfc02ee,PRG-BIFA-Contributor-ACC,Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc03,curated,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+d6a361b1-430d-48e3-b57a-2c03152e095c,PRG-BIFA-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,bifa,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+7c0ee084-74b4-483a-975a-f26f4499c382,PRG-BIFA-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,bifa,Group,PRD,Yes,Keep,,,
+e7b7c446-862d-4f10-80f8-cbc3cfa9ba61,PRG-BIFA-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,bifa,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+53284529-2592-4ff7-8262-d4c364ce2620,PRG-BIFA-Reader-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,bifa,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+9379acf6-e5b4-45ed-a741-4826524b3bb2,PRG-BIFA-Reader-PRD,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,bifa,Group,PRD,Yes,Keep,,,
+2fdc076c-34e3-4504-ac16-e09e6ebb6cf2,PRG-BRDWH-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,brdwh,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+381d6919-5b94-4940-b4f4-1bbc530eb96c,PRG-BRDWH-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,brdwh,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+6f0aad92-0b6b-45fc-a11a-72eccd63d0b3,PRG-BRDWH-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,brdwh,Group,PRD,Yes,Keep,,,
+499b7bf9-9388-40b4-bcae-279cf229c988,PRG-BRDWH-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,brdwh,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+dd133925-5abe-4ab8-aa79-08d88d61e1c6,PRG-CADMAP-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,cadmap,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+dd133925-5abe-4ab8-aa79-08d88d61e1c6,PRG-CADMAP-Contributor-ACC,EventGrid EventSubscription Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+a865e7ba-d27d-48ca-9d1f-1dc393f8d6cb,PRG-CADMAP-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,cadmap,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+a865e7ba-d27d-48ca-9d1f-1dc393f8d6cb,PRG-CADMAP-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+7e14c99b-905a-49e1-b870-eadc7557e7fe,PRG-CADMAP-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,cadmap,Group,PRD,Yes,Keep,,,
+febfb7b2-4690-4083-9bbe-acf5488f40b7,PRG-CDQMR-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,cdqmr,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+9d1fa65c-e569-4ed0-871d-06153184d8f7,PRG-CEAR-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,cear,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+075390b2-b603-43e3-9826-f22ad046d398,PRG-CEAR-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,cear,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+5d7f7da4-91ca-4995-81a6-37580288ed71,PRG-CEAR-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,cear,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+f1664a30-9990-4b29-b48a-9a30a85367e3,PRG-CFDA-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,cfda,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+a3744b07-6aa8-41a4-b00a-d6484f119fdc,PRG-CFDA-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,cfda,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+a3744b07-6aa8-41a4-b00a-d6484f119fdc,PRG-CFDA-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,cfda,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+a3744b07-6aa8-41a4-b00a-d6484f119fdc,PRG-CFDA-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+07051c6a-caf7-43ac-8d4b-279eb4368915,PRG-CFDA-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,cfda,Group,PRD,Yes,Keep,,,
+ea6d0619-f084-4591-a591-3eef4e6d135f,PRG-CFDA-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,cfda,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+f3f37991-0e4a-480e-a38a-2a3fd34ccc95,PRG-CFEC-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,cfec,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+f3f37991-0e4a-480e-a38a-2a3fd34ccc95,PRG-CFEC-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,crme,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+7c724195-9fe7-4e04-b100-5ca2fe1b4857,PRG-CFEC-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,cfec,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+7c724195-9fe7-4e04-b100-5ca2fe1b4857,PRG-CFEC-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,crme,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+a79bb03d-fe99-4e3c-b59d-cf083cb9c26f,PRG-CFEC-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,cfec,Group,PRD,Yes,Keep,,,
+a79bb03d-fe99-4e3c-b59d-cf083cb9c26f,PRG-CFEC-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,crme,Group,PRD,Yes,Keep,,,
+b86af335-eccd-4de8-91a4-0e449f43321d,PRG-CFEC-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,cfec,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+b86af335-eccd-4de8-91a4-0e449f43321d,PRG-CFEC-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,crme,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+030927d2-eeff-4f1d-9db0-1381c5b50970,PRG-COGAGT-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,cogagt,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+1598ac86-2368-4d8e-b5cd-5e409e6bb97f,PRG-COGAGT-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,cogagt,Group,PRD,Yes,Keep,,,
+73e65f2a-6c98-43cb-9381-1ae8eafad861,PRG-CRRCRS-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,crrcrs,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+7fcf75fb-8e7c-4e09-a072-6f6cb88a6fba,PRG-CRRCRS-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,crrcrs,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+111349d1-d98a-4601-8eb9-35b62b39fbf2,PRG-CRRCRS-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,crrcrs,Group,PRD,Yes,Keep,,,
+7b1627c4-5241-410b-917f-3d3222bfff62,PRG-CRRCRS-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,crrcrs,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+742f7843-2707-4d22-8ceb-332cf221303f,PRG-DACA-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,daca,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+c09c8224-2aba-49da-8c09-21c5812f03a3,PRG-DACA-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,daca,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+476d9909-f053-4678-bb81-6585094ae3b5,PRG-DACA-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,daca,Group,PRD,Yes,Keep,,,
+e9d6ff5e-cc81-494c-9ece-f3eede81ca7b,PRG-DACA-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,daca,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+bd901dfc-2b05-4ca5-9a02-ea29db99df10,PRG-GAIEP-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,gaiep,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+931c6fe6-eb6f-43b9-90a2-7ebcc75129bf,PRG-GAIEP-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,gaiep,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+f20241bd-c094-4581-9421-ee05de1bc276,PRG-GAIEP-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,gaiep,Group,PRD,Yes,Keep,,,
+3b73b685-641a-4bbc-8ae3-24ea50581189,PRG-GAIEP-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,gaiep,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+25c7c787-525d-44fd-9599-95e559c70458,PRG-GAILP-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,gailp,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+03915e78-de0d-4baa-b503-622ae4160eb4,PRG-GAILTU-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,gailtu,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+0fd78083-520d-4abb-b5a8-d2e118cbb0b9,PRG-GAILTU-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,gailtu,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+533f1fff-0c33-473b-959f-436666f97591,PRG-GAILTU-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,gailtu,Group,PRD,Yes,Keep,,,
+06c954bd-221a-40c1-a0ce-ed99ed4bc907,PRG-GAILTU-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,gailtu,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+d568c850-212b-455f-9959-e3dcf4d76386,PRG-GAPRE-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,gapre,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+773ce6e1-aa08-4ab6-a378-54967bffe117,PRG-GAPRE-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,gapre,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+773ce6e1-aa08-4ab6-a378-54967bffe117,PRG-GAPRE-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,-,Contributor access group must be retained after move
+d81ad1cd-1ad9-4433-b275-1bf7ef85c497,PRG-GAPRE-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,gapre,Group,PRD,Yes,Keep,,,
+75a958e0-7f00-468e-a64e-0581351cd52b,PRG-GAPRE-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,gapre,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+1eff9217-822f-40d0-bf52-7cc807b7e2b3,PRG-GCRD-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,gcrd,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+1eff9217-822f-40d0-bf52-7cc807b7e2b3,PRG-GCRD-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,crme,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+830214ef-a3e3-43f0-a110-8a1f45ff8721,PRG-GCRD-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,gcrd,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+830214ef-a3e3-43f0-a110-8a1f45ff8721,PRG-GCRD-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+830214ef-a3e3-43f0-a110-8a1f45ff8721,PRG-GCRD-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,crme,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+d5bfdedb-9bda-4dd3-9e1c-cc5b04e75c12,PRG-GCRD-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,gcrd,Group,PRD,Yes,Keep,,,
+c3a585b6-4ef8-40ff-b7ce-e9f30199b429,PRG-GCRD-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,gcrd,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+c3a585b6-4ef8-40ff-b7ce-e9f30199b429,PRG-GCRD-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,crme,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+6c909e44-d7c6-4228-97d4-e3671fb54f84,PRG-GFMEPM-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,gfmepm,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+f3761fca-0092-4a96-8a04-47274f49c23d,PRG-GRD1-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,grd1,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+f3761fca-0092-4a96-8a04-47274f49c23d,PRG-GRD1-Contributor-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+bb6f9131-ded2-4588-9213-e4abb8fac8e9,PRG-GRD1-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,grd1,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+bb6f9131-ded2-4588-9213-e4abb8fac8e9,PRG-GRD1-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+2febdd95-4127-44b1-89c5-a33922b7b14e,PRG-GRD1-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,grd1,Group,PRD,Yes,Keep,,,
+ec121ab9-c5c3-4285-a1da-c0cedea82828,PRG-GRD1-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,grd1,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+c9321f65-e69d-4dc6-8bb6-31de0b55f969,PRG-HRDH-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,hrdh,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+0bd231ca-217e-42e7-a5ce-9c4e8f15708a,PRG-HRDH-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,hrdh,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+e6aa3ba7-e24b-4fda-925a-a649aef8e861,PRG-HRDH-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,hrdh,Group,PRD,Yes,Keep,,,
+e6aa3ba7-e24b-4fda-925a-a649aef8e861,PRG-HRDH-Contributor-PRD,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,hrdh,Group,PRD,Yes,Keep,,,
+37e6bb6c-4ac1-4d8d-a218-a7fc6e8f8db5,PRG-HRDH-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,hrdh,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+678d39c7-2a25-48ee-9aab-a046e94a4aec,PRG-ICVR-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,icvr,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+7c9cf954-d2cb-41b7-b0c4-2253223e5394,PRG-ICVR-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,icvr,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+7c9cf954-d2cb-41b7-b0c4-2253223e5394,PRG-ICVR-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+c9629e3d-78e1-4947-8ca7-0ece9341e1fa,PRG-ICVR-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,icvr,Group,PRD,Yes,Keep,,,
+700479b6-75c7-410b-abb7-4c8bd7adf998,PRG-MACDWH-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,macdwh,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+6daa6ee7-d254-42e4-bee2-068742ef172e,PRG-MACDWH-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,macdwh,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+93468d9c-cecc-4bcc-ab09-ca906a90b137,PRG-MACDWH-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,macdwh,Group,PRD,Yes,Keep,,,
+58a70740-5830-45f5-a00c-66dfc40e2d5b,PRG-MDDQEU-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,mddqeu,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+dadc82fe-8d39-4617-9014-9867caa801b7,PRG-MDDQEU-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,mddqeu,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+25e499c9-bf30-4c53-8f3c-19571f873bee,PRG-MDMDQ-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,mdmdq,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+4e4e17cf-5197-42af-8721-db365e371ebd,PRG-MDMDQ-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,mdmdq,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+ed90d3fa-d1eb-46e0-84d6-563cbe0d055f,PRG-MDMDQ-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,mdmdq,Group,PRD,Yes,Keep,,,
+521d3da5-6fc3-47b0-8868-8090698973ec,PRG-MEPP-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,mepp,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+b80f150d-82d2-47e8-b868-6eed15ccb548,PRG-MEPP-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,mepp,Group,PRD,Yes,Keep,,,
+146c67f7-7c0a-4acb-b272-0b4cd7de4d10,PRG-MEPP-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,mepp,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+ab01a096-ef21-4b34-8924-b388e4fa3552,PRG-MLPL-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,mlpl,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+c76a02c8-ec69-4a79-a657-fb841a736415,PRG-MLPL-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,mlpl,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+ed41f411-1d06-42de-b813-48106486701b,PRG-MLPL-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,mlpl,Group,PRD,Yes,Keep,,,
+84eb669e-f3e0-4c8f-b154-d5ce71994c57,PRG-MLPL-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,mlpl,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+0a582a50-c18e-4e0c-804d-db0155d75125,PRG-MMDF-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,mmdf,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+0a582a50-c18e-4e0c-804d-db0155d75125,PRG-MMDF-Contributor-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+bbaad61e-da77-4632-928a-4df73080a290,PRG-MMDF-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,mmdf,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+bbaad61e-da77-4632-928a-4df73080a290,PRG-MMDF-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+26baaadf-a391-4066-82c2-bcc076a76f72,PRG-MMDF-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,mmdf,Group,PRD,Yes,Keep,,,
+26baaadf-a391-4066-82c2-bcc076a76f72,PRG-MMDF-Contributor-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,Group,PRD,Yes,Keep,,,
+8886c4a1-aca5-49f3-933f-8bd0776bad1f,PRG-MMDF-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,mmdf,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+fec7a4f4-697c-4d0d-8f81-ca13929843c5,PRG-MODBS-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,modbs,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+ca2a699a-fe9a-4dfc-b374-aa1dac5a1cca,PRG-MODBS-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,modbs,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+1b0214ff-ee08-4487-ba7b-0bce9170fd67,PRG-MODBS-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,modbs,Group,PRD,Yes,Keep,,,
+3dc2e247-7542-454c-9ad0-3b1ee8d5445c,PRG-MODBS-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,modbs,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+53d507bc-d5f7-4b61-925c-ca7d2f8fad20,PRG-OPENAI-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,openai,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+1e2217b9-4c0a-4303-85e9-b48ffb5b056b,PRG-OPENAI-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,openai,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+2e80df01-224b-44f0-8cbb-30795fe38572,PRG-OPENAI-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,openai,Group,PRD,Yes,Keep,,,
+df3fe069-5624-4328-9fa9-883b607f17f4,PRG-OPENAI-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,openai,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+64d04ed3-ec16-4753-8182-d5e9d5814135,PRG-PPUAP-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,ppuap,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+aca1ee90-e716-40c3-88d6-ca0668ad4c63,PRG-PPUAP-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,ppuap,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+4d93ba3a-ed99-4369-9626-2ef6b5a1913d,PRG-PPUAP-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,ppuap,Group,PRD,Yes,Keep,,,
+fa19c87e-059d-4404-ab74-a1dca174c525,PRG-PPUAP-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,ppuap,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+d45401b5-3f6b-4673-87ea-b900260fee45,PRG-PROMN-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,promn,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+2dc6fff6-2692-4cf1-adaa-1fc50c832877,PRG-PROMN-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,promn,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+4b530b4f-a4de-4add-a2fe-e437e7ae140b,PRG-PROMN-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,promn,Group,PRD,Yes,Keep,,,
+534ed939-3d89-44c8-9564-80c71f17bf6c,PRG-PROMN-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,promn,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+97ac0e4f-a18f-48ce-99d2-f62101476975,PRG-RDD1-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,rdd1,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+f85b992b-4f00-408b-97ec-61aee68e4ad4,PRG-RDD1-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,rdd1,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+664e8477-7a6e-47cc-b23d-0c4b9721fab3,PRG-RDD1-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,rdd1,Group,PRD,Yes,Keep,,,
+4673a9d1-33fa-4451-b294-41d187283d54,PRG-RDD1-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,rdd1,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+2dbd1d29-fcc5-4114-96f1-8b88c20be4eb,PRG-RDWS-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,rdws,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+929f9ae8-fac0-40da-a7fb-a9190a2c0527,PRG-RDWS-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,rdws,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+f408ad30-587d-4621-b738-81f7f4ca82ab,PRG-RDWS-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,rdws,Group,PRD,Yes,Keep,,,
+f1ebabc8-c662-47d8-843a-65ee1ec5a1c5,PRG-RDWS-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,rdws,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+c0655b2f-f132-46f2-b433-a1ccd8a84926,PRG-RDWS-Reader-ACC,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,rdws,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+ad0d4131-2741-446f-a5f1-7235fd5802d4,PRG-RDWS-Reader-DEV,Storage Blob Data Reader,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,rdws,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+f49a9c26-f0d7-470b-b1cc-6bc7cd9e2e06,PRG-RDWS-Reader-PRD,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,rdws,Group,PRD,Yes,Keep,,,
+087200ff-69f0-4df6-b79a-0eee107fbf6c,PRG-RDWS-Reader-TST,Storage Blob Data Reader,Container,MSC-RSG-DMAP-TST,mscstadmaptst,rdws,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+9976ca49-3f9c-4904-aec1-d5d3e74ed2c2,PRG-RISE-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,rise,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+f2451fba-8a7f-4185-b431-b37d0b37f093,PRG-RISE-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,rise,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+f2451fba-8a7f-4185-b431-b37d0b37f093,PRG-RISE-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+03163d35-619e-41a0-a990-9521c9fee898,PRG-RISE-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,rise,Group,PRD,Yes,Keep,,,
+c7981c1e-73fd-4075-a92e-3a2d6f067376,PRG-RISE-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,rise,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+588c9610-d01e-40be-bf42-1c8941601ec3,PRG-RMMOD-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,rmmod,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+d019a439-4868-443a-b21a-fe0dd4afe245,PRG-RMMOD-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,rmmod,Group,PRD,Yes,Keep,,,
+d4e66e9f-1ae9-4909-946a-5ef86ce0a9b8,PRG-TMFX-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,tmfx,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+545e6ebf-7861-4f16-9a1f-a8ebb6d2bc53,PRG-TMFX-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,tmfx,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+545e6ebf-7861-4f16-9a1f-a8ebb6d2bc53,PRG-TMFX-Contributor-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+147d57b2-02ff-4fd2-8b5d-d6fb725cc45e,PRG-TMFX-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,tmfx,Group,PRD,Yes,Keep,,,
+3e3e64a7-e8dd-4acb-82d5-494d18a4c090,PRG-TMFX-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,tmfx,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+c9606752-8965-4b51-861a-5cd64215aaff,PRG-TRDH-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,trdh,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+af1c2c6f-4098-4c35-a433-f185d1e4947a,PRG-TRDH-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,trdh,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+19cbcf3f-1b93-4149-b263-664c73bce14a,PRG-TRDH-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,trdh,Group,PRD,Yes,Keep,,,
+be9e62d3-b372-47c4-899d-1420ead71494,PRG-TRDH-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,trdh,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+e639d040-ee2a-4658-8b3b-1e5419bdc66c,PRG-WRAP-Contributor-ACC,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,wrap,Group,ACC,Yes,Keep,,,Contributor access group must be retained after move
+7dbeb305-d387-4774-bb10-0ec9583357cb,PRG-WRAP-Contributor-DEV,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-DEV,mscstadmapdev,wrap,Group,DEV,Yes,Keep,,,Contributor access group must be retained after move
+78836c7c-4384-4a29-9c61-3f1dcd426f03,PRG-WRAP-Contributor-PRD,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,wrap,Group,PRD,Yes,Keep,,,
+4530cbac-2321-4f2e-ac9a-5a93ddcb0ec5,PRG-WRAP-Contributor-TST,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-TST,mscstadmaptst,wrap,Group,TST,Yes,Keep,,,Contributor access group must be retained after move
+88842eb2-6c12-4ab7-92dd-4b408ffdc2ef,SA-DMAP-AIP-PRD@delagelanden.com,Contributor,ResourceGroup,MSC-RSG-DMAP-PRD,,,User,PRD,Review,Review,,,Review if we keep this assignment as-is in production
+dc74f9d0-57c9-417d-9805-c43eea41fdf8,SA-DMAP-REP-ACC@delagelanden.com,Reader,ResourceGroup,MSC-RSG-DMAP-ACC,,,User,ACC,No,Skip,,,Equivalent PROD principal already has the required assignment.
+4d9bff22-3ccb-485b-8fba-c98056b302a7,SA-DMAP-REP-DEV@delagelanden.com,Reader,ResourceGroup,MSC-RSG-DMAP-DEV,,,User,DEV,No,Skip,,,Equivalent PROD principal already has the required assignment.
+92d4ba9b-9c5f-4c7e-84b3-c5e68cd6c34a,SA-DMAP-REP-PRD@delagelanden.com,Reader,ResourceGroup,MSC-RSG-DMAP-PRD,,,User,PRD,Review,Review,,,"To confirm whether we need this assignment in production. For now, assumed we keep it."
+7fc6528f-1867-4e6f-9cb2-0ada2e60903e,SA-DMAP-REP-TST@delagelanden.com,Reader,ResourceGroup,MSC-RSG-DMAP-TST,,,User,TST,No,Skip,,,Equivalent PROD principal already has the required assignment.
+1078a10b-08f7-4d50-b05f-f747f9dd204f,StorageDataScanner,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ManagedIdentity,PRD,,,,,
+1078a10b-08f7-4d50-b05f-f747f9dd204f,StorageDataScanner,Defender for Storage Data Scanner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ManagedIdentity,ACC,,,,,
+1078a10b-08f7-4d50-b05f-f747f9dd204f,StorageDataScanner,Defender for Storage Data Scanner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ManagedIdentity,DEV,,,,,
+1078a10b-08f7-4d50-b05f-f747f9dd204f,StorageDataScanner,Defender for Storage Data Scanner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,ManagedIdentity,ACC,,,,,
+9d744a66-5e74-4de4-91c7-f3653981e799,Unknown,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,landingzone,Group,ACC,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+9d744a66-5e74-4de4-91c7-f3653981e799,Unknown,Storage Blob Data Reader,Container,MSC-RSG-DMAP-ACC,mscstadmapacc,bifa,Group,ACC,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+856016d8-6f0c-4124-be1f-0ad788534317,Unknown,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,aseu,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+54ac4c9e-2569-46d9-9c63-a726a2a86096,Unknown,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,aseu,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+bafc8e0e-1cd1-4df0-8ff3-4530056d4d03,Unknown,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,biau,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+01c77df2-55e8-45f9-a05b-be2a25f1e9d8,Unknown,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,biau,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+881f3da2-3d1f-4043-a0ab-420cface5409,Unknown,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,gcrd,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+881f3da2-3d1f-4043-a0ab-420cface5409,Unknown,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,crme,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+201f6e0e-e18b-4976-8fad-8cecd31e1f68,Unknown,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,crme,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+881f3da2-3d1f-4043-a0ab-420cface5409,Unknown,Storage Blob Data Reader,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,grd1,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+201f6e0e-e18b-4976-8fad-8cecd31e1f68,Unknown,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,grd1,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+cd6e7395-8b5e-4648-abda-e20db692438f,Unknown,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,afaap,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+201f6e0e-e18b-4976-8fad-8cecd31e1f68,Unknown,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,gcrd,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+1d60cae3-5a3c-45c8-ae67-f72e626716f8,Unknown,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd,,Unknown,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+2d3f5e67-1f48-4161-a684-6d3c25537c2c,Unknown,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,cfrcc,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+24581f1e-21db-4c50-8710-001da5bcc9f4,Unknown,Storage Blob Data Contributor,Container,MSC-RSG-DMAP-PRD,mscstadmapprd,edsa,Group,PRD,Review,Review,,,Principal Name is unknown. Check if we can remove this assignment
+4a83800a-4fdd-4196-9bb9-d7f7963bdced,VSTSRM-MSC-RSG-ASEU-ACC,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+c4bcc5da-2fb0-40b1-b6d8-30d742cbf298,VSTSRM-MSC-RSG-ASEU-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+7ce4269e-070d-485e-87d5-eb4ab1cce2cf,VSTSRM-MSC-RSG-ASEU-PRD,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+7ce4269e-070d-485e-87d5-eb4ab1cce2cf,VSTSRM-MSC-RSG-ASEU-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+8243205c-6079-4f36-8dd6-72f298da1779,VSTSRM-MSC-RSG-ASEU-TST,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+11fd60eb-178f-4882-97aa-97a365be2058,VSTSRM-MSC-RSG-ASTREP-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+88d49633-4428-4e0d-ace8-e588b120ff0a,VSTSRM-MSC-RSG-ASTREP-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+0bc9d9cd-0fbe-4c13-bb19-64a678d96f21,VSTSRM-MSC-RSG-ASTREP-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+0bc9d9cd-0fbe-4c13-bb19-64a678d96f21,VSTSRM-MSC-RSG-ASTREP-PRD,Remove Locks,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+dc690b75-90f7-4820-867c-1fcbaffc7db4,VSTSRM-MSC-RSG-ASTREP-TST,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+e0d2122d-952d-4a8a-85b2-757a0c60f23f,VSTSRM-MSC-RSG-BIFA-ACC,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+ab50b10c-eea7-403c-8ee1-79a5b72de93b,VSTSRM-MSC-RSG-BIFA-DEV,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+fe65218c-5d6b-4efa-ac55-c75f51935ce1,VSTSRM-MSC-RSG-BIFA-PRD,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+3f262f08-a456-4eac-a9ae-2cc4f1eb5b95,VSTSRM-MSC-RSG-BIFA-TST,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+92a543bd-6f67-4c06-96cf-9dbcf66d4180,VSTSRM-MSC-RSG-CADMAP-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+3beee9e2-6914-4aff-aa62-e232c438f727,VSTSRM-MSC-RSG-CADMAP-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+eb75c8a4-1186-4652-884e-2f42ac5a0bb4,VSTSRM-MSC-RSG-CADMAP-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+7849dc98-3c7a-492b-8550-4ba0aa827967,VSTSRM-MSC-RSG-CFDA-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+98eb8de1-f14f-4cc1-9a06-8c426377c372,VSTSRM-MSC-RSG-CFDA-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+82bf351d-e5a5-439c-8ed0-4901e7227733,VSTSRM-MSC-RSG-CFDA-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+569c4444-250a-4c2f-9234-123e658ad21c,VSTSRM-MSC-RSG-CFDA-TST,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+1ade4da3-475f-482d-bdac-5f49b983023f,VSTSRM-MSC-RSG-DMAP-ACC,Contributor,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+1ade4da3-475f-482d-bdac-5f49b983023f,VSTSRM-MSC-RSG-DMAP-ACC,Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,ServicePrincipal,ACC,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+1ade4da3-475f-482d-bdac-5f49b983023f,VSTSRM-MSC-RSG-DMAP-ACC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+1ade4da3-475f-482d-bdac-5f49b983023f,VSTSRM-MSC-RSG-DMAP-ACC,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+1ade4da3-475f-482d-bdac-5f49b983023f,VSTSRM-MSC-RSG-DMAP-ACC,Owner,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+1ade4da3-475f-482d-bdac-5f49b983023f,VSTSRM-MSC-RSG-DMAP-ACC,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc,,ServicePrincipal,ACC,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+1ade4da3-475f-482d-bdac-5f49b983023f,VSTSRM-MSC-RSG-DMAP-ACC,Contributor,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+1ade4da3-475f-482d-bdac-5f49b983023f,VSTSRM-MSC-RSG-DMAP-ACC,Remove Locks,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+09541973-e597-46f2-b618-a24d13d21723,VSTSRM-MSC-RSG-DMAP-DEV,Contributor,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+09541973-e597-46f2-b618-a24d13d21723,VSTSRM-MSC-RSG-DMAP-DEV,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Review,Review,VSTSRM-MSC-RSG-DMAP-TST,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+09541973-e597-46f2-b618-a24d13d21723,VSTSRM-MSC-RSG-DMAP-DEV,Owner,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+09541973-e597-46f2-b618-a24d13d21723,VSTSRM-MSC-RSG-DMAP-DEV,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+09541973-e597-46f2-b618-a24d13d21723,VSTSRM-MSC-RSG-DMAP-DEV,Owner,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+09541973-e597-46f2-b618-a24d13d21723,VSTSRM-MSC-RSG-DMAP-DEV,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Review,Review,VSTSRM-MSC-RSG-DMAP-TST,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+09541973-e597-46f2-b618-a24d13d21723,VSTSRM-MSC-RSG-DMAP-DEV,Contributor,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+09541973-e597-46f2-b618-a24d13d21723,VSTSRM-MSC-RSG-DMAP-DEV,Remove Locks,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+bd18c8dc-7647-46b3-815b-4a4d9e190621,VSTSRM-MSC-RSG-DMAP-PRD,Contributor,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+bd18c8dc-7647-46b3-815b-4a4d9e190621,VSTSRM-MSC-RSG-DMAP-PRD,Storage Blob Data Owner,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+bd18c8dc-7647-46b3-815b-4a4d9e190621,VSTSRM-MSC-RSG-DMAP-PRD,Owner,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd,,ServicePrincipal,PRD,Yes,Keep,,,
+bd18c8dc-7647-46b3-815b-4a4d9e190621,VSTSRM-MSC-RSG-DMAP-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+bd18c8dc-7647-46b3-815b-4a4d9e190621,VSTSRM-MSC-RSG-DMAP-PRD,Owner,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+bd18c8dc-7647-46b3-815b-4a4d9e190621,VSTSRM-MSC-RSG-DMAP-PRD,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd,,ServicePrincipal,PRD,Yes,Keep,,,
+bd18c8dc-7647-46b3-815b-4a4d9e190621,VSTSRM-MSC-RSG-DMAP-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+72a1b62a-d59d-4ba8-ac04-6b5b06d594ab,VSTSRM-MSC-RSG-DMAPSB-DEV,Contributor,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+72a1b62a-d59d-4ba8-ac04-6b5b06d594ab,VSTSRM-MSC-RSG-DMAPSB-DEV,Contributor,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+289a64c3-1abe-46e6-9a7a-95df043c4f60,VSTSRM-MSC-RSG-DMAP-TST,Contributor,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+289a64c3-1abe-46e6-9a7a-95df043c4f60,VSTSRM-MSC-RSG-DMAP-TST,Storage Blob Data Owner,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ServicePrincipal,TST,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+289a64c3-1abe-46e6-9a7a-95df043c4f60,VSTSRM-MSC-RSG-DMAP-TST,Owner,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+289a64c3-1abe-46e6-9a7a-95df043c4f60,VSTSRM-MSC-RSG-DMAP-TST,Owner,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ServicePrincipal,TST,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+289a64c3-1abe-46e6-9a7a-95df043c4f60,VSTSRM-MSC-RSG-DMAP-TST,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst,,ServicePrincipal,TST,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+289a64c3-1abe-46e6-9a7a-95df043c4f60,VSTSRM-MSC-RSG-DMAP-TST,Storage Blob Data Contributor,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ServicePrincipal,TST,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+289a64c3-1abe-46e6-9a7a-95df043c4f60,VSTSRM-MSC-RSG-DMAP-TST,Contributor,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+289a64c3-1abe-46e6-9a7a-95df043c4f60,VSTSRM-MSC-RSG-DMAP-TST,Remove Locks,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Review,Review,,VSTSRM-MSC-RSG-DMAP-PRD,"Required by environment-specific DevOps pipeline service connection, but confirm we can use the equivalent production principal"
+9d7931af-dade-49da-b9d1-e3941fb4b134,VSTSRM-MSC-RSG-GAPRE-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+9231dee4-48b1-4a33-8daf-de883acb43f7,VSTSRM-MSC-RSG-GAPRE-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+38c8f2f6-e0c6-455b-81a5-f2ea871e6dab,VSTSRM-MSC-RSG-GAPRE-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+38c8f2f6-e0c6-455b-81a5-f2ea871e6dab,VSTSRM-MSC-RSG-GAPRE-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+1cb51948-f289-4ff9-929d-081ad32f71a6,VSTSRM-MSC-RSG-GCRD-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+e5b63938-2f80-4d17-a0a7-cec15c1bbae6,VSTSRM-MSC-RSG-GCRD-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+4955254c-dc31-493c-b7cf-be1fcb48b9b8,VSTSRM-MSC-RSG-GCRD-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+90a4fa1f-2502-4f8d-83db-fde78cff7e48,VSTSRM-MSC-RSG-GCRD-TST,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+1488aebf-2c15-41fa-9e3d-80c74a92377e,VSTSRM-MSC-RSG-GRD1-ACC,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+c93ad7c7-8512-4905-81e9-e806e83000a4,VSTSRM-MSC-RSG-GRD1-DEV,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+e8ff08c1-80bd-47f3-a175-5f67afbc6c0a,VSTSRM-MSC-RSG-GRD1-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+e8ff08c1-80bd-47f3-a175-5f67afbc6c0a,VSTSRM-MSC-RSG-GRD1-PRD,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+e8ff08c1-80bd-47f3-a175-5f67afbc6c0a,VSTSRM-MSC-RSG-GRD1-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+ecbf11d6-759d-4965-a27b-658295e31465,VSTSRM-MSC-RSG-GRD1-TST,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+d8707dec-e65e-4a1c-8542-8fc72189a522,VSTSRM-MSC-RSG-ICVR-ACC,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+8f90c0a7-5d48-4c6a-b4c5-a33ccb1a1c4c,VSTSRM-MSC-RSG-ICVR-DEV,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+981f66fd-8f54-47d5-a5f7-849feb50ce3b,VSTSRM-MSC-RSG-ICVR-PRD,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+981f66fd-8f54-47d5-a5f7-849feb50ce3b,VSTSRM-MSC-RSG-ICVR-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+69758ac5-0c8d-45c0-8598-e815bf0f8749,VSTSRM-MSC-RSG-MMDF-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+18cac10c-a4a5-4c86-a150-a8e766a54a1d,VSTSRM-MSC-RSG-MMDF-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+c2fc4e4b-c9ac-4f9d-a80e-83b17efcbce9,VSTSRM-MSC-RSG-MMDF-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+c2fc4e4b-c9ac-4f9d-a80e-83b17efcbce9,VSTSRM-MSC-RSG-MMDF-PRD,Remove Locks,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+79764fcb-fe28-4c4a-9aaa-099e422cc0b1,VSTSRM-MSC-RSG-MMDF-TST,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+ff00a45f-e004-46eb-9b6d-9ebdb6e7597a,VSTSRM-MSC-RSG-PPUAP-ACC,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+bcdf8d39-51a3-4134-9de7-a87be34fd314,VSTSRM-MSC-RSG-PPUAP-DEV,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+8275d634-786a-4299-a65e-1af10a5a943d,VSTSRM-MSC-RSG-PPUAP-PRD,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+8275d634-786a-4299-a65e-1af10a5a943d,VSTSRM-MSC-RSG-PPUAP-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+ef255282-36e6-4de7-b07f-8c1996018eb9,VSTSRM-MSC-RSG-PPUAP-TST,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+c84cc45b-0f77-427b-a0f7-3f68d08dc33d,VSTSRM-MSC-RSG-RDWS-ACC,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+8256fccc-0e1e-48a5-85ab-9cdeef44580a,VSTSRM-MSC-RSG-RDWS-DEV,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+d896c445-c171-49c7-b4a5-66dc78c2d717,VSTSRM-MSC-RSG-RDWS-PRD,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+e1d11d07-4381-4646-8838-7093353aa260,VSTSRM-MSC-RSG-RDWS-TST,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+2a7bb046-2ae7-4ee6-9fcc-366e7f68edb9,VSTSRM-MSC-RSG-RISE-ACC,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-ACC,mscstadmapacc03,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+f61d71ff-18e5-4f57-a692-f3f4cc8568f8,VSTSRM-MSC-RSG-RISE-DEV,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-DEV,mscstadmapdev03,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+541436eb-6b73-4b89-891b-ff21de73ae97,VSTSRM-MSC-RSG-RISE-PRD,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-PRD,mscstadmapprd03,,ServicePrincipal,PRD,Yes,Keep,,,
+541436eb-6b73-4b89-891b-ff21de73ae97,VSTSRM-MSC-RSG-RISE-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+57d822ec-5720-4940-9957-e01afb18fcd1,VSTSRM-MSC-RSG-RISE-TST,EventGrid EventSubscription Write Only,StorageAccount,MSC-RSG-DMAP-TST,mscstadmaptst03,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+295565c0-23d8-4d51-b0a8-e0c2cb647528,VSTSRM-MSC-RSG-RMMOD-ACC,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+85d28cc0-53f4-4af4-819d-f551599735d7,VSTSRM-MSC-RSG-RMMOD-PRD,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+85d28cc0-53f4-4af4-819d-f551599735d7,VSTSRM-MSC-RSG-RMMOD-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+ba272365-ed03-4e44-9bab-ade3154e0327,VSTSRM-MSC-RSG-TMFX-ACC,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-ACC,,,ServicePrincipal,ACC,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+42162b66-ffa9-4b40-87ef-695abcfbc76e,VSTSRM-MSC-RSG-TMFX-DEV,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-DEV,,,ServicePrincipal,DEV,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection
+328e55ea-fe01-4309-b6d2-ee8cd6931ecf,VSTSRM-MSC-RSG-TMFX-PRD,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+328e55ea-fe01-4309-b6d2-ee8cd6931ecf,VSTSRM-MSC-RSG-TMFX-PRD,Remove Locks,ResourceGroup,MSC-RSG-DMAP-PRD,,,ServicePrincipal,PRD,Yes,Keep,,,
+7db16788-8950-4141-8a5c-bdb69c2a5215,VSTSRM-MSC-RSG-TMFX-TST,EventGrid EventSubscription Write Only,ResourceGroup,MSC-RSG-DMAP-TST,,,ServicePrincipal,TST,Yes,Keep,,,Required by environment-specific DevOps pipeline service connection

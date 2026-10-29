@@ -1,0 +1,555 @@
+﻿{
+    "name": "PL_LoadSourceToStaging",
+    "properties": {
+"description": "Use Case 1.0: loads a table from Dev/tst/Acc (SourceEnvironment, matched case-insensitively) into a clean landing copy in the Prd server's DMAP database's per-environment mig_stg_<env> schema (mig_stg_dev / mig_stg_tst / mig_stg_acc, using 3-char environment codes). SourceDatabase is accepted for backward compatibility but is no longer used - every environment's database is hardcoded to DMAP in the LS_SourceSqlMig_Dev/_Test/_Acc linked services (the environment is identified by which of the 4 SQL servers it lives on, not by database name), so callers should just pass 'DMAP' or any value. Target table is always mig_stg_<env>.<SourceSchema>_<SourceTable> (e.g. Dev/Customer/Customer -> mig_stg_dev.Customer_Customer, tst/Customer/Customer -> mig_stg_tst.Customer_Customer), so the environment the data came from is visible directly in the schema name. On every run: 0) insert a RUNNING audit row into mig.StagingLoadRun (BatchId = MasterBatchId when supplied by PL_MasterLoadAndValidate, else NULL for a standalone run), 1) check if the mig_stg_<env> staging table exists, 2) if not, create it from the source's INFORMATION_SCHEMA.COLUMNS (dynamic DDL, since ADF's Copy sink autoCreate option requires statically-typed datasets and our datasets are fully parameterized), 3) if it exists, TRUNCATE it first, 4) copy all current source rows into staging, 5) validate that the staged row count matches the source row count (done via pipeline variables set inside the per-environment Switch cases, then compared in a single top-level IfCondition - ADF does not allow an IfCondition/Switch/ForEach/Until to be nested directly inside a Switch activity's cases), 6) mark the run as SUCCESS (MarkStagingSuccess Lookup) and update the mig.StagingLoadRun audit row to SUCCESS with the row counts - a row-count mismatch or unknown environment updates the audit row to FAILED and fails the pipeline instead. See adf-copy-parameterized-pipleline.md, Use Case 1.0.",
+        "parameters": {
+            "SourceEnvironment": { "type": "string" },
+            "SourceDatabase": { "type": "string" },
+            "SourceSchema": { "type": "string", "defaultValue": "dbo" },
+            "SourceTable": { "type": "string" },
+            "MasterBatchId": { "type": "string", "defaultValue": "" }
+        },
+        "variables": {
+            "SourceRowCount": { "type": "String" },
+            "StagingRowCount": { "type": "String" },
+            "StagingLoadRunId": { "type": "String" }
+        },
+        "activities": [
+            {
+                "name": "InsertStagingLoadRun",
+                "type": "Lookup",
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "DECLARE @Id BIGINT; INSERT INTO mig.StagingLoadRun (BatchId, SourceEnvironment, SourceSchema, SourceTable, TargetSchema, TargetTable, LoadStatus) VALUES (NULLIF('@{pipeline().parameters.MasterBatchId}', ''), '@{pipeline().parameters.SourceEnvironment}', '@{pipeline().parameters.SourceSchema}', '@{pipeline().parameters.SourceTable}', 'mig_stg_@{toLower(pipeline().parameters.SourceEnvironment)}', '@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}', 'RUNNING'); SET @Id = SCOPE_IDENTITY(); SELECT @Id AS StagingLoadRunId;"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "StagingLoadRun" }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "SetStagingLoadRunId",
+                "type": "SetVariable",
+                "dependsOn": [ { "activity": "InsertStagingLoadRun", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "variableName": "StagingLoadRunId",
+                    "value": { "value": "@string(activity('InsertStagingLoadRun').output.firstRow.StagingLoadRunId)", "type": "Expression" }
+                }
+            },
+            {
+                "name": "CheckStagingTableExists",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "SetStagingLoadRunId", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "SELECT CASE WHEN OBJECT_ID('mig_stg_@{toLower(pipeline().parameters.SourceEnvironment)}.@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}') IS NULL THEN 0 ELSE 1 END AS TableExists"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "SchemaName": "@concat('mig_stg_', toLower(pipeline().parameters.SourceEnvironment))",
+                            "TableName": "@concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)"
+                        }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "TruncateStagingIfExists",
+                "type": "IfCondition",
+                "dependsOn": [ { "activity": "CheckStagingTableExists", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "expression": { "value": "@equals(activity('CheckStagingTableExists').output.firstRow.TableExists, 1)", "type": "Expression" },
+                    "ifTrueActivities": [
+                        {
+                            "name": "TruncateStagingTable",
+                            "type": "Script",
+                            "typeProperties": {
+                                "scripts": [
+                                    {
+                                        "type": "Query",
+                                        "text": "TRUNCATE TABLE mig_stg_@{toLower(pipeline().parameters.SourceEnvironment)}.[@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}]"
+                                    }
+                                ]
+                            },
+                            "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "RouteCopyToStaging",
+                "type": "Switch",
+                "dependsOn": [ { "activity": "TruncateStagingIfExists", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "on": { "value": "@if(equals(toLower(pipeline().parameters.SourceEnvironment),'dev'),'Dev',if(equals(toLower(pipeline().parameters.SourceEnvironment),'tst'),'tst',if(equals(toLower(pipeline().parameters.SourceEnvironment),'acc'),'Acc','Unknown')))", "type": "Expression" },
+                    "cases": [
+                        {
+                            "value": "Dev",
+                            "activities": [
+                                {
+                                    "name": "GetSourceColumnDefs_Dev",
+                                    "type": "Lookup",
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT STRING_AGG(CAST(QUOTENAME(COLUMN_NAME) + ' ' + DATA_TYPE + CASE WHEN DATA_TYPE IN ('varchar','nvarchar','char','nchar') THEN '(' + CASE WHEN CHARACTER_MAXIMUM_LENGTH = -1 THEN 'MAX' ELSE CAST(CHARACTER_MAXIMUM_LENGTH AS VARCHAR(10)) END + ')' WHEN DATA_TYPE IN ('decimal','numeric') THEN '(' + CAST(NUMERIC_PRECISION AS VARCHAR(10)) + ',' + CAST(NUMERIC_SCALE AS VARCHAR(10)) + ')' ELSE '' END + CASE WHEN COLLATION_NAME IS NOT NULL THEN ' COLLATE ' + COLLATION_NAME ELSE '' END + CASE WHEN IS_NULLABLE = 'NO' THEN ' NOT NULL' ELSE ' NULL' END AS VARCHAR(MAX)), ', ') WITHIN GROUP (ORDER BY ORDINAL_POSITION) AS ColumnDefs FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '@{pipeline().parameters.SourceSchema}' AND TABLE_NAME = '@{pipeline().parameters.SourceTable}'"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Dev",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CreateStagingTableIfMissing_Dev",
+                                    "type": "Script",
+                                    "dependsOn": [ { "activity": "GetSourceColumnDefs_Dev", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "scripts": [
+                                            {
+                                                "type": "Query",
+                                                "text": "IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'mig_stg_dev') EXEC('CREATE SCHEMA mig_stg_dev'); IF OBJECT_ID('mig_stg_dev.@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}') IS NULL CREATE TABLE mig_stg_dev.[@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}] (@{activity('GetSourceColumnDefs_Dev').output.firstRow.ColumnDefs})"
+                                            }
+                                        ]
+                                    },
+                                    "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+                                },
+                                {
+                                    "name": "CopyToStaging_Dev",
+                                    "type": "Copy",
+                                    "dependsOn": [ { "activity": "CreateStagingTableIfMissing_Dev", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT * FROM [@{pipeline().parameters.SourceSchema}].[@{pipeline().parameters.SourceTable}]"
+                                        },
+                                        "sink": { "type": "AzureSqlSink" }
+                                    },
+                                    "inputs": [
+                                        {
+                                            "referenceName": "DS_SourceTableMig_Dev",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        }
+                                    ],
+                                    "outputs": [
+                                        {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": { "SchemaName": "mig_stg_dev", "TableName": "@concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)" }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "CountSourceRows_Dev",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyToStaging_Dev", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT COUNT(*) AS Cnt FROM [@{pipeline().parameters.SourceSchema}].[@{pipeline().parameters.SourceTable}]"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Dev",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CountStagingRows_Dev",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyToStaging_Dev", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT COUNT(*) AS Cnt FROM mig_stg_dev.[@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}]"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": { "SchemaName": "mig_stg_dev", "TableName": "@concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)" }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "SetSourceRowCount_Dev",
+                                    "type": "SetVariable",
+                                    "dependsOn": [ { "activity": "CountSourceRows_Dev", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "variableName": "SourceRowCount",
+                                        "value": { "value": "@string(activity('CountSourceRows_Dev').output.firstRow.Cnt)", "type": "Expression" }
+                                    }
+                                },
+                                {
+                                    "name": "SetStagingRowCount_Dev",
+                                    "type": "SetVariable",
+                                    "dependsOn": [ { "activity": "CountStagingRows_Dev", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "variableName": "StagingRowCount",
+                                        "value": { "value": "@string(activity('CountStagingRows_Dev').output.firstRow.Cnt)", "type": "Expression" }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "value": "tst",
+                            "activities": [
+                                {
+                                    "name": "GetSourceColumnDefs_Test",
+                                    "type": "Lookup",
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT STRING_AGG(CAST(QUOTENAME(COLUMN_NAME) + ' ' + DATA_TYPE + CASE WHEN DATA_TYPE IN ('varchar','nvarchar','char','nchar') THEN '(' + CASE WHEN CHARACTER_MAXIMUM_LENGTH = -1 THEN 'MAX' ELSE CAST(CHARACTER_MAXIMUM_LENGTH AS VARCHAR(10)) END + ')' WHEN DATA_TYPE IN ('decimal','numeric') THEN '(' + CAST(NUMERIC_PRECISION AS VARCHAR(10)) + ',' + CAST(NUMERIC_SCALE AS VARCHAR(10)) + ')' ELSE '' END + CASE WHEN COLLATION_NAME IS NOT NULL THEN ' COLLATE ' + COLLATION_NAME ELSE '' END + CASE WHEN IS_NULLABLE = 'NO' THEN ' NOT NULL' ELSE ' NULL' END AS VARCHAR(MAX)), ', ') WITHIN GROUP (ORDER BY ORDINAL_POSITION) AS ColumnDefs FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '@{pipeline().parameters.SourceSchema}' AND TABLE_NAME = '@{pipeline().parameters.SourceTable}'"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Test",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CreateStagingTableIfMissing_Test",
+                                    "type": "Script",
+                                    "dependsOn": [ { "activity": "GetSourceColumnDefs_Test", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "scripts": [
+                                            {
+                                                "type": "Query",
+                                                "text": "IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'mig_stg_tst') EXEC('CREATE SCHEMA mig_stg_tst'); IF OBJECT_ID('mig_stg_tst.@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}') IS NULL CREATE TABLE mig_stg_tst.[@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}] (@{activity('GetSourceColumnDefs_Test').output.firstRow.ColumnDefs})"
+                                            }
+                                        ]
+                                    },
+                                    "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+                                },
+                                {
+                                    "name": "CopyToStaging_Test",
+                                    "type": "Copy",
+                                    "dependsOn": [ { "activity": "CreateStagingTableIfMissing_Test", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT * FROM [@{pipeline().parameters.SourceSchema}].[@{pipeline().parameters.SourceTable}]"
+                                        },
+                                        "sink": { "type": "AzureSqlSink" }
+                                    },
+                                    "inputs": [
+                                        {
+                                            "referenceName": "DS_SourceTableMig_Test",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        }
+                                    ],
+                                    "outputs": [
+                                        {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": { "SchemaName": "mig_stg_tst", "TableName": "@concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)" }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "CountSourceRows_Test",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyToStaging_Test", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT COUNT(*) AS Cnt FROM [@{pipeline().parameters.SourceSchema}].[@{pipeline().parameters.SourceTable}]"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Test",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CountStagingRows_Test",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyToStaging_Test", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT COUNT(*) AS Cnt FROM mig_stg_tst.[@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}]"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": { "SchemaName": "mig_stg_tst", "TableName": "@concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)" }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "SetSourceRowCount_Test",
+                                    "type": "SetVariable",
+                                    "dependsOn": [ { "activity": "CountSourceRows_Test", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "variableName": "SourceRowCount",
+                                        "value": { "value": "@string(activity('CountSourceRows_Test').output.firstRow.Cnt)", "type": "Expression" }
+                                    }
+                                },
+                                {
+                                    "name": "SetStagingRowCount_Test",
+                                    "type": "SetVariable",
+                                    "dependsOn": [ { "activity": "CountStagingRows_Test", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "variableName": "StagingRowCount",
+                                        "value": { "value": "@string(activity('CountStagingRows_Test').output.firstRow.Cnt)", "type": "Expression" }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "value": "Acc",
+                            "activities": [
+                                {
+                                    "name": "GetSourceColumnDefs_Acc",
+                                    "type": "Lookup",
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT STRING_AGG(CAST(QUOTENAME(COLUMN_NAME) + ' ' + DATA_TYPE + CASE WHEN DATA_TYPE IN ('varchar','nvarchar','char','nchar') THEN '(' + CASE WHEN CHARACTER_MAXIMUM_LENGTH = -1 THEN 'MAX' ELSE CAST(CHARACTER_MAXIMUM_LENGTH AS VARCHAR(10)) END + ')' WHEN DATA_TYPE IN ('decimal','numeric') THEN '(' + CAST(NUMERIC_PRECISION AS VARCHAR(10)) + ',' + CAST(NUMERIC_SCALE AS VARCHAR(10)) + ')' ELSE '' END + CASE WHEN COLLATION_NAME IS NOT NULL THEN ' COLLATE ' + COLLATION_NAME ELSE '' END + CASE WHEN IS_NULLABLE = 'NO' THEN ' NOT NULL' ELSE ' NULL' END AS VARCHAR(MAX)), ', ') WITHIN GROUP (ORDER BY ORDINAL_POSITION) AS ColumnDefs FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '@{pipeline().parameters.SourceSchema}' AND TABLE_NAME = '@{pipeline().parameters.SourceTable}'"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Acc",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CreateStagingTableIfMissing_Acc",
+                                    "type": "Script",
+                                    "dependsOn": [ { "activity": "GetSourceColumnDefs_Acc", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "scripts": [
+                                            {
+                                                "type": "Query",
+                                                "text": "IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'mig_stg_acc') EXEC('CREATE SCHEMA mig_stg_acc'); IF OBJECT_ID('mig_stg_acc.@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}') IS NULL CREATE TABLE mig_stg_acc.[@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}] (@{activity('GetSourceColumnDefs_Acc').output.firstRow.ColumnDefs})"
+                                            }
+                                        ]
+                                    },
+                                    "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+                                },
+                                {
+                                    "name": "CopyToStaging_Acc",
+                                    "type": "Copy",
+                                    "dependsOn": [ { "activity": "CreateStagingTableIfMissing_Acc", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT * FROM [@{pipeline().parameters.SourceSchema}].[@{pipeline().parameters.SourceTable}]"
+                                        },
+                                        "sink": { "type": "AzureSqlSink" }
+                                    },
+                                    "inputs": [
+                                        {
+                                            "referenceName": "DS_SourceTableMig_Acc",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        }
+                                    ],
+                                    "outputs": [
+                                        {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": { "SchemaName": "mig_stg_acc", "TableName": "@concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)" }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "CountSourceRows_Acc",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyToStaging_Acc", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT COUNT(*) AS Cnt FROM [@{pipeline().parameters.SourceSchema}].[@{pipeline().parameters.SourceTable}]"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Acc",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": "@pipeline().parameters.SourceSchema",
+                                                "TableName": "@pipeline().parameters.SourceTable"
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CountStagingRows_Acc",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyToStaging_Acc", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": "SELECT COUNT(*) AS Cnt FROM mig_stg_acc.[@{concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)}]"
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": { "SchemaName": "mig_stg_acc", "TableName": "@concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)" }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "SetSourceRowCount_Acc",
+                                    "type": "SetVariable",
+                                    "dependsOn": [ { "activity": "CountSourceRows_Acc", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "variableName": "SourceRowCount",
+                                        "value": { "value": "@string(activity('CountSourceRows_Acc').output.firstRow.Cnt)", "type": "Expression" }
+                                    }
+                                },
+                                {
+                                    "name": "SetStagingRowCount_Acc",
+                                    "type": "SetVariable",
+                                    "dependsOn": [ { "activity": "CountStagingRows_Acc", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "variableName": "StagingRowCount",
+                                        "value": { "value": "@string(activity('CountStagingRows_Acc').output.firstRow.Cnt)", "type": "Expression" }
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "defaultActivities": [
+                        {
+                            "name": "UpdateStagingLoadRunFailed_UnknownEnv",
+                            "type": "Script",
+                            "typeProperties": {
+                                "scripts": [
+                                    {
+                                        "type": "Query",
+                                        "text": "UPDATE mig.StagingLoadRun SET LoadStatus = 'FAILED', ErrorMessage = 'Unknown SourceEnvironment.', CompletedAt = SYSUTCDATETIME() WHERE StagingLoadRunId = @{variables('StagingLoadRunId')};"
+                                    }
+                                ]
+                            },
+                            "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+                        },
+                        {
+                            "name": "UnknownSourceEnvironment",
+                            "type": "Fail",
+                            "dependsOn": [ { "activity": "UpdateStagingLoadRunFailed_UnknownEnv", "dependencyConditions": [ "Succeeded" ] } ],
+                            "typeProperties": {
+                                "message": {
+                                    "value": "@concat('SourceEnvironment must be Dev, tst, or Acc - got: ', pipeline().parameters.SourceEnvironment)",
+                                    "type": "Expression"
+                                },
+                                "errorCode": "UnknownSourceEnvironment"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "ValidateRowCount",
+                "type": "IfCondition",
+                "dependsOn": [ { "activity": "RouteCopyToStaging", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "expression": { "value": "@not(equals(variables('SourceRowCount'), variables('StagingRowCount')))", "type": "Expression" },
+                    "ifTrueActivities": [
+                        {
+                            "name": "UpdateStagingLoadRunFailed_RowCountMismatch",
+                            "type": "Script",
+                            "typeProperties": {
+                                "scripts": [
+                                    {
+                                        "type": "Query",
+                                        "text": "UPDATE mig.StagingLoadRun SET LoadStatus = 'FAILED', SourceRowCount = @{variables('SourceRowCount')}, StagingRowCount = @{variables('StagingRowCount')}, ErrorMessage = 'Staging row count did not match source row count.', CompletedAt = SYSUTCDATETIME() WHERE StagingLoadRunId = @{variables('StagingLoadRunId')};"
+                                    }
+                                ]
+                            },
+                            "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+                        },
+                        {
+                            "name": "RowCountMismatch",
+                            "type": "Fail",
+                            "dependsOn": [ { "activity": "UpdateStagingLoadRunFailed_RowCountMismatch", "dependencyConditions": [ "Succeeded" ] } ],
+                            "typeProperties": {
+                                "message": {
+                                    "value": "@concat('Staging row count mismatch for ', pipeline().parameters.SourceSchema, '.', pipeline().parameters.SourceTable, ': source=', variables('SourceRowCount'), ', staging=', variables('StagingRowCount'))",
+                                    "type": "Expression"
+                                },
+                                "errorCode": "StagingRowCountMismatch"
+                            }
+                        }
+                    ],
+                    "ifFalseActivities": [
+                        {
+                            "name": "MarkStagingSuccess",
+                            "type": "Lookup",
+                            "typeProperties": {
+                                "source": { "type": "AzureSqlSource", "sqlReaderQuery": "SELECT 'SUCCESS' AS Status" },
+                                "dataset": {
+                                    "referenceName": "DS_StagingTableMig",
+                                    "type": "DatasetReference",
+                                    "parameters": { "SchemaName": "@concat('mig_stg_', toLower(pipeline().parameters.SourceEnvironment))", "TableName": "@concat(pipeline().parameters.SourceSchema,'_',pipeline().parameters.SourceTable)" }
+                                },
+                                "firstRowOnly": true
+                            }
+                        },
+                        {
+                            "name": "UpdateStagingLoadRunSuccess",
+                            "type": "Script",
+                            "dependsOn": [ { "activity": "MarkStagingSuccess", "dependencyConditions": [ "Succeeded" ] } ],
+                            "typeProperties": {
+                                "scripts": [
+                                    {
+                                        "type": "Query",
+                                        "text": "UPDATE mig.StagingLoadRun SET LoadStatus = 'SUCCESS', SourceRowCount = @{variables('SourceRowCount')}, StagingRowCount = @{variables('StagingRowCount')}, CompletedAt = SYSUTCDATETIME() WHERE StagingLoadRunId = @{variables('StagingLoadRunId')};"
+                                    }
+                                ]
+                            },
+                            "linkedServiceName": { "referenceName": "LS_ProdSqlMig", "type": "LinkedServiceReference" }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

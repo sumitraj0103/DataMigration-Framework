@@ -1,0 +1,6 @@
+﻿{
+    "targetResourceGroup":  "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAP-TST",
+    "resources":  [
+                      "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03"
+                  ]
+}

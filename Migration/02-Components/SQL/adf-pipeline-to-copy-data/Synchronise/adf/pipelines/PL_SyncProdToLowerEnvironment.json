@@ -1,0 +1,479 @@
+{
+    "name": "PL_SyncProdToLowerEnvironment",
+    "properties": {
+        "description": "Strategy 2 (Prod -> Lower Environment Synchronization): looks up ConfigurationId in mig.SyncConfiguration (Prd server), which specifies a single TargetEnvironment and a SyncStrategy (UPSERT_ALL, INSERT_ALL, UPSERT_ENV_SPECIFIC, or INSERT_ENV_SPECIFIC). Builds the Production source query accordingly (unfiltered for the *_ALL strategies; filtered to TargetEnvironment via EnvironmentColumn for the *_ENV_SPECIFIC strategies; additionally excluding rows whose BusinessKeyColumns already exist in the target table for the INSERT_* strategies). Before copying, checks the Production source for duplicate BusinessKeyColumns and blocks the sync if any are found. If clean, writes the result into the matching lower-environment table (Dev/Test/Acc) via an AzureSqlSink Copy Activity (writeBehavior upsert for the UPSERT_* strategies, insert for the INSERT_* strategies), then checks the target table for duplicate BusinessKeyColumns after the write and fails the sync if any are found. Logs the outcome to mig.SyncRun. Reuses the existing linked services/datasets from ../../adf (LS_ProdSqlMig, LS_SourceSqlMig_Dev/Test/Acc, DS_StagingTableMig, DS_SourceTableMig_Dev/Test/Acc). See Synchronise/README.md.",
+        "parameters": {
+            "ConfigurationId": { "type": "int" },
+            "TargetEnvironment": { "type": "string" },
+            "MasterBatchId": { "type": "string", "defaultValue": "" }
+        },
+        "variables": {
+            "BatchId": { "type": "String" }
+        },
+        "activities": [
+            {
+                "name": "SetBatchId",
+                "type": "SetVariable",
+                "typeProperties": {
+                    "variableName": "BatchId",
+                    "value": { "value": "@if(empty(pipeline().parameters.MasterBatchId), guid(), pipeline().parameters.MasterBatchId)", "type": "Expression" }
+                }
+            },
+            {
+                "name": "GetSyncConfiguration",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "SetBatchId", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "SELECT SourceSchema, SourceTable, TargetSchema, TargetTable, EnvironmentColumn, SyncStrategy, BusinessKeyColumns FROM mig.SyncConfiguration WHERE SyncConfigurationId = @{pipeline().parameters.ConfigurationId} AND IsActive = 1;"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "SyncConfiguration" }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "InsertSyncRunRunning",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "GetSyncConfiguration", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "DECLARE @Id BIGINT; INSERT INTO mig.SyncRun (SyncConfigurationId, TargetEnvironment, BatchId, SyncStatus) VALUES (@{pipeline().parameters.ConfigurationId}, '@{pipeline().parameters.TargetEnvironment}', '@{variables('BatchId')}', 'RUNNING'); SET @Id = SCOPE_IDENTITY(); SELECT @Id AS SyncRunId;"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "SyncRun" }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "CheckSourceDuplicateKeysBeforeUpsert",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "InsertSyncRunRunning", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": {
+                            "value": "@concat('SELECT ', activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ', COUNT(*) AS DupCount FROM (', if(contains(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'ENV_SPECIFIC'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', activity('GetSyncConfiguration').output.firstRow.EnvironmentColumn, ' = ''', pipeline().parameters.TargetEnvironment, ''''), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable)), ') src GROUP BY ', activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ' HAVING COUNT(*) > 1')",
+                            "type": "Expression"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": {
+                            "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.SourceSchema", "type": "Expression" },
+                            "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.SourceTable", "type": "Expression" }
+                        }
+                    },
+                    "firstRowOnly": false
+                }
+            },
+            {
+                "name": "IfSourceHasDuplicateKeys",
+                "type": "IfCondition",
+                "dependsOn": [ { "activity": "CheckSourceDuplicateKeysBeforeUpsert", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "expression": {
+                        "value": "@greater(length(activity('CheckSourceDuplicateKeysBeforeUpsert').output.value), 0)",
+                        "type": "Expression"
+                    },
+                    "ifTrueActivities": [
+                        {
+                            "name": "MarkSyncRunDuplicateSourceKeys",
+                            "type": "Lookup",
+                            "typeProperties": {
+                                "source": {
+                                    "type": "AzureSqlSource",
+                                    "sqlReaderQuery": "UPDATE mig.SyncRun SET SyncStatus = 'ERROR', ErrorMessage = 'Duplicate business key(s) found in Production source (BusinessKeyColumns) before upsert; sync blocked.', CompletedAt = SYSUTCDATETIME() WHERE SyncRunId = @{activity('InsertSyncRunRunning').output.firstRow.SyncRunId}; SELECT 1 AS Done;"
+                                },
+                                "dataset": {
+                                    "referenceName": "DS_StagingTableMig",
+                                    "type": "DatasetReference",
+                                    "parameters": { "SchemaName": "mig", "TableName": "SyncRun" }
+                                },
+                                "firstRowOnly": true
+                            }
+                        },
+                        {
+                            "name": "FailSyncRunDuplicateSourceKeys",
+                            "type": "Fail",
+                            "dependsOn": [ { "activity": "MarkSyncRunDuplicateSourceKeys", "dependencyConditions": [ "Succeeded" ] } ],
+                            "typeProperties": {
+                                "message": {
+                                    "value": "@concat('Sync blocked for ConfigurationId ', string(pipeline().parameters.ConfigurationId), ' -> ', pipeline().parameters.TargetEnvironment, ': duplicate business key(s) found in Production source before upsert. See mig.SyncRun for the audited error.')",
+                                    "type": "Expression"
+                                },
+                                "errorCode": "DuplicateBusinessKeyInSource"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "SwitchTargetEnvironment",
+                "type": "Switch",
+                "dependsOn": [ { "activity": "IfSourceHasDuplicateKeys", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "on": { "value": "@pipeline().parameters.TargetEnvironment", "type": "Expression" },
+                    "cases": [
+                        {
+                            "value": "dev",
+                            "activities": [
+                                {
+                                    "name": "GetExistingTargetKeysDev",
+                                    "type": "Lookup",
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@concat('SELECT ISNULL(STRING_AGG(CHAR(39) + REPLACE(CAST(', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' AS NVARCHAR(MAX)), CHAR(39), CHAR(39)+CHAR(39)) + CHAR(39), '',''), CHAR(39) + ''__NONE__'' + CHAR(39)) AS ExistingKeysCsv FROM ', activity('GetSyncConfiguration').output.firstRow.TargetSchema, '.', activity('GetSyncConfiguration').output.firstRow.TargetTable)",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Dev",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CopyProdToDev",
+                                    "type": "Copy",
+                                    "dependsOn": [ { "activity": "GetExistingTargetKeysDev", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@if(startsWith(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'INSERT_'), if(contains(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'ENV_SPECIFIC'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', activity('GetSyncConfiguration').output.firstRow.EnvironmentColumn, ' = ''', pipeline().parameters.TargetEnvironment, ''' AND ', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' NOT IN (', activity('GetExistingTargetKeysDev').output.firstRow.ExistingKeysCsv, ')'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' NOT IN (', activity('GetExistingTargetKeysDev').output.firstRow.ExistingKeysCsv, ')')), if(contains(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'ENV_SPECIFIC'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', activity('GetSyncConfiguration').output.firstRow.EnvironmentColumn, ' = ''', pipeline().parameters.TargetEnvironment, ''''), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable)))",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "sink": {
+                                            "type": "AzureSqlSink",
+                                            "writeBehavior": {
+                                                "value": "@if(startsWith(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'INSERT_'), 'insert', 'upsert')",
+                                                "type": "Expression"
+                                            },
+                                            "upsertSettings": {
+                                                "useTempDB": true,
+                                                "keys": { "value": "@split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')", "type": "Expression" }
+                                            }
+                                        }
+                                    },
+                                    "inputs": [
+                                        {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.SourceSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.SourceTable", "type": "Expression" }
+                                            }
+                                        }
+                                    ],
+                                    "outputs": [
+                                        {
+                                            "referenceName": "DS_SourceTableMig_Dev",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "CheckTargetDuplicateKeysAfterUpsertDev",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyProdToDev", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@concat('IF EXISTS (SELECT 1 FROM ', activity('GetSyncConfiguration').output.firstRow.TargetSchema, '.', activity('GetSyncConfiguration').output.firstRow.TargetTable, ' GROUP BY ', activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ' HAVING COUNT(*) > 1) THROW 51000, ''Duplicate business key(s) found in the Dev target table after upsert. See mig.SyncRun for the audited error.'', 1; SELECT 1 AS Ok;')",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Dev",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "value": "tst",
+                            "activities": [
+                                {
+                                    "name": "GetExistingTargetKeysTest",
+                                    "type": "Lookup",
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@concat('SELECT ISNULL(STRING_AGG(CHAR(39) + REPLACE(CAST(', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' AS NVARCHAR(MAX)), CHAR(39), CHAR(39)+CHAR(39)) + CHAR(39), '',''), CHAR(39) + ''__NONE__'' + CHAR(39)) AS ExistingKeysCsv FROM ', activity('GetSyncConfiguration').output.firstRow.TargetSchema, '.', activity('GetSyncConfiguration').output.firstRow.TargetTable)",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Test",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CopyProdToTest",
+                                    "type": "Copy",
+                                    "dependsOn": [ { "activity": "GetExistingTargetKeysTest", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@if(startsWith(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'INSERT_'), if(contains(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'ENV_SPECIFIC'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', activity('GetSyncConfiguration').output.firstRow.EnvironmentColumn, ' = ''', pipeline().parameters.TargetEnvironment, ''' AND ', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' NOT IN (', activity('GetExistingTargetKeysTest').output.firstRow.ExistingKeysCsv, ')'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' NOT IN (', activity('GetExistingTargetKeysTest').output.firstRow.ExistingKeysCsv, ')')), if(contains(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'ENV_SPECIFIC'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', activity('GetSyncConfiguration').output.firstRow.EnvironmentColumn, ' = ''', pipeline().parameters.TargetEnvironment, ''''), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable)))",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "sink": {
+                                            "type": "AzureSqlSink",
+                                            "writeBehavior": {
+                                                "value": "@if(startsWith(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'INSERT_'), 'insert', 'upsert')",
+                                                "type": "Expression"
+                                            },
+                                            "upsertSettings": {
+                                                "useTempDB": true,
+                                                "keys": { "value": "@split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')", "type": "Expression" }
+                                            }
+                                        }
+                                    },
+                                    "inputs": [
+                                        {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.SourceSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.SourceTable", "type": "Expression" }
+                                            }
+                                        }
+                                    ],
+                                    "outputs": [
+                                        {
+                                            "referenceName": "DS_SourceTableMig_Test",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "CheckTargetDuplicateKeysAfterUpsertTest",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyProdToTest", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@concat('IF EXISTS (SELECT 1 FROM ', activity('GetSyncConfiguration').output.firstRow.TargetSchema, '.', activity('GetSyncConfiguration').output.firstRow.TargetTable, ' GROUP BY ', activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ' HAVING COUNT(*) > 1) THROW 51000, ''Duplicate business key(s) found in the Test target table after upsert. See mig.SyncRun for the audited error.'', 1; SELECT 1 AS Ok;')",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Test",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "value": "acc",
+                            "activities": [
+                                {
+                                    "name": "GetExistingTargetKeysAcc",
+                                    "type": "Lookup",
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@concat('SELECT ISNULL(STRING_AGG(CHAR(39) + REPLACE(CAST(', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' AS NVARCHAR(MAX)), CHAR(39), CHAR(39)+CHAR(39)) + CHAR(39), '',''), CHAR(39) + ''__NONE__'' + CHAR(39)) AS ExistingKeysCsv FROM ', activity('GetSyncConfiguration').output.firstRow.TargetSchema, '.', activity('GetSyncConfiguration').output.firstRow.TargetTable)",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Acc",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                },
+                                {
+                                    "name": "CopyProdToAcc",
+                                    "type": "Copy",
+                                    "dependsOn": [ { "activity": "GetExistingTargetKeysAcc", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@if(startsWith(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'INSERT_'), if(contains(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'ENV_SPECIFIC'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', activity('GetSyncConfiguration').output.firstRow.EnvironmentColumn, ' = ''', pipeline().parameters.TargetEnvironment, ''' AND ', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' NOT IN (', activity('GetExistingTargetKeysAcc').output.firstRow.ExistingKeysCsv, ')'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', if(greater(length(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')), 1), concat('CONCAT(', join(split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ','), ', CHAR(124), '), ')'), activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns), ' NOT IN (', activity('GetExistingTargetKeysAcc').output.firstRow.ExistingKeysCsv, ')')), if(contains(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'ENV_SPECIFIC'), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable, ' WHERE ', activity('GetSyncConfiguration').output.firstRow.EnvironmentColumn, ' = ''', pipeline().parameters.TargetEnvironment, ''''), concat('SELECT * FROM ', activity('GetSyncConfiguration').output.firstRow.SourceSchema, '.', activity('GetSyncConfiguration').output.firstRow.SourceTable)))",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "sink": {
+                                            "type": "AzureSqlSink",
+                                            "writeBehavior": {
+                                                "value": "@if(startsWith(activity('GetSyncConfiguration').output.firstRow.SyncStrategy, 'INSERT_'), 'insert', 'upsert')",
+                                                "type": "Expression"
+                                            },
+                                            "upsertSettings": {
+                                                "useTempDB": true,
+                                                "keys": { "value": "@split(activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ',')", "type": "Expression" }
+                                            }
+                                        }
+                                    },
+                                    "inputs": [
+                                        {
+                                            "referenceName": "DS_StagingTableMig",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.SourceSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.SourceTable", "type": "Expression" }
+                                            }
+                                        }
+                                    ],
+                                    "outputs": [
+                                        {
+                                            "referenceName": "DS_SourceTableMig_Acc",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "CheckTargetDuplicateKeysAfterUpsertAcc",
+                                    "type": "Lookup",
+                                    "dependsOn": [ { "activity": "CopyProdToAcc", "dependencyConditions": [ "Succeeded" ] } ],
+                                    "typeProperties": {
+                                        "source": {
+                                            "type": "AzureSqlSource",
+                                            "sqlReaderQuery": {
+                                                "value": "@concat('IF EXISTS (SELECT 1 FROM ', activity('GetSyncConfiguration').output.firstRow.TargetSchema, '.', activity('GetSyncConfiguration').output.firstRow.TargetTable, ' GROUP BY ', activity('GetSyncConfiguration').output.firstRow.BusinessKeyColumns, ' HAVING COUNT(*) > 1) THROW 51000, ''Duplicate business key(s) found in the Acc target table after upsert. See mig.SyncRun for the audited error.'', 1; SELECT 1 AS Ok;')",
+                                                "type": "Expression"
+                                            }
+                                        },
+                                        "dataset": {
+                                            "referenceName": "DS_SourceTableMig_Acc",
+                                            "type": "DatasetReference",
+                                            "parameters": {
+                                                "SchemaName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetSchema", "type": "Expression" },
+                                                "TableName": { "value": "@activity('GetSyncConfiguration').output.firstRow.TargetTable", "type": "Expression" }
+                                            }
+                                        },
+                                        "firstRowOnly": true
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "defaultActivities": [
+                        {
+                            "name": "FailUnknownEnvironment",
+                            "type": "Fail",
+                            "typeProperties": {
+                                "message": {
+                                    "value": "Unknown TargetEnvironment '@{pipeline().parameters.TargetEnvironment}'. Expected Dev, Test, or Acc.",
+                                    "type": "Expression"
+                                },
+                                "errorCode": "UnknownTargetEnvironment"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "MarkSyncRunSuccess",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "SwitchTargetEnvironment", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "UPDATE mig.SyncRun SET SyncStatus = 'SUCCESS', CompletedAt = SYSUTCDATETIME() WHERE SyncRunId = @{activity('InsertSyncRunRunning').output.firstRow.SyncRunId}; SELECT 1 AS Done;"
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "SyncRun" }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "MarkSyncRunError",
+                "type": "Lookup",
+                "dependsOn": [ { "activity": "SwitchTargetEnvironment", "dependencyConditions": [ "Failed" ] } ],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": {
+                            "value": "@concat('UPDATE mig.SyncRun SET SyncStatus = ''ERROR'', ErrorMessage = ''', replace(string(activity('SwitchTargetEnvironment').Error.message), '''', ''''''), ''', CompletedAt = SYSUTCDATETIME() WHERE SyncRunId = ', string(activity('InsertSyncRunRunning').output.firstRow.SyncRunId), '; SELECT 1 AS Done;')",
+                            "type": "Expression"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "DS_StagingTableMig",
+                        "type": "DatasetReference",
+                        "parameters": { "SchemaName": "mig", "TableName": "SyncRun" }
+                    },
+                    "firstRowOnly": true
+                }
+            },
+            {
+                "name": "FailSyncRun",
+                "type": "Fail",
+                "dependsOn": [ { "activity": "MarkSyncRunError", "dependencyConditions": [ "Succeeded" ] } ],
+                "typeProperties": {
+                    "message": {
+                        "value": "@concat('Sync failed for ConfigurationId ', string(pipeline().parameters.ConfigurationId), ' -> ', pipeline().parameters.TargetEnvironment, ': ', string(activity('SwitchTargetEnvironment').Error.message), '. See mig.SyncRun for the audited error.')",
+                        "type": "Expression"
+                    },
+                    "errorCode": "SyncFailed"
+                }
+            }
+        ]
+    }
+}

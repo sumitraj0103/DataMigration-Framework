@@ -1,0 +1,853 @@
+﻿{
+  "changes": [
+    {
+      "after": {
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.DataFactory/factories/MSC-DAF-DMAPSB-MGPOC",
+        "identity": {
+          "type": "SystemAssigned"
+        },
+        "location": "westeurope",
+        "name": "MSC-DAF-DMAPSB-MGPOC",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "tags": {
+          "ApplicationOwner": "LieshoutRWP@delagelanden.com",
+          "CI": "DMAPSB"
+        },
+        "type": "Microsoft.DataFactory/factories"
+      },
+      "before": {
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.DataFactory/factories/MSC-DAF-DMAPSB-MGPOC",
+        "identity": {
+          "type": "SystemAssigned"
+        },
+        "location": "westeurope",
+        "name": "MSC-DAF-DMAPSB-MGPOC",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "tags": {
+          "ApplicationOwner": "LieshoutRWP@delagelanden.com",
+          "CI": "DMAPSB"
+        },
+        "type": "Microsoft.DataFactory/factories"
+      },
+      "changeType": "Ignore",
+      "delta": null,
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.DataFactory/factories/MSC-DAF-DMAPSB-MGPOC",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+        "kind": "StorageV2",
+        "location": "westeurope",
+        "name": "mscstadmapsbtraccdev03",
+        "properties": {
+          "accessTier": "Hot",
+          "allowBlobPublicAccess": false,
+          "allowCrossTenantDelegationSas": false,
+          "allowCrossTenantReplication": false,
+          "azureFilesIdentityBasedAuthentication": {
+            "directoryServiceOptions": "None"
+          },
+          "encryption": {
+            "keySource": "Microsoft.Storage"
+          },
+          "isHnsEnabled": true,
+          "isLocalUserEnabled": false,
+          "isSftpEnabled": false,
+          "largeFileSharesState": "Disabled",
+          "minimumTlsVersion": "TLS1_2",
+          "networkAcls": {
+            "bypass": "AzureServices",
+            "defaultAction": "Allow",
+            "ipRules": [
+              {
+                "action": "Allow",
+                "value": "185.221.249.174"
+              },
+              {
+                "action": "Allow",
+                "value": "62.207.93.78"
+              },
+              {
+                "action": "Allow",
+                "value": "185.60.28.2"
+              }
+            ],
+            "resourceAccessRules": [
+              {
+                "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/providers/Microsoft.Security/datascanners/StorageDataScanner",
+                "tenantId": "07751f8b-9617-49d5-9024-85f034f400ec"
+              }
+            ]
+          },
+          "supportsHttpsTrafficOnly": true
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "sku": {
+          "name": "Standard_LRS"
+        },
+        "tags": {
+          "AppAssgnInvalid": "true",
+          "ApplicationOwner": "ruud.vanlieshout@dllgroup.com",
+          "BusinessDomain": "IT Enterprise Platforms",
+          "CI": "DMAP",
+          "CostCenter": "02-1585",
+          "ENV": "DEV",
+          "GroupAssgnInvalid": "false",
+          "LineofIT": "Enterprise Technology Services",
+          "TagVendor": "DMAP",
+          "UserAssgnInvalid": "false"
+        },
+        "type": "Microsoft.Storage/storageAccounts"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+        "kind": "StorageV2",
+        "location": "westeurope",
+        "name": "mscstadmapsbtraccdev03",
+        "properties": {
+          "accessTier": "Hot",
+          "allowBlobPublicAccess": false,
+          "allowCrossTenantDelegationSas": false,
+          "allowCrossTenantReplication": false,
+          "azureFilesIdentityBasedAuthentication": {
+            "directoryServiceOptions": "None"
+          },
+          "encryption": {
+            "keySource": "Microsoft.Storage"
+          },
+          "isHnsEnabled": true,
+          "isLocalUserEnabled": false,
+          "isSftpEnabled": false,
+          "largeFileSharesState": "Disabled",
+          "minimumTlsVersion": "TLS1_2",
+          "networkAcls": {
+            "bypass": "AzureServices",
+            "defaultAction": "Allow",
+            "ipRules": [
+              {
+                "action": "Allow",
+                "value": "185.221.249.174"
+              },
+              {
+                "action": "Allow",
+                "value": "62.207.93.78"
+              },
+              {
+                "action": "Allow",
+                "value": "185.60.28.2"
+              }
+            ],
+            "resourceAccessRules": [
+              {
+                "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/providers/Microsoft.Security/datascanners/StorageDataScanner",
+                "tenantId": "07751f8b-9617-49d5-9024-85f034f400ec"
+              }
+            ]
+          },
+          "supportsHttpsTrafficOnly": true
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "sku": {
+          "name": "Standard_LRS"
+        },
+        "tags": {
+          "ApplicationOwner": "LieshoutRWP@delagelanden.com",
+          "BusinessDomain": "IT Enterprise Platforms",
+          "CI": "DMAPSB",
+          "CostCenter": "02-1585",
+          "ENV": "DEV",
+          "LineofIT": "Enterprise Technology Services",
+          "TagVendor": "DMAP"
+        },
+        "type": "Microsoft.Storage/storageAccounts"
+      },
+      "changeType": "Modify",
+      "delta": [
+        {
+          "after": "ruud.vanlieshout@dllgroup.com",
+          "before": "LieshoutRWP@delagelanden.com",
+          "children": null,
+          "path": "tags.ApplicationOwner",
+          "propertyChangeType": "Modify"
+        },
+        {
+          "after": "DMAP",
+          "before": "DMAPSB",
+          "children": null,
+          "path": "tags.CI",
+          "propertyChangeType": "Modify"
+        },
+        {
+          "after": "true",
+          "before": null,
+          "children": null,
+          "path": "tags.AppAssgnInvalid",
+          "propertyChangeType": "Create"
+        },
+        {
+          "after": "false",
+          "before": null,
+          "children": null,
+          "path": "tags.GroupAssgnInvalid",
+          "propertyChangeType": "Create"
+        },
+        {
+          "after": "false",
+          "before": null,
+          "children": null,
+          "path": "tags.UserAssgnInvalid",
+          "propertyChangeType": "Create"
+        },
+        {
+          "after": {
+            "blob": {
+              "enabled": true,
+              "keyType": "Account"
+            },
+            "file": {
+              "enabled": true,
+              "keyType": "Account"
+            }
+          },
+          "before": null,
+          "children": null,
+          "path": "properties.encryption.services",
+          "propertyChangeType": "NoEffect"
+        }
+      ],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+        "name": "default",
+        "properties": {
+          "containerDeleteRetentionPolicy": {
+            "days": 7,
+            "enabled": true
+          },
+          "deleteRetentionPolicy": {
+            "allowPermanentDelete": false,
+            "days": 7,
+            "enabled": true
+          },
+          "lastAccessTimeTrackingPolicy": {
+            "blobType": [
+              "blockBlob"
+            ],
+            "enable": true,
+            "name": "AccessTimeTracking",
+            "trackingGranularityInDays": 1
+          },
+          "staticWebsite": {
+            "enabled": false
+          }
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+        "name": "default",
+        "properties": {
+          "containerDeleteRetentionPolicy": {
+            "days": 7,
+            "enabled": true
+          },
+          "deleteRetentionPolicy": {
+            "allowPermanentDelete": false,
+            "days": 7,
+            "enabled": true
+          },
+          "lastAccessTimeTrackingPolicy": {
+            "blobType": [
+              "blockBlob"
+            ],
+            "enable": true,
+            "name": "AccessTimeTracking",
+            "trackingGranularityInDays": 1
+          },
+          "staticWebsite": {
+            "enabled": false
+          }
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/archive",
+        "name": "archive",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/archive",
+        "name": "archive",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/archive",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/curated",
+        "name": "curated",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/curated",
+        "name": "curated",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/curated",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/logging",
+        "name": "logging",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/logging",
+        "name": "logging",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/logging",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/raw",
+        "name": "raw",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/raw",
+        "name": "raw",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/raw",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/test",
+        "name": "test",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/test",
+        "name": "test",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/test",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/uctest",
+        "name": "uctest",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/uctest",
+        "name": "uctest",
+        "properties": {
+          "defaultEncryptionScope": "$account-encryption-key",
+          "denyEncryptionScopeOverride": false,
+          "publicAccess": "None"
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/blobServices/default/containers/uctest",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/fileServices/default",
+        "name": "default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/fileServices"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/fileServices/default",
+        "name": "default",
+        "properties": {
+          "shareDeleteRetentionPolicy": {
+            "days": 7,
+            "enabled": true
+          }
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/fileServices"
+      },
+      "changeType": "Modify",
+      "delta": [
+        {
+          "after": null,
+          "before": {
+            "shareDeleteRetentionPolicy": {
+              "days": 7,
+              "enabled": true
+            }
+          },
+          "children": null,
+          "path": "properties",
+          "propertyChangeType": "Delete"
+        }
+      ],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/fileServices/default",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/inventoryPolicies/default",
+        "name": "DefaultInventoryPolicy",
+        "properties": {
+          "policy": {
+            "enabled": true,
+            "rules": [
+              {
+                "definition": {
+                  "filters": {
+                    "blobTypes": [
+                      "blockBlob",
+                      "appendBlob"
+                    ],
+                    "prefixMatch": [
+                      "curated/"
+                    ]
+                  },
+                  "format": "Parquet",
+                  "objectType": "Blob",
+                  "schedule": "Weekly",
+                  "schemaFields": [
+                    "Name",
+                    "Creation-Time",
+                    "Last-Modified",
+                    "ETag",
+                    "Content-Length",
+                    "Content-Type",
+                    "Content-Encoding",
+                    "BlobType",
+                    "AccessTier",
+                    "AccessTierChangeTime",
+                    "AccessTierInferred",
+                    "Expiry-Time",
+                    "hdi_isfolder",
+                    "Owner",
+                    "Group",
+                    "Permissions",
+                    "Acl",
+                    "Metadata",
+                    "LastAccessTime"
+                  ]
+                },
+                "destination": "logging",
+                "enabled": true,
+                "name": "Curated all blobs"
+              },
+              {
+                "definition": {
+                  "filters": {
+                    "blobTypes": [
+                      "blockBlob",
+                      "appendBlob"
+                    ],
+                    "prefixMatch": [
+                      "raw/"
+                    ]
+                  },
+                  "format": "Parquet",
+                  "objectType": "Blob",
+                  "schedule": "Weekly",
+                  "schemaFields": [
+                    "Name",
+                    "Creation-Time",
+                    "Last-Modified",
+                    "ETag",
+                    "Content-Length",
+                    "Content-Type",
+                    "Content-Encoding",
+                    "BlobType",
+                    "AccessTier",
+                    "AccessTierChangeTime",
+                    "AccessTierInferred",
+                    "Expiry-Time",
+                    "hdi_isfolder",
+                    "Owner",
+                    "Group",
+                    "Permissions",
+                    "Acl",
+                    "Metadata",
+                    "LastAccessTime"
+                  ]
+                },
+                "destination": "logging",
+                "enabled": true,
+                "name": "Raw all blobs"
+              }
+            ],
+            "type": "Inventory"
+          }
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/inventoryPolicies"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/inventoryPolicies/default",
+        "name": "DefaultInventoryPolicy",
+        "properties": {
+          "policy": {
+            "enabled": true,
+            "rules": [
+              {
+                "definition": {
+                  "filters": {
+                    "blobTypes": [
+                      "blockBlob",
+                      "appendBlob"
+                    ],
+                    "prefixMatch": [
+                      "curated/"
+                    ]
+                  },
+                  "format": "Parquet",
+                  "objectType": "Blob",
+                  "schedule": "Weekly",
+                  "schemaFields": [
+                    "Name",
+                    "Creation-Time",
+                    "Last-Modified",
+                    "ETag",
+                    "Content-Length",
+                    "Content-Type",
+                    "Content-Encoding",
+                    "BlobType",
+                    "AccessTier",
+                    "AccessTierChangeTime",
+                    "AccessTierInferred",
+                    "Expiry-Time",
+                    "hdi_isfolder",
+                    "Owner",
+                    "Group",
+                    "Permissions",
+                    "Acl",
+                    "Metadata",
+                    "LastAccessTime"
+                  ]
+                },
+                "destination": "logging",
+                "enabled": true,
+                "name": "Curated all blobs"
+              },
+              {
+                "definition": {
+                  "filters": {
+                    "blobTypes": [
+                      "blockBlob",
+                      "appendBlob"
+                    ],
+                    "prefixMatch": [
+                      "raw/"
+                    ]
+                  },
+                  "format": "Parquet",
+                  "objectType": "Blob",
+                  "schedule": "Weekly",
+                  "schemaFields": [
+                    "Name",
+                    "Creation-Time",
+                    "Last-Modified",
+                    "ETag",
+                    "Content-Length",
+                    "Content-Type",
+                    "Content-Encoding",
+                    "BlobType",
+                    "AccessTier",
+                    "AccessTierChangeTime",
+                    "AccessTierInferred",
+                    "Expiry-Time",
+                    "hdi_isfolder",
+                    "Owner",
+                    "Group",
+                    "Permissions",
+                    "Acl",
+                    "Metadata",
+                    "LastAccessTime"
+                  ]
+                },
+                "destination": "logging",
+                "enabled": true,
+                "name": "Raw all blobs"
+              }
+            ],
+            "type": "Inventory"
+          }
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/inventoryPolicies"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/inventoryPolicies/default",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default",
+        "name": "default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/queueServices"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default",
+        "name": "default",
+        "properties": {
+          "logging": {
+            "delete": false,
+            "read": false,
+            "retentionPolicy": {
+              "enabled": false
+            },
+            "version": "1.0",
+            "write": false
+          }
+        },
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/queueServices"
+      },
+      "changeType": "Modify",
+      "delta": [
+        {
+          "after": null,
+          "before": {
+            "logging": {
+              "delete": false,
+              "read": false,
+              "retentionPolicy": {
+                "enabled": false
+              },
+              "version": "1.0",
+              "write": false
+            }
+          },
+          "children": null,
+          "path": "properties",
+          "propertyChangeType": "Delete"
+        }
+      ],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default/queues/aclactionqueue",
+        "name": "aclactionqueue",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/queueServices/queues"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default/queues/aclactionqueue",
+        "name": "aclactionqueue",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/queueServices/queues"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/queueServices/default/queues/aclactionqueue",
+      "symbolicName": null,
+      "unsupportedReason": null
+    },
+    {
+      "after": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/tableServices/default",
+        "name": "default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/tableServices"
+      },
+      "before": {
+        "apiVersion": "2026-04-01",
+        "id": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/tableServices/default",
+        "name": "default",
+        "resourceGroup": "MSC-RSG-DMAPSB-TRACC",
+        "type": "Microsoft.Storage/storageAccounts/tableServices"
+      },
+      "changeType": "NoChange",
+      "delta": [],
+      "deploymentId": null,
+      "extension": null,
+      "identifiers": null,
+      "resourceId": "/subscriptions/c47bfe3d-881a-4142-bf65-ec835858a67b/resourceGroups/MSC-RSG-DMAPSB-TRACC/providers/Microsoft.Storage/storageAccounts/mscstadmapsbtraccdev03/tableServices/default",
+      "symbolicName": null,
+      "unsupportedReason": null
+    }
+  ],
+  "diagnostics": null,
+  "error": null,
+  "potentialChanges": null,
+  "status": "Succeeded"
+}

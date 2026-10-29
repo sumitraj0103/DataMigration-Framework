@@ -1,0 +1,10 @@
+{
+    "name": "LS_ProdSqlMig",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source={{TARGET_SQL_SERVER_FQDN}};Initial Catalog={{DMAP_DATABASE_NAME}}",
+            "authenticationType": "SystemAssignedManagedIdentity"
+        }
+    }
+}

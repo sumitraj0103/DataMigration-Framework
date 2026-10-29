@@ -1,0 +1,10 @@
+{
+    "name": "LS_SourceSqlMig_Test",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source={{SOURCE_TEST_SQL_SERVER_FQDN}};Initial Catalog={{DMAP_DATABASE_NAME}}",
+            "authenticationType": "SystemAssignedManagedIdentity"
+        }
+    }
+}
